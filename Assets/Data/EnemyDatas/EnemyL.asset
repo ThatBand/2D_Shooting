@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a03a742c515e6f40bd79414f40346a9, type: 3}
+  m_Name: EnemyL
+  m_EditorClassIdentifier: 
+  shootType: 1
+  enemyName: L
+  enemyScore: 3000
+  speed: 2
+  health: 20
+  attackSpeed: 1
+  enemyBullet:
+  - {fileID: 4864420110316456439, guid: 8c1765353ba571549bfe1c194fc6153c, type: 3}

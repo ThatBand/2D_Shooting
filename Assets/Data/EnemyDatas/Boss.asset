@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a03a742c515e6f40bd79414f40346a9, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  shootType: 0
+  enemyName: 
+  enemyScore: 0
+  speed: 0
+  health: 5000
+  attackSpeed: 0
+  enemyBullet:
+  - {fileID: 4864420110316456439, guid: f48cb611c5133ce429c4dfd1dc430523, type: 3}
+  - {fileID: 4864420110316456439, guid: 6f05236c29042de4588be5eee200a534, type: 3}
+  - {fileID: 4864420110316456439, guid: 038895bf1d7568840a4c40040c4380ed, type: 3}
