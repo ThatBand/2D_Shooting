@@ -9,10 +9,14 @@ public class BossQuartzPattern : MonoBehaviour
     public int quartzCount;
     public Vector2 creationCycle;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         StartCoroutine(GenerateQuartz());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     IEnumerator GenerateQuartz()

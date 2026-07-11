@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Quartz : MonoBehaviour
 {
@@ -12,6 +11,9 @@ public class Quartz : MonoBehaviour
 
     public float blinkCount;
     public float blinkSpeed;
+
+    private bool isDestroying = false;
+
 
     private void Awake()
     {
@@ -25,8 +27,9 @@ public class Quartz : MonoBehaviour
 
     private void Update()
     {
-        if (_spawnLaser != null && _spawnLaser.isEnd)
+        if (!isDestroying && _spawnLaser != null && _spawnLaser.isEnd)
         {
+            isDestroying = true;
             Destroy(gameObject, 1);
         }
     }
