@@ -52,6 +52,7 @@ MonoBehaviour:
   isHide: 1
   isEnd: 0
   warningTime: 1
+  isDestroy: 1
 --- !u!1 &4882531074423209362
 GameObject:
   m_ObjectHideFlags: 0

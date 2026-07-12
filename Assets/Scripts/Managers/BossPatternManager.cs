@@ -19,6 +19,7 @@ public enum BossState
 public class BossPatternManager : MonoBehaviour
 {
     public BossMove move;
+    public BossIdle idle;
     public BossStrike strike;
     public BossLaser laser;
     public BossSpiralSpread sprialSpread;
@@ -30,15 +31,12 @@ public class BossPatternManager : MonoBehaviour
 
     public BossState curState = BossState.Move;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public BossState[] patternCycle;
+    private int curPatternIndex;
 
-    }
-
-    private void ChangeState(BossState nextState)
+    public void ChangeState(BossState nextState)
     {
-        StopAllCoroutines();
+        DisableAllPatterns();
 
         curState = nextState;
 
@@ -72,5 +70,30 @@ public class BossPatternManager : MonoBehaviour
                 quartzPattern.enabled = true;
                 break;
         }
+    }
+
+    public void ExecuteNextPattern()
+    {
+        if (patternCycle.Length == 0)
+            return;
+
+        BossState nextPattern = patternCycle[curPatternIndex];
+
+        ChangeState(nextPattern);
+        curPatternIndex++;
+    }
+
+    private void DisableAllPatterns()
+    {
+        move.enabled = false;
+        idle.enabled = false;
+        strike.enabled = false;
+        laser.enabled = false;
+        sprialSpread.enabled = false;
+        prisonDodge.enabled = false;
+        prisonLaser.enabled = false;
+        circleFire.enabled = false;
+        makePrison.enabled = false;
+        quartzPattern.enabled = false;
     }
 }

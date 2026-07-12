@@ -12,6 +12,8 @@ public class Laser : MonoBehaviour
 
     public float warningTime;
 
+    public bool isDestroy;
+
     public void Fire()
     {
         isEnd = false;
@@ -48,7 +50,9 @@ public class Laser : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         isEnd = true;
-        Destroy(gameObject);
-        //gameObject.SetActive(false);
+
+        if (isDestroy)
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
     }
 }

@@ -12,9 +12,21 @@ public class BossSpiralSpread : MonoBehaviour
     public float fireTime;
     public EnemyData bossData;
 
-    private void Start()
+    private BossPatternManager manager;
+
+    private void Awake()
+    {
+        manager = GetComponent<BossPatternManager>();
+    }
+
+    private void OnEnable()
     {
         StartCoroutine(SprialBullet());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     private void Update()
@@ -38,5 +50,7 @@ public class BossSpiralSpread : MonoBehaviour
 
             yield return new WaitForSeconds(fireTime);
         }
+
+        manager.ChangeState(BossState.Idle);
     }
 }

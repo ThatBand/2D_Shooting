@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class BossMove : MonoBehaviour
 {
-    public float speed;
-    public float height;
+    private BossPatternManager manager;
 
     public Vector3 targetPos;
 
-    private Vector3 startPos;
-    private EnemyHealth health;
-
     private void Awake()
     {
-        health = GetComponent<EnemyHealth>();
+        manager = GetComponent<BossPatternManager>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        startPos = targetPos; 
-
         StartCoroutine(Move());
     }
 
@@ -36,13 +29,8 @@ public class BossMove : MonoBehaviour
 
         transform.position = targetPos;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
-        while (true)
-        {
-            transform.position = startPos + Vector3.up * Mathf.Sin(Time.time * speed) * height;
-
-            yield return null;
-        }
+        manager.ChangeState(BossState.Idle);
     }
 }

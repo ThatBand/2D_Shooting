@@ -13,9 +13,21 @@ public class BossCircleFire : MonoBehaviour
 
     public float fireDelay;
 
-    private void Start()
+    private BossPatternManager manager;
+
+    private void Awake()
+    {
+        manager = GetComponent<BossPatternManager>();
+    }
+
+    private void OnEnable()
     {
         StartCoroutine(CirclePattern());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     IEnumerator CirclePattern()
@@ -45,5 +57,7 @@ public class BossCircleFire : MonoBehaviour
 
             a++;
         }
-    }  
+
+        manager.ChangeState(BossState.Idle);
+    }
 }

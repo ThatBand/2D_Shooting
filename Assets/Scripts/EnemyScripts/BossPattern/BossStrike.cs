@@ -9,11 +9,23 @@ public class BossStrike : MonoBehaviour
 
     private GameObject[] bullets;
 
-    private void Start()
+    private BossPatternManager manager;
+
+    private void Awake()
+    {
+        manager = GetComponent<BossPatternManager>();
+    }
+
+    private void OnEnable()
     {
         bullets = new GameObject[points.Length];
 
         StartCoroutine(MakeBullet());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     IEnumerator MakeBullet()
@@ -38,5 +50,7 @@ public class BossStrike : MonoBehaviour
 
             yield return new WaitForSeconds(2);
         }
+
+        manager.ChangeState(BossState.Idle);
     }
 }
