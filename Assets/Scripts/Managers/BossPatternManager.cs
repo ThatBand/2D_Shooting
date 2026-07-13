@@ -45,6 +45,9 @@ public class BossPatternManager : MonoBehaviour
             case BossState.Move:
                 move.enabled = true;
                 break;
+            case BossState.Idle:
+                idle.enabled = true;
+                break;
             case BossState.Strike:
                 strike.enabled = true;
                 break;

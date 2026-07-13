@@ -334,6 +334,7 @@ MonoBehaviour:
   isHide: 0
   isEnd: 0
   warningTime: 2
+  isDestroy: 0
 --- !u!1 &62667715
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +3906,7 @@ MonoBehaviour:
   isHide: 0
   isEnd: 0
   warningTime: 2
+  isDestroy: 0
 --- !u!1 &1139261347
 GameObject:
   m_ObjectHideFlags: 0
@@ -4117,6 +4119,7 @@ MonoBehaviour:
   isHide: 0
   isEnd: 0
   warningTime: 2
+  isDestroy: 0
 --- !u!1 &1322581265
 GameObject:
   m_ObjectHideFlags: 0
@@ -5793,6 +5796,7 @@ GameObject:
   - component: {fileID: 1844755513}
   - component: {fileID: 1844755514}
   - component: {fileID: 1844755516}
+  - component: {fileID: 1844755519}
   - component: {fileID: 1844755506}
   - component: {fileID: 1844755507}
   - component: {fileID: 1844755508}
@@ -6065,8 +6069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068bee03f39a5f44fb85403b1d2d9d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.8
-  height: 0.2
   targetPos: {x: 0, y: 3.35, z: 0}
 --- !u!114 &1844755517
 MonoBehaviour:
@@ -6095,7 +6097,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c04c6ece9dd3142bed223112015d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {fileID: 0}
+  move: {fileID: 1844755516}
+  idle: {fileID: 1844755519}
   strike: {fileID: 1844755506}
   laser: {fileID: 1844755507}
   sprialSpread: {fileID: 1844755508}
@@ -6105,6 +6108,22 @@ MonoBehaviour:
   makePrison: {fileID: 1844755515}
   quartzPattern: {fileID: 1844755517}
   curState: 1
+  patternCycle: 0200000003000000040000000400000007000000
+--- !u!114 &1844755519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844755499}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cfa4539251ef349a16553bbcf749f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.8
+  height: 0.52
+  idleTime: 5
 --- !u!1 &1856664887
 GameObject:
   m_ObjectHideFlags: 0
