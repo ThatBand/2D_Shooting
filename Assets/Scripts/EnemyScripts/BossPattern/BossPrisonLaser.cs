@@ -8,13 +8,14 @@ public class BossPrisonLaser : MonoBehaviour
 
     public float laserPatternDelay;
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(LaserPattern());
-        }
+        StartCoroutine(LaserPattern());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     IEnumerator LaserPattern()

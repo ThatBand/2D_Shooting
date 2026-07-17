@@ -19,4 +19,14 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1;
     }
+
+    public void ClearBullet()
+    {
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+
+        foreach (GameObject bullet in bullets)
+        {
+            Destroy(bullet);
+        }
+    }
 }

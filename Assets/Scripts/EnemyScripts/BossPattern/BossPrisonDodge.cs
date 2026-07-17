@@ -11,10 +11,14 @@ public class BossPrisonDodge : MonoBehaviour
     public float fireRate;
     public float bulletSpeed;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         StartCoroutine(dodge());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     IEnumerator dodge()

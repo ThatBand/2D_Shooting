@@ -10,11 +10,13 @@ public class EnemyHealth : MonoBehaviour
     public GameObject item;
 
     private EnemyHit hit;
+    private BossPatternManager manager;
 
     private void Awake()
     {
         curHealth = enemyData.health;
         hit = GetComponent<EnemyHit>();
+        manager = GetComponent<BossPatternManager>();
     }
 
     public void TakeDamage(float damage)
@@ -22,6 +24,9 @@ public class EnemyHealth : MonoBehaviour
         curHealth -= damage;
 
         hit?.OnHit();
+
+        if (hit.isBoss && curHealth <= (enemyData.health / 2))
+            manager?.EnterPhase2();
 
         if (curHealth <= 0)
         {

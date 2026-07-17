@@ -9,18 +9,23 @@ public class BossLaser : MonoBehaviour
 
     private bool isRot;
 
+    private void OnEnable()
+    {
+        for (int i = 0; i < lasers.Length; i++)
+        {
+            lasers[i].Fire();
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < lasers.Length; i++)
-            {
-                lasers[i].Fire();
-            }
-
-            StartCoroutine(LaserRotPattern());
-        }
+        StartCoroutine(LaserRotPattern());
     }
 
     IEnumerator LaserRotPattern()

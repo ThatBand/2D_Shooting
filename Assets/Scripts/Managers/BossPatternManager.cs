@@ -18,21 +18,48 @@ public enum BossState
 
 public class BossPatternManager : MonoBehaviour
 {
-    public BossMove move;
-    public BossIdle idle;
-    public BossStrike strike;
-    public BossLaser laser;
-    public BossSpiralSpread sprialSpread;
-    public BossPrisonDodge prisonDodge;
-    public BossPrisonLaser prisonLaser;
-    public BossCircleFire circleFire;
-    public BossMakePrison makePrison;
-    public BossQuartzPattern quartzPattern;
+    private BossMove move;
+    private BossIdle idle;
+    private BossStrike strike;
+    private BossLaser laser;
+    private BossSpiralSpread sprialSpread;
+    private BossPrisonDodge prisonDodge;
+    private BossPrisonLaser prisonLaser;
+    private BossCircleFire circleFire;
+    private BossMakePrison makePrison;
+    private BossQuartzPattern quartzPattern;
 
     public BossState curState = BossState.Move;
 
-    public BossState[] patternCycle;
+    public BossState[] phase1PatternCycle;
+    public BossState[] phase2PatternCycle;
+
+    private BossState[] curSequence;
+
+    private bool isPhase2;
+
     private int curPatternIndex;
+
+    private void Awake()
+    {
+        move = GetComponent<BossMove>();
+        idle = GetComponent<BossIdle>();
+        strike = GetComponent<BossStrike>();
+        laser = GetComponent<BossLaser>();
+        sprialSpread = GetComponent<BossSpiralSpread>();
+        prisonDodge = GetComponent<BossPrisonDodge>();
+        prisonLaser = GetComponent<BossPrisonLaser>();
+        circleFire = GetComponent<BossCircleFire>();
+        makePrison = GetComponent<BossMakePrison>();
+        quartzPattern = GetComponent<BossQuartzPattern>();
+    }
+
+    private void Start()
+    {
+        curSequence = phase1PatternCycle;
+
+        ChangeState(BossState.Move);
+    }
 
     public void ChangeState(BossState nextState)
     {
@@ -77,13 +104,33 @@ public class BossPatternManager : MonoBehaviour
 
     public void ExecuteNextPattern()
     {
-        if (patternCycle.Length == 0)
+        if (curSequence == null || curSequence.Length == 0)
             return;
 
-        BossState nextPattern = patternCycle[curPatternIndex];
+        BossState nextPattern = curSequence[curPatternIndex];
 
         ChangeState(nextPattern);
         curPatternIndex++;
+
+        if (curPatternIndex >= curSequence.Length)
+            curPatternIndex = 0;
+    }
+
+    public void EnterPhase2()
+    {
+        if (isPhase2)
+            return;
+
+        StopAllCoroutines();
+        GameManager.instance.ClearBullet();
+
+        isPhase2 = true;
+        Debug.Log("보스 2페이즈 시작!");
+
+        curSequence = phase2PatternCycle;
+        curPatternIndex = 0;
+
+        ChangeState(BossState.Prison);
     }
 
     private void DisableAllPatterns()

@@ -5873,7 +5873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.54, z: 0}
+  m_LocalPosition: {x: 0, y: 10.1, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -6057,6 +6057,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prison: {fileID: 1833052347}
+  targetVec: {x: 1, y: 1, z: 1}
+  speed: 0.4
 --- !u!114 &1844755516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6064,7 +6066,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 068bee03f39a5f44fb85403b1d2d9d97, type: 3}
   m_Name: 
@@ -6092,23 +6094,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56c04c6ece9dd3142bed223112015d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {fileID: 1844755516}
-  idle: {fileID: 1844755519}
-  strike: {fileID: 1844755506}
-  laser: {fileID: 1844755507}
-  sprialSpread: {fileID: 1844755508}
-  prisonDodge: {fileID: 1844755509}
-  prisonLaser: {fileID: 1844755510}
-  circleFire: {fileID: 1844755511}
-  makePrison: {fileID: 1844755515}
-  quartzPattern: {fileID: 1844755517}
   curState: 0
-  patternCycle: 0200000003000000040000000400000007000000
+  phase1PatternCycle: 0200000003000000040000000700000009000000
+  phase2PatternCycle: 0500000002000000060000000900000004000000
 --- !u!114 &1844755519
 MonoBehaviour:
   m_ObjectHideFlags: 0
