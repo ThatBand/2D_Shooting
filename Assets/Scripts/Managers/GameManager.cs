@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public Transform player;
     public PlayerShooter playerShooter;
 
+    public GameObject scoreItem;
+
     private void Awake()
     {
         if (instance == null)
@@ -26,6 +28,13 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject bullet in bullets)
         {
+            GameObject item = Instantiate(scoreItem, bullet.transform.position, Quaternion.identity);
+            ItemFollow follow = item.GetComponent<ItemFollow>();
+            ItemMove move = item.GetComponent<ItemMove>();
+
+            move.enabled = false;
+            follow.enabled = true;
+
             Destroy(bullet);
         }
     }

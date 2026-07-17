@@ -2051,6 +2051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2063864312}
   playerShooter: {fileID: 2063864316}
+  scoreItem: {fileID: 2495852930222628282, guid: eebc5f1efedf1e34b91795a8aeb68715, type: 3}
 --- !u!4 &644952266
 Transform:
   m_ObjectHideFlags: 0
