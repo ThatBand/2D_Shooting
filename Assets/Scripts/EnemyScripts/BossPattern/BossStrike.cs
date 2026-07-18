@@ -7,6 +7,11 @@ public class BossStrike : MonoBehaviour
     public EnemyData data;
     public Transform[] points;
 
+    [Header("총알 등장 확률")]
+    public float red;
+    public float blue;
+    public float yellow;
+
     private GameObject[] bullets;
 
     private BossPatternManager manager;
@@ -28,6 +33,21 @@ public class BossStrike : MonoBehaviour
         StopAllCoroutines();
     }
 
+    private void BulletProbability(EnemyBullet eBullet)
+    {
+        float total = red + blue + yellow;
+        float randNum = Random.Range(0f, total);
+
+        if (randNum < red)
+            eBullet.Setup(EnemyBullet.bulletType.red);
+
+        else if (randNum < red + blue)
+            eBullet.Setup(EnemyBullet.bulletType.blue);
+
+        else
+            eBullet.Setup(EnemyBullet.bulletType.yellow);
+    }
+
     IEnumerator MakeBullet()
     {
         for (int i = 0; i < 2; i++)
@@ -35,8 +55,8 @@ public class BossStrike : MonoBehaviour
             for (int k = 0; k < bullets.Length; k++)
             {
                 bullets[k] = Instantiate(data.enemyBullet[0], points[k]);
-                EnemyBullet bulletSC = bullets[k].GetComponent<EnemyBullet>();
-                bulletSC.Setup(EnemyBullet.bulletType.red);
+                EnemyBullet bullet = bullets[k].GetComponent<EnemyBullet>();
+                BulletProbability(bullet);
 
                 yield return new WaitForSeconds(0.5f);
             }
@@ -45,7 +65,8 @@ public class BossStrike : MonoBehaviour
 
             foreach (GameObject bullet in bullets)
             {
-                bullet.GetComponent<StrikeBullet>()?.Fire();
+                if (bullet != null)
+                    bullet.GetComponent<StrikeBullet>()?.Fire();
             }
 
             yield return new WaitForSeconds(2);

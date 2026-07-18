@@ -8,7 +8,15 @@ public class BossCircleFire : MonoBehaviour
 
     public Transform bulletContainer;
 
+    [Header("총알 등장 확률")]
+    public float red;
+    public float blue;
+    public float yellow;
+
+    [Header("패턴 발동 횟수")]
     public int patternCount;
+
+    [Header("총알 개수")]
     public int bulletCount;
 
     public float fireDelay;
@@ -30,6 +38,21 @@ public class BossCircleFire : MonoBehaviour
         StopAllCoroutines();
     }
 
+    private void BulletProbability(EnemyBullet eBullet)
+    {
+        float total = red + blue + yellow;
+        float randNum = Random.Range(0f, total);
+
+        if (randNum < red)
+            eBullet.Setup(EnemyBullet.bulletType.red);
+
+        else if (randNum < red + blue)
+            eBullet.Setup(EnemyBullet.bulletType.blue);
+
+        else
+            eBullet.Setup(EnemyBullet.bulletType.yellow);
+    }
+
     IEnumerator CirclePattern()
     {
         int a = 0;
@@ -38,12 +61,13 @@ public class BossCircleFire : MonoBehaviour
         {
             for (int i = 0; i < bulletCount; i++)
             {
-                bulletContainer.localRotation = Quaternion.Euler(0, 0, (10 * a));
+                bulletContainer.localRotation = Quaternion.Euler(0, 0, (15 * a));
 
                 GameObject[] bullet = new GameObject[bulletCount];
                 bullet[i] = Instantiate(bossData.enemyBullet[1], bulletContainer.position, Quaternion.identity, bulletContainer);
                 EnemyBullet bulletSC = bullet[i].GetComponent<EnemyBullet>();
-                bulletSC.Setup(EnemyBullet.bulletType.red);
+                BulletProbability(bulletSC);
+
                 Debug.Log("총알 생성");
                 Rigidbody2D bulletRigid = bullet[i].GetComponent<Rigidbody2D>();
 

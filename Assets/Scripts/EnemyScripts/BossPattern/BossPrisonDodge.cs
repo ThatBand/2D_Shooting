@@ -49,10 +49,10 @@ public class BossPrisonDodge : MonoBehaviour
             GameObject bullet0 = Instantiate(bossData.enemyBullet[2], bullet0Pos, Quaternion.identity);
             GameObject bullet1 = Instantiate(bossData.enemyBullet[2], bullet1Pos, Quaternion.identity);
 
-            EnemyBullet bulletSC0 = bullet0.GetComponent<EnemyBullet>();
-            bulletSC0.Setup(EnemyBullet.bulletType.red);
-            EnemyBullet bulletSC1 = bullet1.GetComponent<EnemyBullet>();
-            bulletSC1.Setup(EnemyBullet.bulletType.red);
+            //EnemyBullet bulletSC0 = bullet0.GetComponent<EnemyBullet>();
+            //bulletSC0.Setup(EnemyBullet.bulletType.red);
+            //EnemyBullet bulletSC1 = bullet1.GetComponent<EnemyBullet>();
+            //bulletSC1.Setup(EnemyBullet.bulletType.red);
 
             Rigidbody2D rigid0 = bullet0.GetComponent<Rigidbody2D>();
             Rigidbody2D rigid1 = bullet1.GetComponent<Rigidbody2D>();

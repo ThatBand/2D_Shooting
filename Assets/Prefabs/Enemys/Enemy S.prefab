@@ -32,8 +32,8 @@ Transform:
   m_GameObject: {fileID: 5674355918247331594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26aff1c178681df42a14e0af72ff19d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStop: 0
   enemyData: {fileID: 11400000, guid: 080168ed68a7e4c438cd1a96b8672df3, type: 2}
 --- !u!114 &5674355918247331584
 MonoBehaviour:
@@ -167,9 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7869efa72c497674691796ad57a2b2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
   sprites:
   - {fileID: 8414478535512612329, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
   - {fileID: 4326287474489854147, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  anim: {fileID: 0}
 --- !u!114 &-5802557477445255303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +186,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 080168ed68a7e4c438cd1a96b8672df3, type: 2}
+  attackCount: 0
