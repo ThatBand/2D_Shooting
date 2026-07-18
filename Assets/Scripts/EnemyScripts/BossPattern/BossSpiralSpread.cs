@@ -7,8 +7,18 @@ public class BossSpiralSpread : MonoBehaviour
     public Transform bulletContainer;
     public float RotateSpeed;
 
+    [Header("총알 등장 확률")]
+    public float red;
+    public float blue;
+    public float yellow;
+
+    [Header("총알 개수")]
     public int bulletCount;
+
+    [Header("총알 속도")]
     public int bulletSpeed;
+
+    [Header("발사 쿨타임")]
     public float fireTime;
     public EnemyData bossData;
 
@@ -34,13 +44,33 @@ public class BossSpiralSpread : MonoBehaviour
         bulletContainer.Rotate(Vector3.forward, RotateSpeed * Time.deltaTime);
     }
 
+    private void BulletProbability(EnemyBullet eBullet)
+    {
+        float total = red + blue + yellow;
+        float randNum = Random.Range(0f, total);
+
+        if (randNum < red)
+            eBullet.Setup(EnemyBullet.bulletType.red);
+
+        else if (randNum < red + blue)
+            eBullet.Setup(EnemyBullet.bulletType.blue);
+
+        else
+            eBullet.Setup(EnemyBullet.bulletType.yellow);
+    }
+
     IEnumerator SprialBullet()
     {
-        while (true)
+        int o = 0;
+
+        while ( o < 30)
         {
             for (int i = 0; i < bulletCount; i++)
             {
                 GameObject bullet = Instantiate(bossData.enemyBullet[1], bulletContainer.position, Quaternion.identity, bulletContainer);
+                EnemyBullet bullstSC = bullet.GetComponent<EnemyBullet>();
+                BulletProbability(bullstSC);
+
                 Rigidbody2D bulletRigid = bullet.GetComponent<Rigidbody2D>();
 
                 float a = (360f / bulletCount) * i + 1;
@@ -48,6 +78,7 @@ public class BossSpiralSpread : MonoBehaviour
                 bulletRigid.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
             }
 
+            o++;
             yield return new WaitForSeconds(fireTime);
         }
 
