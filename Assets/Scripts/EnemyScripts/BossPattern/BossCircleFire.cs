@@ -6,8 +6,6 @@ public class BossCircleFire : MonoBehaviour
 {
     public EnemyData bossData;
 
-    public Transform bulletContainer;
-
     public Vector3[] movePos;
 
     [Header("총알 등장 확률")]
@@ -68,7 +66,7 @@ public class BossCircleFire : MonoBehaviour
                 //bulletContainer.localRotation = Quaternion.Euler(0, 0, (15 * a));
 
                 GameObject[] bullet = new GameObject[bulletCount];
-                bullet[i] = Instantiate(bossData.enemyBullet[1], bulletContainer.position, Quaternion.identity);
+                bullet[i] = Instantiate(bossData.enemyBullet[1], transform.position + Vector3.down * 0.6f, Quaternion.identity);
                 EnemyBullet bulletSC = bullet[i].GetComponent<EnemyBullet>();
                 BulletProbability(bulletSC);
 

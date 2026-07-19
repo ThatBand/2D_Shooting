@@ -63,7 +63,7 @@ public class BossSpiralSpread : MonoBehaviour
     {
         int o = 0;
 
-        while ( o < 30)
+        while ( o < 50)
         {
             for (int i = 0; i < bulletCount; i++)
             {
