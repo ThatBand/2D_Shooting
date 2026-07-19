@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
 
     public GameObject item;
 
+    public bool isInvin;
+
     private EnemyHit hit;
     private BossPatternManager manager;
 
@@ -21,6 +23,9 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isInvin)
+            return;
+
         curHealth -= damage;
 
         hit?.OnHit();

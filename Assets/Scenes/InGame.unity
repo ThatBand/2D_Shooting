@@ -2627,7 +2627,7 @@ GameObject:
   - component: {fileID: 845032540}
   - component: {fileID: 845032539}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: SettingBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3215,7 +3215,7 @@ GameObject:
   - component: {fileID: 949811290}
   - component: {fileID: 949811289}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: BackBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6083,6 +6083,8 @@ MonoBehaviour:
   prison: {fileID: 1833052347}
   targetVec: {x: 1, y: 1, z: 1}
   speed: 0.4
+  bodyColl: {fileID: 0}
+  weakColl: {fileID: 0}
 --- !u!114 &1844755516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6095,6 +6097,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068bee03f39a5f44fb85403b1d2d9d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bodyColl: {fileID: 1608042400}
+  weakColl: {fileID: 2146121683}
   targetPos: {x: 0, y: 3.35, z: 0}
 --- !u!114 &1844755517
 MonoBehaviour:

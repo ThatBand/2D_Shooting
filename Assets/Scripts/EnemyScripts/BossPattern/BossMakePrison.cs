@@ -8,6 +8,9 @@ public class BossMakePrison : MonoBehaviour
     public Vector3 targetVec;
     public float speed;
 
+    public Collider2D bodyColl;
+    public Collider2D weakColl;
+
     private bool isShrinking;
 
     private BossPatternManager manager;
@@ -19,6 +22,9 @@ public class BossMakePrison : MonoBehaviour
 
     private void OnEnable()
     {
+        bodyColl.enabled = false;
+        weakColl.enabled = false;
+
         prison.SetActive(true);
         StartCoroutine(Prison());
     }
@@ -35,18 +41,8 @@ public class BossMakePrison : MonoBehaviour
 
         prison.transform.localScale = targetVec;
         manager.ChangeState(BossState.Idle);
+
+        bodyColl.enabled = true;
+        weakColl.enabled = true;
     }
-
-    //void Update()
-    //{
-    //    if (isShrinking)
-    //    {
-    //        prison.transform.localScale = Vector3.MoveTowards(prison.transform.localScale, Vector3.one, 1.5f * Time.deltaTime);
-
-    //        if (prison.transform.localScale == Vector3.one)
-    //            isShrinking = false;
-    //    }
-
-    //    manager.ChangeState(BossState.Idle);
-    //}
 }

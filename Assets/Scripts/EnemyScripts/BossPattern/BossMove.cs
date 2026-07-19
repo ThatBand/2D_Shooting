@@ -5,16 +5,23 @@ using UnityEngine;
 public class BossMove : MonoBehaviour
 {
     private BossPatternManager manager;
+    private EnemyHealth health;
+
+    //public Collider2D bodyColl;
+    //public Collider2D weakColl;
 
     public Vector3 targetPos;
 
     private void Awake()
     {
         manager = GetComponent<BossPatternManager>();
+        health = GetComponent<EnemyHealth>();
     }
 
     private void OnEnable()
     {
+        health.isInvin = true;
+
         StartCoroutine(Move());
     }
 
@@ -32,5 +39,7 @@ public class BossMove : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         manager.ChangeState(BossState.Idle);
+
+        health.isInvin = false;
     }
 }

@@ -12,6 +12,9 @@ public class DamageReceiver : MonoBehaviour
 
     public void ReceiveDamage(float baseDmg)
     {
+        if (bossHealth.isInvin)
+            return;
+
         Vector3 textPos = transform.position + new Vector3(2.5f, 1f, 0);
 
         GameObject textClone = Instantiate(text, textPos, Quaternion.identity);
