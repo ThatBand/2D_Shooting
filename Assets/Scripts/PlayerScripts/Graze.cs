@@ -17,7 +17,7 @@ public class Graze : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("EnemyBullet") && !playerInvincibility.IsInvincibility && !playerHealth.isDead)
+        if (collision.CompareTag("EnemyBullet") && !playerInvincibility.IsInvincibility && !playerHealth.isDead && collision.GetComponent<EnemyBullet>()?.type != EnemyBullet.bulletType.blue)
         {
             Debug.Log("총알과 충돌!, 그레이즈 점수 획득!");
             ScoreManager.instance.ScorePlus(grazeScore);

@@ -67,18 +67,17 @@ public class EnemyBullet : Bullet
         if (collision.CompareTag("CoreHit"))
         {
             PlayerHealth playerHealth = collision.GetComponentInParent<PlayerHealth>();
-
-            playerHealth?.TakeDamage();
             Destroy(gameObject);
-        }
 
-        if (type == bulletType.blue)
-        {
-            if (collision.CompareTag("GrazeHit"))
+            if (type == bulletType.blue)
             {
                 Debug.Log("파란색 탄막 흡수! 점수 + " + blueBulletScore);
                 ScoreManager.instance.ScorePlus(blueBulletScore);
+
+                return;
             }
+
+            playerHealth?.TakeDamage();
         }
     }
 }
