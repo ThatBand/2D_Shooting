@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea68e435580eb94dabe2cbe70b3cb1d, type: 3}
   m_Name: PlayerBulletA
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
   damage: 5
+  health: 0

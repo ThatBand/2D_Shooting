@@ -64,20 +64,21 @@ public class EnemyBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("GrazeHit"))
+        if (collision.CompareTag("CoreHit"))
         {
             PlayerHealth playerHealth = collision.GetComponentInParent<PlayerHealth>();
 
-            if (type == bulletType.blue)
+            playerHealth?.TakeDamage();
+            Destroy(gameObject);
+        }
+
+        if (type == bulletType.blue)
+        {
+            if (collision.CompareTag("GrazeHit"))
             {
                 Debug.Log("파란색 탄막 흡수! 점수 + " + blueBulletScore);
                 ScoreManager.instance.ScorePlus(blueBulletScore);
             }
-
-            else
-                playerHealth?.TakeDamage();
-
-            Destroy(gameObject);
         }
     }
 }
