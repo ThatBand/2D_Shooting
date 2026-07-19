@@ -20,7 +20,7 @@ public class Graze : MonoBehaviour
         if (collision.CompareTag("EnemyBullet") && !playerInvincibility.IsInvincibility && !playerHealth.isDead)
         {
             Debug.Log("총알과 충돌!, 그레이즈 점수 획득!");
-            ScoreManager.instance.ScorePlus(grazeScore);
+            //ScoreManager.instance.ScorePlus(grazeScore);
         }
     }
 }

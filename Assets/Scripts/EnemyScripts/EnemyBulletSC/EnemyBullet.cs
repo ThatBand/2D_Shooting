@@ -11,6 +11,7 @@ public class EnemyBullet : Bullet
     public bulletType type;
 
     public float bulletHealth;
+    public int blueBulletScore;
 
     private SpriteRenderer sprite;
 
@@ -22,6 +23,8 @@ public class EnemyBullet : Bullet
     protected override void Start()
     {
         base.Start();
+
+        //bulletHealth = bulletData.health;
     }
 
     public void Setup(bulletType newType)
@@ -32,15 +35,15 @@ public class EnemyBullet : Bullet
         {
             case bulletType.red:
                 sprite.color = Color.red;
-                gameObject.layer = LayerMask.NameToLayer("EnemyInvincibleBullet");
+                gameObject.layer = LayerMask.NameToLayer("RedBullet");
                 break;
             case bulletType.blue:
                 sprite.color = Color.blue;
-                gameObject.layer = LayerMask.NameToLayer("EnemyInvincibleBullet");
+                gameObject.layer = LayerMask.NameToLayer("BlueBullet");
                 break;
             case bulletType.yellow:
                 sprite.color = Color.yellow;
-                gameObject.layer = LayerMask.NameToLayer("EnemyBreakableBullet");
+                gameObject.layer = LayerMask.NameToLayer("YellowBullet");
                 break;
         }
     }
@@ -61,17 +64,19 @@ public class EnemyBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("CoreHit"))
+        if (collision.CompareTag("GrazeHit"))
         {
             PlayerHealth playerHealth = collision.GetComponentInParent<PlayerHealth>();
 
             if (type == bulletType.blue)
             {
-                Debug.Log("파란색 탄막 흡수! 점수 +500");
-                ScoreManager.instance.ScorePlus(500);
+                Debug.Log("파란색 탄막 흡수! 점수 + " + blueBulletScore);
+                ScoreManager.instance.ScorePlus(blueBulletScore);
             }
 
-            playerHealth?.TakeDamage();
+            else
+                playerHealth?.TakeDamage();
+
             Destroy(gameObject);
         }
     }

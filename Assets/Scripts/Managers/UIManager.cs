@@ -61,6 +61,11 @@ public class UIManager : MonoBehaviour
         GameTimeManager.instance.NormalMode();
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !pausePanel.activeSelf)

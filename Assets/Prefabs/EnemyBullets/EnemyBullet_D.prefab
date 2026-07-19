@@ -140,7 +140,8 @@ MonoBehaviour:
   bulletData: {fileID: 11400000, guid: f766a803d1c024a44b10021e76c97447, type: 2}
   isDestroy: 0
   type: 0
-  bulletHealth: 0
+  bulletHealth: 30
+  blueBulletScore: 300
 --- !u!114 &7319394045764315381
 MonoBehaviour:
   m_ObjectHideFlags: 0

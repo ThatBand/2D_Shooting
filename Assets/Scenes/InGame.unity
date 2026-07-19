@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 313382883}
   - component: {fileID: 313382882}
   m_Layer: 5
-  m_Name: Button (Legacy) (2)
+  m_Name: ExitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -859,7 +859,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 313382883}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1686694243}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &313382883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5933,7 +5945,7 @@ MonoBehaviour:
   - {fileID: 414091310}
   - {fileID: 1795855402}
   - {fileID: 1469572991}
-  red: 0
+  red: 1
   blue: 0
   yellow: 0
 --- !u!114 &1844755507
@@ -5967,7 +5979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletContainer: {fileID: 495786268}
   RotateSpeed: 60
-  red: 0
+  red: 1
   blue: 0
   yellow: 0
   bulletCount: 5
@@ -5987,7 +5999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
-  red: 0
+  red: 1
   blue: 0
   yellow: 0
   fireRate: 1.5
@@ -6020,7 +6032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
   bulletContainer: {fileID: 1139261348}
-  red: 0
+  red: 1
   blue: 0
   yellow: 0
   patternCount: 3
@@ -6934,7 +6946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c6c1fd5b2ac2a489058bd66a029ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grazeScore: 500
+  grazeScore: 1
 --- !u!1 &2063864309
 GameObject:
   m_ObjectHideFlags: 0

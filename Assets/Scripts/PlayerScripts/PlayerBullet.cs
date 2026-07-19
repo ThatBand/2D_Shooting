@@ -28,5 +28,11 @@ public class PlayerBullet : Bullet
                 enemyHealth.TakeDamage(bulletData.damage);
             }
         }
+
+        if (collision.CompareTag("EnemyBullet") && collision.GetComponent<EnemyBullet>()?.type == EnemyBullet.bulletType.yellow)
+        {
+            Debug.Log("노랑 총알과 충돌");
+            collision.GetComponent<EnemyBullet>()?.EnemyBulletDamaged(bulletData.damage);
+        }
     }
 }
