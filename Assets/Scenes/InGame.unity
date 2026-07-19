@@ -5933,6 +5933,9 @@ MonoBehaviour:
   - {fileID: 414091310}
   - {fileID: 1795855402}
   - {fileID: 1469572991}
+  red: 0
+  blue: 0
+  yellow: 0
 --- !u!114 &1844755507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5964,6 +5967,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletContainer: {fileID: 495786268}
   RotateSpeed: 60
+  red: 0
+  blue: 0
+  yellow: 0
   bulletCount: 5
   bulletSpeed: 10
   fireTime: 0.25
@@ -5981,7 +5987,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
-  randNum: 0
+  red: 0
+  blue: 0
+  yellow: 0
   fireRate: 1.5
   bulletSpeed: 60
 --- !u!114 &1844755510
@@ -6012,6 +6020,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
   bulletContainer: {fileID: 1139261348}
+  red: 0
+  blue: 0
+  yellow: 0
   patternCount: 3
   bulletCount: 55
   fireDelay: 2
@@ -6102,7 +6113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   phase1PatternCycle: 0200000003000000040000000700000009000000
-  phase2PatternCycle: 0500000002000000060000000900000004000000
+  phase2PatternCycle: 0500000002000000060000000900000004000000020000000600000007000000
 --- !u!114 &1844755519
 MonoBehaviour:
   m_ObjectHideFlags: 0
