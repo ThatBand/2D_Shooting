@@ -24,7 +24,7 @@ public class EnemyBullet : Bullet
     {
         base.Start();
 
-        //bulletHealth = bulletData.health;
+        bulletHealth = bulletData.health;
     }
 
     public void Setup(bulletType newType)
@@ -58,7 +58,7 @@ public class EnemyBullet : Bullet
         if (bulletHealth <= 0)
         {
             Destroy(gameObject);
-            GameManager.instance.playerShooter.power++;
+            GameManager.instance.playerShooter.UpgradePower();
         }
     }
 

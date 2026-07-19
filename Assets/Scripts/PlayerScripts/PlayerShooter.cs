@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShooter : MonoBehaviour
 {
     public int power;
+    public int maxPower;
 
     public float fireTime;
     private float time;
@@ -18,6 +19,14 @@ public class PlayerShooter : MonoBehaviour
         time += Time.deltaTime;
 
         Fire();
+    }
+
+    public void UpgradePower()
+    {
+        if (power >= maxPower)
+            ScoreManager.instance.ScorePlus(300);
+
+        power++;
     }
 
     void Fire()

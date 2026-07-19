@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3200940876827652532}
   - component: {fileID: 1445672489908372144}
-  - component: {fileID: 7248846837219821294}
   - component: {fileID: 8824461036682233663}
   - component: {fileID: -3743297004507951210}
   - component: {fileID: 7319394045764315381}
+  - component: {fileID: 7918057954998256178}
   m_Layer: 0
   m_Name: EnemyBullet_D
   m_TagString: EnemyBullet
@@ -88,22 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &7248846837219821294
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4864420110316456439}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.06, y: 0.5}
-  m_Direction: 0
 --- !u!50 &8824461036682233663
 Rigidbody2D:
   serializedVersion: 4
@@ -140,7 +124,7 @@ MonoBehaviour:
   bulletData: {fileID: 11400000, guid: f766a803d1c024a44b10021e76c97447, type: 2}
   isDestroy: 0
   type: 0
-  bulletHealth: 30
+  bulletHealth: 0
   blueBulletScore: 300
 --- !u!114 &7319394045764315381
 MonoBehaviour:
@@ -155,3 +139,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 5994ba3b1b61fcd46820534501c1684c, type: 2}
+--- !u!60 &7918057954998256178
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864420110316456439}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.47777778}
+    newSize: {x: 0.16666667, y: 0.29166666}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.022222223, y: 0.19444445}
+      - {x: -0.044444446, y: 0.10555556}
+      - {x: -0.17777778, y: 0.072222225}
+      - {x: -0.17777778, y: 0.05}
+      - {x: -0.044444446, y: 0.016666668}
+      - {x: -0.011111111, y: -0.20555556}
+      - {x: 0.011111111, y: -0.20555556}
+      - {x: 0.044444446, y: 0.016666668}
+      - {x: 0.17777778, y: 0.05}
+      - {x: 0.17777778, y: 0.072222225}
+      - {x: 0.044444446, y: 0.10555556}
+      - {x: 0.022222223, y: 0.19444445}
