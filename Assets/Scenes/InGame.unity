@@ -5307,7 +5307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1744282637
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5361,7 +5361,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Boom \uD6A8\uACFC, \uC544\uC774\uD15C \uAD6C\uD604"
+  m_Text: "\uD3ED\uD0C4 \uC2A4\uD06C\uB9BD\uD2B8 \uC190\uBCF4\uAE30"
 --- !u!222 &1744282639
 CanvasRenderer:
   m_ObjectHideFlags: 0
