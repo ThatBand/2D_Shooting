@@ -20,6 +20,11 @@ public class Laser : MonoBehaviour
         StartCoroutine(FireRoutine());
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     IEnumerator FireRoutine()
     {
         warningLine.SetActive(true);

@@ -16,12 +16,6 @@ public class Item : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Boundary"))
-            Destroy(gameObject);
-    }
-
     void UseItem(GameObject player)
     {
         switch (itemData.type)

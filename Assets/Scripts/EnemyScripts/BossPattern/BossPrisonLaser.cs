@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossPrisonLaser : MonoBehaviour
 {
     public Laser laserPrefab;
+    public Laser activeLaser;
 
     public float laserPatternDelay;
 
@@ -15,6 +16,7 @@ public class BossPrisonLaser : MonoBehaviour
 
     private void OnDisable()
     {
+        Destroy(activeLaser.gameObject);
         StopAllCoroutines();
     }
 
@@ -44,7 +46,7 @@ public class BossPrisonLaser : MonoBehaviour
 
     private void FireLaserAngle(int zAngle, Vector3 pos)
     {
-        Laser spawnLaser = Instantiate(laserPrefab, pos, Quaternion.Euler(0, 0, zAngle));
-        spawnLaser.Fire();
+        activeLaser = Instantiate(laserPrefab, pos, Quaternion.Euler(0, 0, zAngle));
+        activeLaser.Fire();
     }
 }

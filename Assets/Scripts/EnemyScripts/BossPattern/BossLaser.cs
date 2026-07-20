@@ -6,6 +6,7 @@ public class BossLaser : MonoBehaviour
 {
     public Laser[] lasers;
     public Transform laserRoot;
+    public GameObject[] _lasers;
 
     private bool isRot;
 
@@ -13,13 +14,23 @@ public class BossLaser : MonoBehaviour
     {
         for (int i = 0; i < lasers.Length; i++)
         {
+            lasers[i].gameObject.SetActive(true);
+            _lasers[i].transform.localScale = new Vector3(1, 0, 1);
             lasers[i].Fire();
         }
+
+        laserRoot.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void OnDisable()
     {
         StopAllCoroutines();
+
+        for (int i = 0; i < lasers.Length; i++)
+        {
+            lasers[i].enabled = false;
+            lasers[i].gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
