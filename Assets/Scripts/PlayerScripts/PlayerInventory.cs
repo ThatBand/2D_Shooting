@@ -10,7 +10,14 @@ public class PlayerInventory : MonoBehaviour
 
     public EffectManager effectManager;
     public UIManager uiManager;
+
     private ItemData boomData;
+    private PlayerInvincibility invincibility;
+
+    private void Awake()
+    {
+        invincibility = GetComponent<PlayerInvincibility>();
+    }
 
     public void AddBoom(ItemData data)
     {
@@ -38,25 +45,25 @@ public class PlayerInventory : MonoBehaviour
         if (curBoom == 0)
             return;
 
+        invincibility.StartInvincibility();
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            EnemyHealth enemyHealth = enemies[i].GetComponent<EnemyHealth>();
-            enemyHealth?.TakeDamage(boomData.amount);
-        }
+        foreach (GameObject enemy in enemies)
+            enemy.GetComponent<EnemyHealth>()?.TakeDamage(boomData.amount);
+    
+        GameManager.instance.ClearBullet();
 
-        GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
-        for (int i = 0; i < enemyBullets.Length; i++)
-        {
-            Vector3 spawnPos = enemyBullets[i].transform.position;
+        //GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+        //for (int i = 0; i < enemyBullets.Length; i++)
+        //{
+        //    Vector3 spawnPos = enemyBullets[i].transform.position;
 
-            Instantiate(coin, spawnPos, Quaternion.identity);
-            Destroy(enemyBullets[i]);
-        }
+        //    Instantiate(coin, spawnPos, Quaternion.identity);
+        //    Destroy(enemyBullets[i]);
+        //}
 
         curBoom--;
         uiManager.UseBoomIcon(curBoom);
-
         effectManager.OnBoomEffect();
     }
 }

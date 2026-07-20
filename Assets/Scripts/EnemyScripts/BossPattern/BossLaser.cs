@@ -9,6 +9,12 @@ public class BossLaser : MonoBehaviour
     public GameObject[] _lasers;
 
     private bool isRot;
+    private BossPatternManager manager;
+
+    private void Awake()
+    {
+        manager = GetComponent<BossPatternManager>();
+    }
 
     private void OnEnable()
     {
@@ -82,5 +88,7 @@ public class BossLaser : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         laserRoot.gameObject.SetActive(false);
+
+        manager.ChangeState(BossState.Idle);
     }
 }

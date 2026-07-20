@@ -20,7 +20,7 @@ public class PlayerInvincibility : MonoBehaviour
         GetComponent<PlayerHealth>().OnDamaged += StartInvincibility;
     }
 
-    void StartInvincibility()
+    public void StartInvincibility()
     {
         StartCoroutine(BlinkPlayer());
     }
