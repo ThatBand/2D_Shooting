@@ -7,13 +7,10 @@ public class Quartz : MonoBehaviour
     public Laser laserPrefab;
     private SpriteRenderer sprite;
 
-    private Laser _spawnLaser = null;
+    public Laser _spawnLaser = null;
 
     public float blinkCount;
     public float blinkSpeed;
-
-    private bool isDestroying = false;
-
 
     private void Awake()
     {
@@ -27,10 +24,12 @@ public class Quartz : MonoBehaviour
 
     private void Update()
     {
-        if (!isDestroying && _spawnLaser != null && _spawnLaser.isEnd)
+        if (_spawnLaser != null)
         {
-            isDestroying = true;
-            Destroy(gameObject, 1);
+            if (_spawnLaser.isEnd)
+            {
+                Destroy(gameObject, 1);
+            }
         }
     }
 
@@ -50,14 +49,20 @@ public class Quartz : MonoBehaviour
             yield return new WaitForSeconds(blinkSpeed);
         }
 
-        Vector3 targetPos = GameManager.instance.player.position;
-        Vector3 dir = targetPos - transform.position;
+        if (GameManager.instance.player != null)
+        {
+            Vector3 targetPos = GameManager.instance.player.position;
+            Vector3 dir = targetPos - transform.position;
 
-        Laser spawnLaser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
-        _spawnLaser = spawnLaser;
+            Laser spawnLaser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            _spawnLaser = spawnLaser;
 
-        spawnLaser.transform.up = -dir;
-        spawnLaser.Fire();
+            spawnLaser.transform.up = -dir;
+            spawnLaser.Fire();
+        }
+
+        else
+            Destroy(gameObject);
 
         //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         //Debug.Log(angle);

@@ -57,7 +57,6 @@ public class Laser : MonoBehaviour
         isEnd = true;
 
         if (isDestroy)
-            Destroy(gameObject);
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
     }
 }

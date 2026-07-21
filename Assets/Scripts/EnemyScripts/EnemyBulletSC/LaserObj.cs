@@ -8,7 +8,7 @@ public class LaserObj : MonoBehaviour
     {
         if (collision.CompareTag("CoreHit"))
         {
-            if (collision.TryGetComponent(out PlayerHealth player))
+            if (collision.transform.parent.TryGetComponent(out PlayerHealth player))
                 player.TakeDamage();
         }
     }

@@ -9,6 +9,15 @@ public class BossQuartzPattern : MonoBehaviour
     public int quartzCount;
     public Vector2 creationCycle;
 
+    public List<Quartz> spawnedQuartzList = new List<Quartz>();
+
+    private BossPatternManager manager;
+
+    private void Awake()
+    {
+        manager = GetComponent<BossPatternManager>();
+    }
+
     private void OnEnable()
     {
         StartCoroutine(GenerateQuartz());
@@ -28,9 +37,31 @@ public class BossQuartzPattern : MonoBehaviour
 
             float randCycle = Random.Range((float)creationCycle.x, (float)creationCycle.y);
 
-            Instantiate(quartzPrefab, new Vector2(randX, randY), Quaternion.identity);
+            Quartz spawnQ = Instantiate(quartzPrefab, new Vector2(randX, randY), Quaternion.identity);
+            spawnedQuartzList.Add(spawnQ);
 
             yield return new WaitForSeconds(randCycle);
         }
+
+        while (true)
+        {
+            bool isAllDestroyed = true;
+
+            foreach (Quartz q in spawnedQuartzList)
+            {
+                if (q != null)
+                {
+                    isAllDestroyed = false;
+                    break;
+                }
+            }
+
+            if (isAllDestroyed)
+                break;
+
+            yield return null;
+        }
+
+        manager?.ChangeState(BossState.Idle);
     }
 }
