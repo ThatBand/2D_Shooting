@@ -26,13 +26,18 @@ public class PlayerBullet : Bullet
             {
                 EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
                 enemyHealth.TakeDamage(bulletData.damage);
+
+                
             }
         }
 
-        if (collision.CompareTag("EnemyBullet") && collision.GetComponent<EnemyBullet>()?.type == EnemyBullet.bulletType.yellow)
+        if (collision.CompareTag("EnemyBullet"))
         {
-            Debug.Log("노랑 총알과 충돌");
-            collision.GetComponent<EnemyBullet>()?.EnemyBulletDamaged(bulletData.damage);
+            if (collision.TryGetComponent(out EnemyBullet eBullet) && eBullet.type == EnemyBullet.bulletType.yellow)
+            {
+                Debug.Log("노랑 총알과 충돌");
+                eBullet.EnemyBulletDamaged(bulletData.damage);
+            }
         }
     }
 }

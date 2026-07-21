@@ -10,7 +10,7 @@ public class PlayerRespawn : MonoBehaviour
         GetComponent<PlayerHealth>().OnDamaged += RespawnPlayer;
     }
 
-    void RespawnPlayer()
+    public void RespawnPlayer()
     {
         transform.position = new Vector3(0, -3.5f, 0);
     }

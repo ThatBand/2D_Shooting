@@ -66,7 +66,6 @@ public class EnemyBullet : Bullet
     {
         if (collision.CompareTag("CoreHit"))
         {
-            PlayerHealth playerHealth = collision.GetComponentInParent<PlayerHealth>();
             Destroy(gameObject);
 
             if (type == bulletType.blue)
@@ -77,7 +76,8 @@ public class EnemyBullet : Bullet
                 return;
             }
 
-            playerHealth?.TakeDamage();
+            if (collision.transform.position != null && collision.transform.parent.TryGetComponent(out PlayerHealth playerHealth))
+                playerHealth.TakeDamage();
         }
     }
 }

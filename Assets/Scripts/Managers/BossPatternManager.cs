@@ -130,6 +130,7 @@ public class BossPatternManager : MonoBehaviour
         curSequence = phase2PatternCycle;
         curPatternIndex = 0;
 
+        CameraShake.instance.Shake(0.5f, 0.1f);
         ChangeState(BossState.Prison);
     }
 
