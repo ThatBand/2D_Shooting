@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerBulletA
   m_EditorClassIdentifier: 
   speed: 15
-  damage: 5
+  damage: 10
   health: 0

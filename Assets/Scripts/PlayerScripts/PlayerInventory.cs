@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public int curBoom;
+    public int curBoomCount;
 
     public GameObject coin;
 
     public EffectManager effectManager;
     public UIManager uiManager;
 
-    private ItemData boomData;
+    public ItemData bombData;
+
     private PlayerInvincibility invincibility;
 
     private void Awake()
@@ -19,19 +20,16 @@ public class PlayerInventory : MonoBehaviour
         invincibility = GetComponent<PlayerInvincibility>();
     }
 
-    public void AddBoom(ItemData data)
+    public void AddBoom()
     {
-        if (boomData == null)
-            boomData = data;
-
-        if (curBoom >= data.maxCount)
+        if (curBoomCount >= bombData.maxCount)
         {
             ScoreManager.instance.ScorePlus(500);
             return;
         }
 
-        curBoom++;
-        uiManager.GetBoomIcon(curBoom);
+        curBoomCount++;
+        uiManager.GetBoomIcon(curBoomCount);
     }
 
     private void Update()
@@ -42,14 +40,16 @@ public class PlayerInventory : MonoBehaviour
 
     void UseBoom()
     {
-        if (curBoom == 0)
+        if (curBoomCount == 0)
             return;
 
         invincibility.StartInvincibility();
 
+        CameraShake.instance.Shake(0.5f, 0.15f);
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
-            enemy.GetComponent<EnemyHealth>()?.TakeDamage(boomData.amount);
+            enemy.GetComponent<EnemyHealth>()?.TakeDamage(bombData.amount);
     
         GameManager.instance.ClearBullet();
 
@@ -62,8 +62,8 @@ public class PlayerInventory : MonoBehaviour
         //    Destroy(enemyBullets[i]);
         //}
 
-        curBoom--;
-        uiManager.UseBoomIcon(curBoom);
+        curBoomCount--;
+        uiManager.UseBoomIcon(curBoomCount);
         effectManager.OnBoomEffect();
     }
 }

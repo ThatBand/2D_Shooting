@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
@@ -21,12 +22,12 @@ public class PlayerShooter : MonoBehaviour
         Fire();
     }
 
-    public void UpgradePower()
+    public void UpgradePower(int value)
     {
         if (power >= maxPower)
             ScoreManager.instance.ScorePlus(300);
 
-        power++;
+        power += value;
     }
 
     void Fire()

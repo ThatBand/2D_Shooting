@@ -24,10 +24,10 @@ public class Item : MonoBehaviour
                 ScoreManager.instance.ScorePlus(itemData.amount);
                 break;
             case ItemType.Power:
-                player.GetComponentInParent<PlayerShooter>()?.UpgradePower();
+                player.GetComponentInParent<PlayerShooter>()?.UpgradePower(2);
                 break;
             case ItemType.Boom:
-                player.GetComponentInParent<PlayerInventory>()?.AddBoom(itemData);
+                player.GetComponentInParent<PlayerInventory>()?.AddBoom();
                 break;
         }
     }
