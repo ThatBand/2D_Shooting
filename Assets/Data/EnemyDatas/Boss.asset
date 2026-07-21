@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyName: 
   enemyScore: 0
   speed: 0
-  health: 5000
+  health: 15000
   attackSpeed: 0
   enemyBullet:
   - {fileID: 4864420110316456439, guid: f48cb611c5133ce429c4dfd1dc430523, type: 3}
