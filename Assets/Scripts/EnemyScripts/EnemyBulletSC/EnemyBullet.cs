@@ -58,7 +58,7 @@ public class EnemyBullet : Bullet
         if (bulletHealth <= 0)
         {
             Destroy(gameObject);
-            GameManager.instance.playerShooter.UpgradePower(3);
+            GameManager.instance.playerShooter.UpgradePower(2);
         }
     }
 

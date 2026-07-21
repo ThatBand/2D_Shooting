@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Text scoreText;
+
     public Image[] healthIcons;
     public Image[] boomIcons;
+
     public GameObject gameOverPanel;
+    public GameObject gameClearPanel;
+
     public GameObject pausePanel;
 
     public Slider timeControlSlider;
@@ -42,6 +46,11 @@ public class UIManager : MonoBehaviour
     public void SetGameOverPanel()
     {
         gameOverPanel.SetActive(true);
+    }
+
+    public void SetGameClearPanel()
+    {
+        gameClearPanel.SetActive(true);
     }
 
     public void UpdateSlider(float curValue, float maxValue)

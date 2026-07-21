@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
 
     public GameObject item;
 
+    public UIManager uiManager;
+
     public bool isInvin;
 
     private EnemyHit hit;
@@ -38,6 +40,10 @@ public class EnemyHealth : MonoBehaviour
             ScoreManager.instance.ScorePlus(enemyData.enemyScore);
             Instantiate(item, transform.position, Quaternion.identity);
             Destroy(gameObject);
+
+            EnemyHit hit = GetComponent<EnemyHit>();
+            if (hit.isBoss)
+                uiManager.SetGameClearPanel();
         }
     }
 }

@@ -9,10 +9,12 @@ public class BossMakePrison : MonoBehaviour
     public float speed;
 
     private BossPatternManager manager;
+    private EnemyHealth health;
 
     private void Awake()
     {
         manager = GetComponent<BossPatternManager>();
+        health = GetComponent<EnemyHealth>();
     }
 
     private void OnEnable()
@@ -23,6 +25,11 @@ public class BossMakePrison : MonoBehaviour
 
     IEnumerator Prison()
     {
+        health.isInvin = true;
+
+        if (GameManager.instance.player.TryGetComponent(out PlayerRespawn respawn))
+            respawn.RespawnPlayer();
+
         while (prison.transform.localScale != targetVec)
         {
             Debug.Log("감옥 축소 시작");
@@ -32,6 +39,7 @@ public class BossMakePrison : MonoBehaviour
         }
 
         prison.transform.localScale = targetVec;
+        health.isInvin = false;
         manager.ChangeState(BossState.Idle);
     }
 }

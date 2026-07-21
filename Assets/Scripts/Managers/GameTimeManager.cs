@@ -6,6 +6,12 @@ public class GameTimeManager : MonoBehaviour
 {
     public static GameTimeManager instance;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+            Time.timeScale = 2;
+    }
+
     private void Awake()
     {
         instance = this;

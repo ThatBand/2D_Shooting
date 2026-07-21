@@ -40,14 +40,17 @@ public class PlayerShooter : MonoBehaviour
 
         switch (power)
         {
-            case >= 0 and < 5:
+            case >= 0 and < 10:
+                fireTime = 0.25f;
                 GameObject bullet = Instantiate(bulletA, transform.position, Quaternion.identity);
                 break;
-            case >= 5 and < 10:
+            case >= 10 and < 25:
+                fireTime = 0.175f;
                 GameObject bulletL = Instantiate(bulletA, transform.position + Vector3.left * 0.2f, Quaternion.identity);
                 GameObject bulletR = Instantiate(bulletA, transform.position + Vector3.right * 0.2f, Quaternion.identity);
                 break;
-            case >= 10:
+            case >= 25:
+                fireTime = 0.1f;
                 GameObject bulletLL = Instantiate(bulletA, transform.position + Vector3.left * 0.35f, Quaternion.identity);
                 GameObject bulletCC = Instantiate(bulletB, transform.position, Quaternion.identity);
                 GameObject bulletRR = Instantiate(bulletA, transform.position + Vector3.right * 0.35f, Quaternion.identity);

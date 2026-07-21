@@ -26,6 +26,7 @@ public class BossLaser : MonoBehaviour
         }
 
         laserRoot.localRotation = Quaternion.Euler(0, 0, 0);
+        StartCoroutine(LaserRotPattern());
     }
 
     private void OnDisable()
@@ -37,12 +38,6 @@ public class BossLaser : MonoBehaviour
             lasers[i].enabled = false;
             lasers[i].gameObject.SetActive(false);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        StartCoroutine(LaserRotPattern());
     }
 
     IEnumerator LaserRotPattern()
@@ -67,7 +62,7 @@ public class BossLaser : MonoBehaviour
 
         while (z > -30)
         {
-            z -= 20 * Time.deltaTime;
+            z -= 50 * Time.deltaTime;
             laserRoot.rotation = Quaternion.Euler(0, 0, z);
 
             yield return null;
