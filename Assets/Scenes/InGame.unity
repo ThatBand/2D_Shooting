@@ -3665,7 +3665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4724494066979908617, guid: 904dda4ca9f827344a462018b360ea1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6500874
+      value: -3.53
       objectReference: {fileID: 0}
     - target: {fileID: 4724494066979908617, guid: 904dda4ca9f827344a462018b360ea1d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6349,7 +6349,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
   curHealth: 0
   item: {fileID: 2495852930222628282, guid: eebc5f1efedf1e34b91795a8aeb68715, type: 3}
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 1686694243}
   isInvin: 0
 --- !u!114 &1844755515
 MonoBehaviour:
@@ -6394,6 +6394,7 @@ MonoBehaviour:
   quartzPrefab: {fileID: 5558328283199001479, guid: 9740bbcb0d6648147a4ed568f1b16cbf, type: 3}
   quartzCount: 3
   creationCycle: {x: 1, y: 1.5}
+  spawnedQuartzList: []
 --- !u!114 &1844755518
 MonoBehaviour:
   m_ObjectHideFlags: 0
