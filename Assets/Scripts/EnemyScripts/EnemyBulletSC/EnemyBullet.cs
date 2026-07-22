@@ -13,11 +13,11 @@ public class EnemyBullet : Bullet
     public float bulletHealth;
     public int blueBulletScore;
 
-    private SpriteRenderer sprite;
+    public SpriteRenderer sprite;
 
     new private void Awake()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        //sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     protected override void Start()

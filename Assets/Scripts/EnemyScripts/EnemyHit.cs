@@ -26,7 +26,10 @@ public class EnemyHit : MonoBehaviour
         }
 
         else
+        {
             anim.SetTrigger("isHit");
+            SoundManager.instance.BossHitSound();
+        }
     }
 
     void ReturnSprite()

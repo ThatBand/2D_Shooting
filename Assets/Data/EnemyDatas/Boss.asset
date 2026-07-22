@@ -20,5 +20,5 @@ MonoBehaviour:
   attackSpeed: 0
   enemyBullet:
   - {fileID: 4864420110316456439, guid: f48cb611c5133ce429c4dfd1dc430523, type: 3}
-  - {fileID: 4864420110316456439, guid: 6f05236c29042de4588be5eee200a534, type: 3}
+  - {fileID: 4864420110316456439, guid: 0470d6434f6ff2846ae8bed19d6ecce2, type: 3}
   - {fileID: 4864420110316456439, guid: 038895bf1d7568840a4c40040c4380ed, type: 3}

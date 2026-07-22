@@ -37,6 +37,7 @@ public class Graze : MonoBehaviour
             if (collision.TryGetComponent(out EnemyBullet eBullet) && eBullet.type != EnemyBullet.bulletType.blue)
             {
                 Debug.Log("총알과 충돌!, 그레이즈 점수 획득!");
+                SoundManager.instance.GrazeSound();
                 grazeCount++;
                 ScoreManager.instance.ScorePlus(grazeScore);
 
