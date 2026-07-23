@@ -26,8 +26,6 @@ public class PlayerBullet : Bullet
             {
                 EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
                 enemyHealth.TakeDamage(bulletData.damage);
-
-                
             }
         }
 

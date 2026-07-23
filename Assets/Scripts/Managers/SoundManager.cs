@@ -9,9 +9,9 @@ public class SoundManager : MonoBehaviour
     public AudioSource audioSource;
 
     public AudioClip playerShootingSound;
-    public AudioClip[] bossHitSounds;
     public AudioClip grazeSound;
-
+    public AudioClip[] bossHitSounds;
+    
     private void Awake()
     {
         if (instance == null)

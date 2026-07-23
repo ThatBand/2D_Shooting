@@ -227,3 +227,4 @@ MonoBehaviour:
   bulletHealth: 0
   blueBulletScore: 0
   sprite: {fileID: 1432989790833080688}
+  scoreText: {fileID: 9075690829305314047, guid: d40817f6892295f4d81d1c4bf2d7c889, type: 3}

@@ -15,10 +15,7 @@ public class EnemyBullet : Bullet
 
     public SpriteRenderer sprite;
 
-    new private void Awake()
-    {
-        //sprite = GetComponentInChildren<SpriteRenderer>();
-    }
+    public GameObject scoreText;
 
     protected override void Start()
     {
@@ -55,11 +52,26 @@ public class EnemyBullet : Bullet
 
         bulletHealth -= dmg;
 
+        StartCoroutine(ColorChange());
+
         if (bulletHealth <= 0)
         {
+            
             Destroy(gameObject);
+            
             GameManager.instance.playerShooter.UpgradePower(2);
         }
+    }
+
+    IEnumerator ColorChange()
+    {
+        Color curColor = sprite.color;
+
+        sprite.color = Color.white;
+
+        yield return new WaitForSeconds(0.1f);
+
+        sprite.color = curColor;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -71,6 +83,10 @@ public class EnemyBullet : Bullet
             if (type == bulletType.blue)
             {
                 Debug.Log("파란색 탄막 흡수! 점수 + " + blueBulletScore);
+                GameObject text = Instantiate(scoreText, transform.position, Quaternion.identity);
+                if (text.TryGetComponent(out ScoreBulletText textSC))
+                    textSC.Setup();
+
                 ScoreManager.instance.ScorePlus(blueBulletScore);
 
                 return;
