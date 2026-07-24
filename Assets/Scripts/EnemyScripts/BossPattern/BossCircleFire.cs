@@ -63,20 +63,18 @@ public class BossCircleFire : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(transform.position, movePos[a], 1);
 
-                GameObject[] bullet = new GameObject[bulletCount];
-                bullet[i] = Instantiate(bossData.enemyBullet[3], transform.position + Vector3.down * 0.6f, Quaternion.identity);
-                EnemyBullet bulletSC = bullet[i].GetComponent<EnemyBullet>();
-                BulletProbability(bulletSC);
-
-                Debug.Log("총알 생성");
-                Rigidbody2D bulletRigid = bullet[i].GetComponent<Rigidbody2D>();
+                GameObject bullet = Instantiate(bossData.enemyBullet[3], transform.position + Vector3.down * 0.6f, Quaternion.identity);
+                
+                if (bullet.TryGetComponent(out EnemyBullet eBullet))
+                    BulletProbability(eBullet);
 
                 float b = (360f / bulletCount) * i;
-
                 Vector3 moveDir = Quaternion.Euler(0, 0, b) * Vector3.up;
-                bullet[i].transform.localRotation = Quaternion.Euler(0, 0, b + 90);
-                bulletRigid.AddForce(moveDir * 60);
-                Debug.Log("총알 발사");
+
+                bullet.transform.localRotation = Quaternion.Euler(0, 0, b + 90);
+
+                if (bullet.TryGetComponent(out Rigidbody2D rigid))
+                    rigid.AddForce(moveDir * 60);
             }
 
             yield return new WaitForSeconds(fireDelay);

@@ -56,7 +56,6 @@ public class EnemyBullet : Bullet
 
         if (bulletHealth <= 0)
         {
-            
             Destroy(gameObject);
             
             GameManager.instance.playerShooter.UpgradePower(2);
@@ -78,8 +77,6 @@ public class EnemyBullet : Bullet
     {
         if (collision.CompareTag("CoreHit"))
         {
-            Destroy(gameObject);
-
             if (type == bulletType.blue)
             {
                 Debug.Log("파란색 탄막 흡수! 점수 + " + blueBulletScore);
@@ -89,11 +86,14 @@ public class EnemyBullet : Bullet
 
                 ScoreManager.instance.ScorePlus(blueBulletScore);
 
+                Destroy(gameObject);
                 return;
             }
-
+            Destroy(gameObject);
             if (collision.transform.position != null && collision.transform.parent.TryGetComponent(out PlayerHealth playerHealth))
                 playerHealth.TakeDamage();
+
+            
         }
     }
 }

@@ -43,16 +43,4 @@ public class PlayerHealth : MonoBehaviour
         OnDamaged?.Invoke();
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("EnemyBullet") || collision.CompareTag("Enemy"))
-    //    {
-    //        graze.PlayerDead();
-
-    //        TakeDamage();
-    //    }
-
-    //    else if (collision.CompareTag("EnemyLaser"))
-    //        TakeDamage();
-    //}
 }
