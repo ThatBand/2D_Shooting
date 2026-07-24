@@ -59,22 +59,29 @@ public class BossCircleFire : MonoBehaviour
 
         while (a < patternCount)
         {
-            for (int i = 0; i < bulletCount; i++)
+            for (int k = 0; k < 2; k++)
             {
-                transform.position = Vector3.Lerp(transform.position, movePos[a], 1);
+                float randSpeed = Random.Range(50f, 60f);
 
-                GameObject bullet = Instantiate(bossData.enemyBullet[3], transform.position + Vector3.down * 0.6f, Quaternion.identity);
-                
-                if (bullet.TryGetComponent(out EnemyBullet eBullet))
-                    BulletProbability(eBullet);
+                for (int i = 0; i < bulletCount; i++)
+                {
+                    transform.position = Vector3.Lerp(transform.position, movePos[a], 1);
 
-                float b = (360f / bulletCount) * i;
-                Vector3 moveDir = Quaternion.Euler(0, 0, b) * Vector3.up;
+                    GameObject bullet = Instantiate(bossData.enemyBullet[3], transform.position + Vector3.down * 0.6f, Quaternion.identity);
 
-                bullet.transform.localRotation = Quaternion.Euler(0, 0, b + 90);
+                    if (bullet.TryGetComponent(out EnemyBullet eBullet))
+                        BulletProbability(eBullet);
 
-                if (bullet.TryGetComponent(out Rigidbody2D rigid))
-                    rigid.AddForce(moveDir * 60);
+                    float b = (360f / bulletCount) * i;
+                    Vector3 moveDir = Quaternion.Euler(0, 0, b) * Vector3.up;
+
+                    bullet.transform.localRotation = Quaternion.Euler(0, 0, b + 90);
+
+                    if (bullet.TryGetComponent(out Rigidbody2D rigid))
+                        rigid.AddForce(moveDir * randSpeed);
+                }
+
+                yield return new WaitForSeconds(0.5f);
             }
 
             yield return new WaitForSeconds(fireDelay);

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea68e435580eb94dabe2cbe70b3cb1d, type: 3}
   m_Name: EnemyBulletF
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 1.249557
   damage: 1
   health: 15

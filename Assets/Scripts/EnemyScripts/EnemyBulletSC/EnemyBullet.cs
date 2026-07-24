@@ -89,11 +89,11 @@ public class EnemyBullet : Bullet
                 Destroy(gameObject);
                 return;
             }
-            Destroy(gameObject);
+            
             if (collision.transform.position != null && collision.transform.parent.TryGetComponent(out PlayerHealth playerHealth))
                 playerHealth.TakeDamage();
 
-            
+            Destroy(gameObject);
         }
     }
 }
