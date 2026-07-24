@@ -24,6 +24,7 @@ public class DamageReceiver : MonoBehaviour
         if (isWeakness)
         {
             bossHealth.TakeDamage(baseDmg * 2);
+            SoundManager.instance.BossCriticalHitSound();
 
             tmp.Setup(baseDmg * 2, true);
 
@@ -33,6 +34,7 @@ public class DamageReceiver : MonoBehaviour
         else
         {
             bossHealth.TakeDamage(baseDmg);
+            SoundManager.instance.BossNormalHitSound();
 
             tmp.Setup(baseDmg, false);
             

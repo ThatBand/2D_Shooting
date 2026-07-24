@@ -45,7 +45,7 @@ public class PlayerShooter : MonoBehaviour
             case >= 0 and < 10:
                 fireTime = 0.25f;
                 GameObject bullet = Instantiate(bulletA, transform.position, Quaternion.identity);
-                //SoundManager.instance.PlayerShootSound();
+                SoundManager.instance.PlayerShootSound();
                 break;
             case >= 10 and < 25:
                 fireTime = 0.175f;

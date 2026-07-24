@@ -43,6 +43,8 @@ public class Graze : MonoBehaviour
 
                 if (grazeCount == bombPiece)
                 {
+                    SoundManager.instance.GetBombSound();
+
                     Debug.Log("폭탄 조각 모두 획득");
                     inventory.AddBoom();
                     Debug.Log("폭탄 추가!");

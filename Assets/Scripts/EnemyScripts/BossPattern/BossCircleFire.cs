@@ -63,10 +63,8 @@ public class BossCircleFire : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(transform.position, movePos[a], 1);
 
-                //bulletContainer.localRotation = Quaternion.Euler(0, 0, (15 * a));
-
                 GameObject[] bullet = new GameObject[bulletCount];
-                bullet[i] = Instantiate(bossData.enemyBullet[1], transform.position + Vector3.down * 0.6f, Quaternion.identity);
+                bullet[i] = Instantiate(bossData.enemyBullet[3], transform.position + Vector3.down * 0.6f, Quaternion.identity);
                 EnemyBullet bulletSC = bullet[i].GetComponent<EnemyBullet>();
                 BulletProbability(bulletSC);
 
@@ -74,8 +72,10 @@ public class BossCircleFire : MonoBehaviour
                 Rigidbody2D bulletRigid = bullet[i].GetComponent<Rigidbody2D>();
 
                 float b = (360f / bulletCount) * i;
-                bullet[i].transform.localRotation = Quaternion.Euler(0, 0, b);
-                bulletRigid.AddForce(bullet[i].transform.up * 60);
+
+                Vector3 moveDir = Quaternion.Euler(0, 0, b) * Vector3.up;
+                bullet[i].transform.localRotation = Quaternion.Euler(0, 0, b + 90);
+                bulletRigid.AddForce(moveDir * 60);
                 Debug.Log("총알 발사");
             }
 
