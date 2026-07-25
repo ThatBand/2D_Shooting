@@ -23,6 +23,11 @@ public class UIManager : MonoBehaviour
 
     public Slider timeControlSlider;
 
+    public GameObject[] noticePanels;
+
+    public Button nextNoticeBtn;
+    public Button closeNoticeBtn;
+
     private void Awake()
     {
         if (instance == null)
@@ -30,6 +35,19 @@ public class UIManager : MonoBehaviour
 
         else
             Destroy(gameObject);
+    }
+
+    public void NextNotice()
+    {
+        int a = 0;
+        noticePanels[a].SetActive(false);
+        a++;
+        
+        if (a <=  noticePanels.Length)
+            noticePanels[a].SetActive(true);
+
+        if (a == noticePanels.Length)
+            nextNoticeBtn.gameObject.SetActive(false);
     }
 
     public void UpdateScore(int score)
