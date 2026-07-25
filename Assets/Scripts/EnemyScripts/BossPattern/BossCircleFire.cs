@@ -24,6 +24,7 @@ public class BossCircleFire : MonoBehaviour
     private BossPatternManager manager;
 
     private int currentTargetIndex = 0;
+    private Vector3 startPos;
 
     private void Awake()
     {
@@ -32,6 +33,8 @@ public class BossCircleFire : MonoBehaviour
 
     private void OnEnable()
     {
+        startPos = transform.position;
+
         StartCoroutine(MoveToPosition());
         StartCoroutine(CirclePattern());
     }
@@ -101,7 +104,7 @@ public class BossCircleFire : MonoBehaviour
                         rigid.AddForce(moveDir * randSpeed);
                 }
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.3f);
             }
 
             yield return new WaitForSeconds(fireDelay);
@@ -111,7 +114,7 @@ public class BossCircleFire : MonoBehaviour
                 currentTargetIndex = a;
         }
 
-
+        transform.position = startPos;
         manager.ChangeState(BossState.Idle);
     }
 }

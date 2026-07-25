@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public float curHealth;
 
     public GameObject item;
+    public Image healthBar;
 
     public UIManager uiManager;
 
@@ -31,6 +33,8 @@ public class EnemyHealth : MonoBehaviour
         curHealth -= damage;
 
         hit?.OnHit();
+
+        healthBar.fillAmount = curHealth / enemyData.health;
 
         if (hit.isBoss && curHealth <= (enemyData.health / 2))
             manager?.EnterPhase2();
