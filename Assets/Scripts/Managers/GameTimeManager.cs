@@ -22,11 +22,13 @@ public class GameTimeManager : MonoBehaviour
     public void SlowMode()
     {
         Time.timeScale = 0.5f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
     public void NormalMode()
     {
         Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
     }
 
     public void StopGame()

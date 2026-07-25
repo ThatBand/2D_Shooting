@@ -36,7 +36,7 @@ public class PlayerTimeControl : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && !isCooldown)
         {
             GameTimeManager.instance.SlowMode();
-            curGauge -= decreaseSpeed * Time.deltaTime;
+            curGauge -= decreaseSpeed * Time.unscaledDeltaTime;
 
             uiManager.UpdateSlider(curGauge, maxGauge);
         }
@@ -64,7 +64,7 @@ public class PlayerTimeControl : MonoBehaviour
 
         while (curGauge < maxGauge)
         {
-            curGauge += increaseSpeed * Time.deltaTime;
+            curGauge += increaseSpeed * Time.unscaledDeltaTime;
             uiManager.UpdateSlider(curGauge, maxGauge);
 
             yield return null;

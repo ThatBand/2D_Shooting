@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public Text scoreText;
+    public static UIManager instance;
+
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI powerText;
+    public TextMeshProUGUI grazeText;
 
     public Image[] healthIcons;
     public Image[] boomIcons;
@@ -17,9 +23,33 @@ public class UIManager : MonoBehaviour
 
     public Slider timeControlSlider;
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+
+        else
+            Destroy(gameObject);
+    }
+
     public void UpdateScore(int score)
     {
-        scoreText.text = string.Format("{0:n0}", score);
+        scoreText.text = $"{score:n0}";
+    }
+
+    public void UpdatePower(int power)
+    {
+        powerText.text = $"{power:n0}";
+    }
+
+    public void UpdateMaxPower()
+    {
+        powerText.text = "MAX";
+    }
+
+    public void UpdateGraze(int graze)
+    {
+        grazeText.text = $"{graze:n0}";
     }
 
     public void HitHealthIcon(int health)

@@ -6,7 +6,7 @@ public class BossCircleFire : MonoBehaviour
 {
     public EnemyData bossData;
 
-    public Vector3[] movePos;
+    public Transform[] movePos;
 
     [Header("총알 등장 확률")]
     public float red;
@@ -23,6 +23,8 @@ public class BossCircleFire : MonoBehaviour
 
     private BossPatternManager manager;
 
+    private int currentTargetIndex = 0;
+
     private void Awake()
     {
         manager = GetComponent<BossPatternManager>();
@@ -30,6 +32,7 @@ public class BossCircleFire : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(MoveToPosition());
         StartCoroutine(CirclePattern());
     }
 
@@ -53,20 +56,37 @@ public class BossCircleFire : MonoBehaviour
             eBullet.Setup(EnemyBullet.bulletType.yellow);
     }
 
+    IEnumerator MoveToPosition()
+    {
+        while (true)
+        {
+            Transform targetPos = movePos[currentTargetIndex];
+
+            while (Vector3.Distance(transform.position, targetPos.position) > 0.1f)
+            {
+                transform.position = Vector3.Lerp(transform.position, targetPos.position, 4.5f * Time.deltaTime);
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+
     IEnumerator CirclePattern()
     {
+        currentTargetIndex = 0;
         int a = 0;
+
+        yield return new WaitForSeconds(0.5f);
 
         while (a < patternCount)
         {
             for (int k = 0; k < 2; k++)
             {
-                float randSpeed = Random.Range(50f, 60f);
+                float randSpeed = Random.Range(70f, 75f);
 
                 for (int i = 0; i < bulletCount; i++)
                 {
-                    transform.position = Vector3.Lerp(transform.position, movePos[a], 1);
-
                     GameObject bullet = Instantiate(bossData.enemyBullet[3], transform.position + Vector3.down * 0.6f, Quaternion.identity);
 
                     if (bullet.TryGetComponent(out EnemyBullet eBullet))
@@ -87,9 +107,11 @@ public class BossCircleFire : MonoBehaviour
             yield return new WaitForSeconds(fireDelay);
 
             a++;
+            if (a < movePos.Length)
+                currentTargetIndex = a;
         }
 
-        transform.position = movePos[1];
+
         manager.ChangeState(BossState.Idle);
     }
 }

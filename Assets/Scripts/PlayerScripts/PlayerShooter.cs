@@ -25,9 +25,14 @@ public class PlayerShooter : MonoBehaviour
     public void UpgradePower(int value)
     {
         if (power >= maxPower)
+        {
             ScoreManager.instance.ScorePlus(300);
+            UIManager.instance.UpdateMaxPower();
+        }
+            
 
         power += value;
+        UIManager.instance.UpdatePower(power);
     }
 
     void Fire()
@@ -37,8 +42,6 @@ public class PlayerShooter : MonoBehaviour
 
         if (time < fireTime)
             return;
-
-        
 
         switch (power)
         {

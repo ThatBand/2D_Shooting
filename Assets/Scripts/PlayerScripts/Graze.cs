@@ -39,6 +39,7 @@ public class Graze : MonoBehaviour
                 Debug.Log("총알과 충돌!, 그레이즈 점수 획득!");
                 
                 grazeCount++;
+                UIManager.instance.UpdateGraze(grazeCount);
                 ScoreManager.instance.ScorePlus(grazeScore);
                 //SoundManager.instance.GrazeSound();
 
