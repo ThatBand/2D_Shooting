@@ -35,4 +35,9 @@ public class GameTimeManager : MonoBehaviour
     {
         Time.timeScale = 0;
     }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+    }
 }

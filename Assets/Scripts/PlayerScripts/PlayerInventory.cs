@@ -18,6 +18,7 @@ public class PlayerInventory : MonoBehaviour
     private void Awake()
     {
         invincibility = GetComponent<PlayerInvincibility>();
+        AddBoom();
     }
 
     public void AddBoom()

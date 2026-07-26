@@ -13,7 +13,8 @@ public enum BossState
     PLaser,
     Circle,
     Prison,
-    Quartz
+    Quartz,
+    RowCol
 }
 
 public class BossPatternManager : MonoBehaviour
@@ -28,6 +29,7 @@ public class BossPatternManager : MonoBehaviour
     private BossCircleFire circleFire;
     private BossMakePrison makePrison;
     private BossQuartzPattern quartzPattern;
+    private BossRowColPattern rowColPattern;
 
     public BossState curState = BossState.Move;
 
@@ -52,6 +54,7 @@ public class BossPatternManager : MonoBehaviour
         circleFire = GetComponent<BossCircleFire>();
         makePrison = GetComponent<BossMakePrison>();
         quartzPattern = GetComponent<BossQuartzPattern>();
+        rowColPattern = GetComponent<BossRowColPattern>();
     }
 
     private void Start()
@@ -99,6 +102,9 @@ public class BossPatternManager : MonoBehaviour
             case BossState.Quartz:
                 quartzPattern.enabled = true;
                 break;
+            case BossState.RowCol:
+                rowColPattern.enabled = true;
+                break;
         }
     }
 
@@ -129,7 +135,7 @@ public class BossPatternManager : MonoBehaviour
 
         curSequence = phase2PatternCycle;
         curPatternIndex = 0;
-
+        
         CameraShake.instance.Shake(0.5f, 0.1f);
         ChangeState(BossState.Prison);
     }
@@ -146,5 +152,6 @@ public class BossPatternManager : MonoBehaviour
         circleFire.enabled = false;
         makePrison.enabled = false;
         quartzPattern.enabled = false;
+        rowColPattern.enabled = false;
     }
 }
