@@ -10736,7 +10736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curState: 0
-  phase1PatternCycle: 0a00000003000000040000000700000009000000
+  phase1PatternCycle: 020000000a00000003000000040000000700000009000000
   phase2PatternCycle: 0500000002000000060000000900000004000000020000000600000007000000
 --- !u!114 &1844755519
 MonoBehaviour:
@@ -11310,7 +11310,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -210, y: -660}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1904515373
 MonoBehaviour:
