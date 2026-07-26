@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    private void Start()
+    {
+        GameTimeManager.instance.StopGame();
+    }
+
     public void ClearBullet()
     {
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
