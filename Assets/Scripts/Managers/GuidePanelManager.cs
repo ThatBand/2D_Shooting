@@ -14,13 +14,6 @@ public class GuidePanelManager : MonoBehaviour
     private void OnEnable()
     {
         UpdatePage();
-
-        
-    }
-
-    private void Start()
-    {
-        GameTimeManager.instance.StopGame();
     }
 
     public void NextNotice()
