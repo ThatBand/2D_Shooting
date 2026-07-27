@@ -11,8 +11,9 @@ public class GuidePanelManager : MonoBehaviour
 
     private int curPageIndex = 0;
 
-    private void OnEnable()
+    private void Start()
     {
+        GameTimeManager.instance.StopGame();
         UpdatePage();
     }
 

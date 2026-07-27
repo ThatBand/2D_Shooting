@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     public GameObject gameClearPanel;
 
     public GameObject pausePanel;
+    public GameObject settingPanel;
+    public GameObject noticePanel;
 
     public Slider timeControlSlider;
 
@@ -94,9 +96,27 @@ public class UIManager : MonoBehaviour
         GameTimeManager.instance.StopGame();
     }
 
+    public void OpenSettingPanel()
+    {
+        settingPanel.SetActive(true);
+        pausePanel.SetActive(false);
+    }
+
+    public void OpenNoticePanel()
+    {
+        settingPanel.SetActive(false);
+        noticePanel.SetActive(true);
+    }
+
     public void ClosePausePanel()
     {
         pausePanel.SetActive(false);
+        GameTimeManager.instance.NormalMode();
+    }
+
+    public void CloseSettingPanel()
+    {
+        settingPanel.SetActive(false);
         GameTimeManager.instance.NormalMode();
     }
 
@@ -107,14 +127,16 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !pausePanel.activeSelf)
-        {
+        if (Input.GetKeyDown(KeyCode.Escape) && !pausePanel.activeSelf && !settingPanel.activeSelf && !noticePanel.activeSelf)
             OpenPausePanel();
-        }
+
+        else if (Input.GetKeyDown(KeyCode.Escape) && noticePanel.activeSelf)
+            noticePanel.GetComponent<GuidePanelManager>()?.CloseNotice();
 
         else if (Input.GetKeyDown(KeyCode.Escape) && pausePanel.activeSelf)
-        {
-            ClosePausePanel();        
-        }
+            ClosePausePanel();
+
+        else if (Input.GetKeyDown(KeyCode.Escape) && settingPanel.activeSelf)
+            CloseSettingPanel();
     }
 }
