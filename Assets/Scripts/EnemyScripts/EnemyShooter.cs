@@ -42,8 +42,13 @@ public class EnemyShooter : MonoBehaviour
 
         isCharging = false;
 
-        if (curBullet.GetComponent<ChargingBullet>().isCharging && curBullet != null)
-            Destroy(curBullet);
+        if (curBullet.TryGetComponent(out ChargingBullet bulletSC))
+        {
+            if (bulletSC.isCharging && curBullet != null)
+            {
+                Destroy(curBullet);
+            }
+        }
     }
 
     void Fire()

@@ -14,7 +14,8 @@ public enum BossState
     Circle,
     Prison,
     Quartz,
-    RowCol
+    RowCol,
+    ShieldMinion
 }
 
 public class BossPatternManager : MonoBehaviour
@@ -30,6 +31,7 @@ public class BossPatternManager : MonoBehaviour
     private BossMakePrison makePrison;
     private BossQuartzPattern quartzPattern;
     private BossRowColPattern rowColPattern;
+    private BossSpawnShieldMinion shieldMinionPattern;
 
     public BossState curState = BossState.Move;
 
@@ -55,6 +57,7 @@ public class BossPatternManager : MonoBehaviour
         makePrison = GetComponent<BossMakePrison>();
         quartzPattern = GetComponent<BossQuartzPattern>();
         rowColPattern = GetComponent<BossRowColPattern>();
+        shieldMinionPattern = GetComponent<BossSpawnShieldMinion>();
     }
 
     private void Start()
@@ -105,6 +108,9 @@ public class BossPatternManager : MonoBehaviour
             case BossState.RowCol:
                 rowColPattern.enabled = true;
                 break;
+            case BossState.ShieldMinion:
+                shieldMinionPattern.enabled = true;
+                break;
         }
     }
 
@@ -153,5 +159,6 @@ public class BossPatternManager : MonoBehaviour
         makePrison.enabled = false;
         quartzPattern.enabled = false;
         rowColPattern.enabled = false;
+        shieldMinionPattern.enabled = false;
     }
 }

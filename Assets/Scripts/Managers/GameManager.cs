@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public Transform player;
+    public Transform boss;
     public PlayerShooter playerShooter;
 
     public GameObject scoreItem;
@@ -24,7 +25,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GameTimeManager.instance.StopGame();
+        if (UIManager.instance.noticePanel.activeSelf)
+            GameTimeManager.instance.StopGame();
     }
 
     public void ClearBullet()

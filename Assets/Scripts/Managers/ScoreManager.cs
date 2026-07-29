@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
 
     public UIManager uiManager;
     public int score;
+    public int totalScore;
 
     private void Awake()
     {
@@ -20,6 +21,13 @@ public class ScoreManager : MonoBehaviour
     public void ScorePlus(int value)
     {
         this.score += value;
+        totalScore += score;
         uiManager.UpdateScore(this.score);
+    }
+
+    public void TotalScorePlus(int value)
+    {
+        this.totalScore += value;
+
     }
 }

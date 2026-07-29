@@ -34,7 +34,8 @@ public class EnemyHealth : MonoBehaviour
 
         hit?.OnHit();
 
-        healthBar.fillAmount = curHealth / enemyData.health;
+        if (healthBar != null)
+            healthBar.fillAmount = curHealth / enemyData.health;
 
         if (hit.isBoss && curHealth <= (enemyData.health / 2))
             manager?.EnterPhase2();

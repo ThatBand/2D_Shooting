@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -1147401495359466748, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  m_Sprite: {fileID: -541927689, guid: e9b8090b04bd5844f9b4a89af4d4ede2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,14 +99,14 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.96, y: 0.96}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -114,12 +114,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.4166667}
-      - {x: -0.5, y: 0.25}
-      - {x: -0.041666668, y: -0.5}
-      - {x: 0.041666668, y: -0.5}
-      - {x: 0.5, y: 0.25}
-      - {x: 0.5, y: 0.4166667}
+    - - {x: -0.48, y: 0.48}
+      - {x: -0.48, y: 0.24}
+      - {x: -0.04, y: -0.48}
+      - {x: 0.04, y: -0.48}
+      - {x: 0.48, y: 0.24}
+      - {x: 0.48, y: 0.48}
 --- !u!50 &2377201755989215467
 Rigidbody2D:
   serializedVersion: 4
@@ -170,6 +170,9 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 024d84aa6131fbe47b3a9c1a5bdcd43c, type: 2}
   curHealth: 0
   item: {fileID: 2495852930222628282, guid: eebc5f1efedf1e34b91795a8aeb68715, type: 3}
+  healthBar: {fileID: 0}
+  uiManager: {fileID: 0}
+  isInvin: 0
 --- !u!114 &2377201755989215469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoss: 0
   sprites:
-  - {fileID: -1147401495359466748, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
-  - {fileID: -7844560889915226194, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  - {fileID: -541927689, guid: e9b8090b04bd5844f9b4a89af4d4ede2, type: 3}
+  - {fileID: 225430397, guid: e9b8090b04bd5844f9b4a89af4d4ede2, type: 3}
   anim: {fileID: 0}

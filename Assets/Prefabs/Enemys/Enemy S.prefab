@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5674355918247331584}
   - component: {fileID: 5674355918247331587}
   - component: {fileID: -5802557477445255303}
+  - component: {fileID: 979566563866152854}
   m_Layer: 0
   m_Name: Enemy S
   m_TagString: Enemy
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 8414478535512612329, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  m_Sprite: {fileID: 1678175988, guid: d7be3759adf670b47b7cb443e2df3904, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5674355918247331594}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26aff1c178681df42a14e0af72ff19d3, type: 3}
   m_Name: 
@@ -156,6 +157,9 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 080168ed68a7e4c438cd1a96b8672df3, type: 2}
   curHealth: 0
   item: {fileID: 2495852930222628282, guid: eebc5f1efedf1e34b91795a8aeb68715, type: 3}
+  healthBar: {fileID: 0}
+  uiManager: {fileID: 0}
+  isInvin: 0
 --- !u!114 &5674355918247331587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoss: 0
   sprites:
-  - {fileID: 8414478535512612329, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
-  - {fileID: 4326287474489854147, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  - {fileID: 1678175988, guid: d7be3759adf670b47b7cb443e2df3904, type: 3}
+  - {fileID: 66834892, guid: d7be3759adf670b47b7cb443e2df3904, type: 3}
   anim: {fileID: 0}
 --- !u!114 &-5802557477445255303
 MonoBehaviour:
@@ -180,10 +184,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5674355918247331594}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59209cfb41fddfb4eb99522bae8c6945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 080168ed68a7e4c438cd1a96b8672df3, type: 2}
   attackCount: 0
+--- !u!114 &979566563866152854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674355918247331594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5564cd9bd4c8f347b0636f149af3c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbitSpeed: 20
+  chargeSpeed: 30
+  waitTime: 50
