@@ -38,9 +38,6 @@ public class ShieldMinion : MonoBehaviour
             playerDir = Vector3.down;
 
         isCharging = true;
-
-        yield return new WaitForSeconds(5);
-
         isFinish = true;
     }
 

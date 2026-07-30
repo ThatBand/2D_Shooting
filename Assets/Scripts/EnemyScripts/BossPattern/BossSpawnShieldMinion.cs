@@ -12,6 +12,8 @@ public class BossSpawnShieldMinion : MonoBehaviour
 
     private BossPatternManager manager;
 
+    private bool a;
+
     private void Awake()
     {
         manager = GetComponent<BossPatternManager>();
@@ -24,26 +26,45 @@ public class BossSpawnShieldMinion : MonoBehaviour
 
     IEnumerator SpawnEnemyS()
     {
+        List<ShieldMinion> spawnEnemy = new List<ShieldMinion>();
+
         for (int i = 0; i < enemyCount; i++)
         {
             float angle = i * Mathf.PI * 2 / enemyCount;
-
             Vector3 pos = transform.position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
 
-            Instantiate(enemy_S, pos, Quaternion.identity);
+            GameObject enemy = Instantiate(enemy_S, pos, Quaternion.identity);
+
+            if (enemy.TryGetComponent(out ShieldMinion enemySC))
+                spawnEnemy.Add(enemySC);
 
             yield return null;
         }
 
-        //while (true)
-        //{
-        //    yield return new WaitForSeconds(1);
+        while (true)
+        {
+            yield return null;
+            Debug.Log("while로 상태 체크 중");
 
-        //    if (enemy_S.TryGetComponent(out ShieldMinion enemySC) && enemySC.isFinish)
-        //    {
-        //        manager.ChangeState(BossState.Idle);
-        //        yield break;
-        //    }
-        //}
+            bool a = true;
+
+            foreach (ShieldMinion minion in spawnEnemy)
+            {
+                if (minion != null && minion.gameObject.activeSelf && !minion.isFinish)
+                {
+                    Debug.Log("a");
+                    a = false;
+                    break;
+                }
+            }
+
+            Debug.Log("b");
+            if (a)
+            {
+                Debug.Log("Idle로 상태 전환!");
+                manager.ChangeState(BossState.Idle);
+                yield break;
+            }
+        }
     }
 }
