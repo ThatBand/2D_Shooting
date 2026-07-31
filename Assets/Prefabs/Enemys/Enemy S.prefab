@@ -204,6 +204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbitSpeed: 20
-  chargeSpeed: 30
+  chargeSpeed: 15
   waitTime: 5
   isFinish: 0

@@ -21,7 +21,13 @@ public class BossSpawnShieldMinion : MonoBehaviour
 
     private void OnEnable()
     {
+        a = false;
         StartCoroutine(SpawnEnemyS());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     IEnumerator SpawnEnemyS()
@@ -46,11 +52,11 @@ public class BossSpawnShieldMinion : MonoBehaviour
             yield return null;
             Debug.Log("while로 상태 체크 중");
 
-            bool a = true;
+            a = true;
 
             foreach (ShieldMinion minion in spawnEnemy)
             {
-                if (minion != null && minion.gameObject.activeSelf && !minion.isFinish)
+                if (minion != null && !minion.isFinish)
                 {
                     Debug.Log("a");
                     a = false;

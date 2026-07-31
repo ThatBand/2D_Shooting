@@ -8,8 +8,11 @@ public class GameTimeManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKey(KeyCode.F))
             Time.timeScale = 2;
+
+        if (Input.GetKeyUp(KeyCode.F))
+            Time.timeScale = 1;
     }
 
     private void Awake()

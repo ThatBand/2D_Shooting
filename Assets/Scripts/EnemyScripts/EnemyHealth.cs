@@ -53,4 +53,14 @@ public class EnemyHealth : MonoBehaviour
             GameTimeManager.instance.StopGame();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CoreHit"))
+        {
+            collision.GetComponentInParent<PlayerHealth>().TakeDamage();
+
+            Destroy(gameObject);
+        }
+    }
 }
