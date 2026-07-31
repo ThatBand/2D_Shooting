@@ -58,7 +58,8 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.CompareTag("CoreHit"))
         {
-            collision.GetComponentInParent<PlayerHealth>().TakeDamage();
+            if (collision.transform.parent.TryGetComponent(out PlayerHealth health))
+                health.TakeDamage();
 
             Destroy(gameObject);
         }
