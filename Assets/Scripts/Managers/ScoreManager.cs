@@ -6,8 +6,6 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
-    public UIManager uiManager;
-
     [Header("점수 설정")]
     public int curScore;
     public int highScore;
@@ -20,11 +18,26 @@ public class ScoreManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
     }
 
     private void Start()
     {
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        UIManager.instance.UpdateCurrentScore(curScore, highScore);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            PlayerPrefs.DeleteKey("HighScore");
+            PlayerPrefs.Save();
+
+            highScore = 0;
+
+            UIManager.instance.UpdateCurrentScore(curScore, highScore);
+        }
     }
 
     public void ScorePlus(int value)
@@ -40,7 +53,7 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        uiManager.UpdateCurrentScore(this.curScore, highScore);
+        UIManager.instance.UpdateCurrentScore(this.curScore, highScore);
     }
 
     public void TotalScorePlus(int value)

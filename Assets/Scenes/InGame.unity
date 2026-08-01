@@ -5412,7 +5412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5283159543a9b458eaecd5c8719047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 1686694243}
   curScore: 0
   highScore: 0
   totalScore: 0
@@ -10385,8 +10384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91a65b0f04b7ef4e9ff40db8fed4aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curScoreText: {fileID: 579665027}
-  highScoreText: {fileID: 1974574769}
+  curScoreText: {fileID: 1974574769}
+  highScoreText: {fileID: 579665027}
   powerText: {fileID: 1177286718}
   grazeText: {fileID: 904921223}
   healthIcons:
