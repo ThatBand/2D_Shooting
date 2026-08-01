@@ -48,9 +48,10 @@ public class EnemyHealth : MonoBehaviour
 
             EnemyHit hit = GetComponent<EnemyHit>();
             if (hit.isBoss)
+            {
                 uiManager.SetGameClearPanel();
-
-            GameTimeManager.instance.StopGame();
+                GameTimeManager.instance.StopGame();
+            }
         }
     }
 

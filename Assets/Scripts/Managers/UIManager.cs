@@ -9,7 +9,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI curScoreText;
+    public TextMeshProUGUI highScoreText;
+
     public TextMeshProUGUI powerText;
     public TextMeshProUGUI grazeText;
 
@@ -34,9 +36,11 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void UpdateScore(int score)
+    public void UpdateCurrentScore(int current, int high)
     {
-        scoreText.text = $"{score:n0}";
+        curScoreText.text = current.ToString("N0");
+
+        highScoreText.text = high.ToString("N0");
     }
 
     public void UpdatePower(int power)
@@ -123,6 +127,12 @@ public class UIManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void PauseButton()
+    {
+        if (!settingPanel.activeSelf && !noticePanel.activeSelf)
+            OpenPausePanel();
     }
 
     private void Update()

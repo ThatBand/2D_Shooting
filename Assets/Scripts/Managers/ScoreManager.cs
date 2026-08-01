@@ -7,7 +7,11 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     public UIManager uiManager;
-    public int score;
+
+    [Header("점수 설정")]
+    public int curScore;
+    public int highScore;
+
     public int totalScore;
 
     private void Awake()
@@ -18,11 +22,25 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+    }
+
     public void ScorePlus(int value)
     {
-        this.score += value;
-        totalScore += score;
-        uiManager.UpdateScore(this.score);
+        this.curScore += value;
+        totalScore += curScore;
+
+        if (curScore > highScore)
+        {
+            highScore = curScore;
+
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+
+        uiManager.UpdateCurrentScore(this.curScore, highScore);
     }
 
     public void TotalScorePlus(int value)

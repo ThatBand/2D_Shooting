@@ -48,20 +48,11 @@ public class PlayerInventory : MonoBehaviour
 
         CameraShake.instance.Shake(0.5f, 0.15f);
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-            enemy.GetComponent<EnemyHealth>()?.TakeDamage(bombData.amount);
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //foreach (GameObject enemy in enemies)
+        //    enemy.GetComponent<EnemyHealth>()?.TakeDamage(bombData.amount);
     
         GameManager.instance.ClearBullet();
-
-        //GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
-        //for (int i = 0; i < enemyBullets.Length; i++)
-        //{
-        //    Vector3 spawnPos = enemyBullets[i].transform.position;
-
-        //    Instantiate(coin, spawnPos, Quaternion.identity);
-        //    Destroy(enemyBullets[i]);
-        //}
 
         curBoomCount--;
         uiManager.UseBoomIcon(curBoomCount);

@@ -50,24 +50,20 @@ public class BossSpawnShieldMinion : MonoBehaviour
         while (true)
         {
             yield return null;
-            Debug.Log("while로 상태 체크 중");
 
             a = true;
 
             foreach (ShieldMinion minion in spawnEnemy)
             {
-                if (minion != null && !minion.isFinish)
+                if (minion != null && !minion.isFinish && minion.gameObject.activeSelf)
                 {
-                    Debug.Log("a");
                     a = false;
                     break;
                 }
             }
-
-            Debug.Log("b");
+            
             if (a)
             {
-                Debug.Log("Idle로 상태 전환!");
                 manager.ChangeState(BossState.Idle);
                 yield break;
             }
