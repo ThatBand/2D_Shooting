@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class btr : MonoBehaviour
 {
-    public TextMeshPro text;
+    public GameObject enemy;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Instantiate(text, new Vector3(2.5f, 3, 0), Quaternion.identity);
-        }
+        if (Input.GetKeyDown(KeyCode.Space))
+            Instantiate(enemy, new Vector2(0, 5.5f), Quaternion.identity);
     }
 }

@@ -135,12 +135,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5674355918247331594}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26aff1c178681df42a14e0af72ff19d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStop: 0
+  isStop: 1
+  isDestroy: 1
   enemyData: {fileID: 11400000, guid: 080168ed68a7e4c438cd1a96b8672df3, type: 2}
 --- !u!114 &5674355918247331584
 MonoBehaviour:

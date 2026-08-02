@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStop: 0
+  isDestroy: 1
   enemyData: {fileID: 11400000, guid: 17e9e72d4d93121498233c1007481677, type: 2}
 --- !u!114 &2940906278216066094
 MonoBehaviour:

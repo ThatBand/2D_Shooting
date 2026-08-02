@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public bool isStop;
+    public bool isDestroy;
 
     public EnemyData enemyData;
     private Rigidbody2D rigid;
@@ -21,5 +22,17 @@ public class EnemyMove : MonoBehaviour
 
         else
             rigid.velocity = Vector2.down * enemyData.speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CoreHit"))
+        {
+            if (collision.transform.parent.TryGetComponent(out PlayerHealth health))
+                health.TakeDamage();
+
+            if (isDestroy)
+                Destroy(gameObject);
+        }
     }
 }

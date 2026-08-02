@@ -10,8 +10,6 @@ public class ScoreManager : MonoBehaviour
     public int curScore;
     public int highScore;
 
-    public int totalScore;
-
     private void Awake()
     {
         if (instance == null)
@@ -43,7 +41,6 @@ public class ScoreManager : MonoBehaviour
     public void ScorePlus(int value)
     {
         this.curScore += value;
-        totalScore += curScore;
 
         if (curScore > highScore)
         {
@@ -54,11 +51,5 @@ public class ScoreManager : MonoBehaviour
         }
 
         UIManager.instance.UpdateCurrentScore(this.curScore, highScore);
-    }
-
-    public void TotalScorePlus(int value)
-    {
-        this.totalScore += value;
-
     }
 }

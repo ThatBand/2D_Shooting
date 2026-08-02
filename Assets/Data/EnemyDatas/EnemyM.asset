@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a03a742c515e6f40bd79414f40346a9, type: 3}
   m_Name: EnemyM
   m_EditorClassIdentifier: 
+  shootType: 0
   enemyName: M
   enemyScore: 1000
   speed: 6
   health: 10
-  attackSpeed: 2
-  enemyBullet: {fileID: 0}
+  attackSpeed: 0
+  enemyBullet: []

@@ -54,15 +54,4 @@ public class EnemyHealth : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("CoreHit"))
-        {
-            if (collision.transform.parent.TryGetComponent(out PlayerHealth health))
-                health.TakeDamage();
-
-            Destroy(gameObject);
-        }
-    }
 }
