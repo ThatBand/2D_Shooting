@@ -22,7 +22,7 @@ public class PinballBullet : MonoBehaviour
     {
         if (collision.CompareTag("LaserWall"))
         {
-            transform.localScale += Vector3.one * 0.5f;
+            transform.localScale += Vector3.one * 1f;
             dir.x *= -1;
         }
 

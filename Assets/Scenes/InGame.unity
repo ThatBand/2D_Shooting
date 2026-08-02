@@ -3027,7 +3027,7 @@ MonoBehaviour:
   playerSFXSource: {fileID: 533680978}
   enemySFXSource: {fileID: 533680980}
   systemSFXSource: {fileID: 533680979}
-  playerShootingSound: {fileID: 8300000, guid: f58127ebe558673459bd01be43c268f9, type: 3}
+  playerShootingSound: {fileID: 8300000, guid: e5a41a7b4d327cb4ea93df71a1b7b9be, type: 3}
   grazeSound: {fileID: 8300000, guid: f37372b76a9f3b848a5ba55ac0157ab1, type: 3}
   getBombSound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
   bossNormalHitSound: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
@@ -12259,7 +12259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1833052348
 Transform:
   m_ObjectHideFlags: 0
@@ -12269,7 +12269,7 @@ Transform:
   m_GameObject: {fileID: 1833052347}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1389088842}
@@ -12561,7 +12561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.35, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -12705,7 +12705,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc5971092a568bb4aba13aeba536e8ba, type: 3}
   m_Name: 
@@ -12877,7 +12877,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d439dec43ac0218479a218b8733cf2e0, type: 3}
   m_Name: 
@@ -12887,7 +12887,6 @@ MonoBehaviour:
   targetPos:
   - {x: -5, y: 6}
   - {x: 5, y: 6}
-  a: 0
 --- !u!1 &1853835342
 GameObject:
   m_ObjectHideFlags: 0

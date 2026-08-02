@@ -43,22 +43,20 @@ public class PlayerShooter : MonoBehaviour
         if (time < fireTime)
             return;
 
+        SoundManager.instance.PlayerShootSound();
         switch (power)
         {
             case >= 0 and < 10:
-                fireTime = 0.25f;
+                fireTime = 0.2f;
                 GameObject bullet = Instantiate(bulletA, transform.position, Quaternion.identity);
-                SoundManager.instance.PlayerShootSound();
                 break;
             case >= 10 and < 25:
-                fireTime = 0.175f;
+                fireTime = 0.15f;
                 GameObject bulletL = Instantiate(bulletA, transform.position + Vector3.left * 0.2f, Quaternion.identity);
-                //SoundManager.instance.PlayerShootSound();
                 GameObject bulletR = Instantiate(bulletA, transform.position + Vector3.right * 0.2f, Quaternion.identity);
-                //SoundManager.instance.PlayerShootSound();
                 break;
             case >= 25:
-                fireTime = 0.1f;
+                fireTime = 0.08f;
                 GameObject bulletLL = Instantiate(bulletA, transform.position + Vector3.left * 0.35f, Quaternion.identity);
                 GameObject bulletCC = Instantiate(bulletB, transform.position, Quaternion.identity);
                 GameObject bulletRR = Instantiate(bulletA, transform.position + Vector3.right * 0.35f, Quaternion.identity);
