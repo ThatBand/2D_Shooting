@@ -7,23 +7,22 @@ public class PinballBullet : MonoBehaviour
     public float speed;
     public Vector3 dir;
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position += dir.normalized * speed * Time.deltaTime;
-    }
+    public int bounceCount;
 
-    public void Shot(Vector3 dir)
+    private Rigidbody2D rigid;
+
+    private void Awake()
     {
-        this.dir = dir;
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("LaserWall"))
         {
-            transform.localScale += Vector3.one * 1f;
-            dir.x *= -1;
+            rigid.velocity = new Vector2(-rigid.velocity.x, rigid.velocity.y);
+
+            bounceCount--;
         }
 
         else if (collision.CompareTag("CoreHit"))

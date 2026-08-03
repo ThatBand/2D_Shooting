@@ -9,6 +9,7 @@ public class BossLaserWallPattern : MonoBehaviour
     public GameObject enemy_L;
 
     public Vector2[] targetPos;
+    public int bulletCount;
 
     private BossPatternManager manager;
 
@@ -31,12 +32,28 @@ public class BossLaserWallPattern : MonoBehaviour
             GameObject enemy = Instantiate(enemy_L, targetPos[i], Quaternion.identity);
         }
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
-        GameObject bullet = Instantiate(data.enemyBullet[5], transform.position, Quaternion.identity);
-        Debug.Log("총알 생성");
+        StartCoroutine(CircularPattern());
+        yield break;
+    }
 
-        if (bullet.TryGetComponent(out PinballBullet pinball))
-            pinball.Shot(Vector2.left);
+    IEnumerator CircularPattern()
+    {
+        while (true)
+        {
+            for (int i = 0; i < bulletCount; i++)
+            {
+                GameObject bullet = Instantiate(data.enemyBullet[5], transform.position, Quaternion.identity);
+
+                float b = (360 / bulletCount) * i;
+                Vector3 moveDir = Quaternion.Euler(0, 0, b) * Vector3.up;
+
+                if (bullet.TryGetComponent(out Rigidbody2D rigid))
+                    rigid.AddForce(moveDir * 50);
+            }
+
+            yield return new WaitForSeconds(5);
+        }
     }
 }

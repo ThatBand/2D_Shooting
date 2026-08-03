@@ -90,7 +90,7 @@ public class EnemyBullet : Bullet
                 return;
             }
             
-            if (collision.transform.position != null && collision.transform.parent.TryGetComponent(out PlayerHealth playerHealth))
+            if (collision.transform.parent.TryGetComponent(out PlayerHealth playerHealth))
                 playerHealth.TakeDamage();
 
             Destroy(gameObject);
