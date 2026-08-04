@@ -4,86 +4,69 @@ using UnityEngine;
 
 public class BossLaser : MonoBehaviour
 {
-    public Laser[] lasers;
-    public Transform laserRoot;
-    public GameObject[] _lasers;
+    [Header("레이저, 안전 구역 프리팹")]
+    public GameObject leftLaser;
+    public GameObject rightLaser;
 
-    private bool isRot;
-    private BossPatternManager manager;
+    public GameObject safeZone;
 
-    private void Awake()
+    [Header("설정 값")]
+    public float minX;
+    public float maxX;
+
+    private float randNum;
+
+    private void Start()
     {
-        manager = GetComponent<BossPatternManager>();
+        
+
+        StartCoroutine(SafeLaserPattern());
     }
 
-    private void OnEnable()
+    IEnumerator SafeLaserPattern()
     {
-        for (int i = 0; i < lasers.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
-            lasers[i].gameObject.SetActive(true);
-            _lasers[i].transform.localScale = new Vector3(1, 0, 1);
-            lasers[i].Fire();
+            randNum = Random.Range(-4f, 4f);
+            Debug.Log("난수 생성");
+
+            yield return new WaitForSeconds(3);
+
+            GameObject safe = Instantiate(safeZone, new Vector3(randNum, 7.5f, 0), Quaternion.identity);
+
+            float safeLeft = randNum - 0.5f;
+            float safeRight = randNum + 0.5f;
+
+            float leftLaserWidth = safeLeft - minX;
+            float leftLaserPosX = minX + (leftLaserWidth / 2);
+
+            GameObject laser_L = Instantiate(leftLaser, new Vector3(leftLaserPosX, 7.5f, 0), Quaternion.identity);
+            laser_L.transform.localScale = new Vector3(leftLaserWidth, 1, 0);
+
+            float rightLaserWidth = maxX - safeRight;
+            float rightLaserPosX = safeRight + (rightLaserWidth / 2);
+
+            GameObject laser_R = Instantiate(leftLaser, new Vector3(rightLaserPosX, 7.5f, 0), Quaternion.identity);
+            laser_R.transform.localScale = new Vector3(rightLaserWidth, 1, 0);
+
+            yield return new WaitForSeconds(0.5f);
+
+            if (laser_L.TryGetComponent(out Laser laser_Lsc) && laser_R.TryGetComponent(out Laser laser_Rsc))
+            {
+                laser_Lsc.Fire();
+                laser_Rsc.Fire();
+            }
+
+            while (true)
+            {
+                yield return null;
+
+                if (laser_Lsc.isEnd)
+                {
+                    Destroy(safe);
+                    break;
+                }
+            }
         }
-
-        laserRoot.localRotation = Quaternion.Euler(0, 0, 0);
-        StartCoroutine(LaserRotPattern());
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-
-        for (int i = 0; i < lasers.Length; i++)
-        {
-            lasers[i].enabled = false;
-            lasers[i].gameObject.SetActive(false);
-        }
-    }
-
-    IEnumerator LaserRotPattern()
-    {
-        if (isRot)
-            yield break;
-
-        isRot = true;
-
-        yield return new WaitForSeconds(4);
-
-        float z = 0;
-        while (z < 80)
-        {
-            z += 20 * Time.deltaTime;
-            laserRoot.rotation = Quaternion.Euler(0, 0, z);
-
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(2);
-
-        while (z > -30)
-        {
-            z -= 50 * Time.deltaTime;
-            laserRoot.rotation = Quaternion.Euler(0, 0, z);
-
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(2);
-
-        while (z < 0.1)
-        {
-            z += 20 * Time.deltaTime;
-            laserRoot.rotation = Quaternion.Euler(0, 0, z);
-
-            yield return null;
-        }
-
-        isRot = false;
-
-        yield return new WaitForSeconds(2);
-
-        laserRoot.gameObject.SetActive(false);
-
-        manager.ChangeState(BossState.Idle);
     }
 }

@@ -28,8 +28,8 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigid.position = new Vector3(Mathf.Clamp(rigid.position.x, -5.5f, 5.5f),
-                                              Mathf.Clamp(rigid.position.y, -6.5f, 6.5f),
+        rigid.position = new Vector3(Mathf.Clamp(rigid.position.x, -6.5f, 6.5f),
+                                              Mathf.Clamp(rigid.position.y, -7.5f, 7.5f),
                                               0);
 
         rigid.velocity = (dir.normalized) * speed;

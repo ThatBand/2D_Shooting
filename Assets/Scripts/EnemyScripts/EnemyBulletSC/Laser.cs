@@ -20,6 +20,11 @@ public class Laser : MonoBehaviour
         StartCoroutine(FireRoutine());
     }
 
+    private void OnEnable()
+    {
+        isEnd = false;
+    }
+
     private void OnDisable()
     {
         StopAllCoroutines();
@@ -34,7 +39,7 @@ public class Laser : MonoBehaviour
         warningLine.SetActive(false);
 
         Vector3 start = new Vector3(1, 0f, 1);
-        Vector3 end = new Vector3(1, 15, 1);
+        Vector3 end = new Vector3(1, 18, 1);
 
         float duration = 0.15f;
         float t = 0;
