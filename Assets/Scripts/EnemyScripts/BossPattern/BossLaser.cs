@@ -16,10 +16,15 @@ public class BossLaser : MonoBehaviour
 
     private float randNum;
 
-    private void Start()
-    {
-        
+    private BossPatternManager manager;
 
+    private void Awake()
+    {
+        manager = GetComponent<BossPatternManager>();
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(SafeLaserPattern());
     }
 
@@ -28,7 +33,6 @@ public class BossLaser : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             randNum = Random.Range(-4f, 4f);
-            Debug.Log("난수 생성");
 
             yield return new WaitForSeconds(3);
 
@@ -68,5 +72,7 @@ public class BossLaser : MonoBehaviour
                 }
             }
         }
+
+        manager.ChangeState(BossState.Idle);
     }
 }
