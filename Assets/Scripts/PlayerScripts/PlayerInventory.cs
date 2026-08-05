@@ -48,10 +48,10 @@ public class PlayerInventory : MonoBehaviour
 
         CameraShake.instance.Shake(0.5f, 0.15f);
 
-        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //foreach (GameObject enemy in enemies)
-        //    enemy.GetComponent<EnemyHealth>()?.TakeDamage(bombData.amount);
-    
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+            enemy.GetComponent<EnemyHealth>()?.TakeDamage(bombData.amount);
+
         GameManager.instance.ClearBullet();
 
         curBoomCount--;
