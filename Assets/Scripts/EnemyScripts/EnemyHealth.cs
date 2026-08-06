@@ -17,12 +17,14 @@ public class EnemyHealth : MonoBehaviour
 
     private EnemyHit hit;
     private BossPatternManager manager;
+    private BossDeathEffect deathEffect;
 
     private void Awake()
     {
         curHealth = enemyData.health;
         hit = GetComponent<EnemyHit>();
         manager = GetComponent<BossPatternManager>();
+        deathEffect = GetComponent<BossDeathEffect>();
     }
 
     public void TakeDamage(float damage)
@@ -38,20 +40,19 @@ public class EnemyHealth : MonoBehaviour
             healthBar.fillAmount = curHealth / enemyData.health;
 
         if (hit.isBoss && curHealth <= (enemyData.health / 2))
-            manager?.EnterPhase2();
+            //manager?.EnterPhase2();
 
         if (curHealth <= 0)
         {
             ScoreManager.instance.ScorePlus(enemyData.enemyScore);
-            Instantiate(item, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            deathEffect.BossDeath();
 
-            EnemyHit hit = GetComponent<EnemyHit>();
-            if (hit.isBoss)
-            {
-                uiManager.SetGameClearPanel();
-                GameTimeManager.instance.StopGame();
-            }
+            //EnemyHit hit = GetComponent<EnemyHit>();
+            //if (hit.isBoss)
+            //{
+            //    uiManager.SetGameClearPanel();
+            //    GameTimeManager.instance.StopGame();
+            //}
         }
     }
 }

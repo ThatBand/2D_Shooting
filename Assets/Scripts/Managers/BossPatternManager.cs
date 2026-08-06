@@ -146,8 +146,26 @@ public class BossPatternManager : MonoBehaviour
         ChangeState(BossState.Prison);
     }
 
+    public void StopBossPattern()
+    {
+        DisableAllPatterns();
+    }
+
     private void DisableAllPatterns()
     {
+        move.StopAllCoroutines();
+        idle.StopAllCoroutines();
+        strike.StopAllCoroutines();
+        laser.StopAllCoroutines();
+        sprialSpread.StopAllCoroutines();
+        prisonDodge.StopAllCoroutines();
+        prisonLaser.StopAllCoroutines();
+        circleFire.StopAllCoroutines();
+        makePrison.StopAllCoroutines();
+        quartzPattern.StopAllCoroutines();
+        rowColPattern.StopAllCoroutines();
+        shieldMinionPattern.StopAllCoroutines();
+
         move.enabled = false;
         idle.enabled = false;
         strike.enabled = false;

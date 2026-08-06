@@ -43,4 +43,13 @@ public class GameTimeManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public IEnumerator HitStopGame(float time)
+    {
+        Time.timeScale = 0;
+
+        yield return new WaitForSecondsRealtime(time);
+
+        Time.timeScale = 1;
+    }
 }

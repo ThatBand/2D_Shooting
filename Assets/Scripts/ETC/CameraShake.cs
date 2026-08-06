@@ -22,7 +22,7 @@ public class CameraShake : MonoBehaviour
 
     IEnumerator ShakeCoroutine(float dur, float mag)
     {
-        Vector3 originPos = transform.position;
+        Vector3 originPos = transform.localPosition;
         float elapsed = 0;
 
         while (elapsed < dur)
@@ -36,6 +36,6 @@ public class CameraShake : MonoBehaviour
             yield return null;
         }
 
-        transform.localPosition = originPos;
+        transform.localPosition = new Vector3(0, 0, -10);
     }
 }
