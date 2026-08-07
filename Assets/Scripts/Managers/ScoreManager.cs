@@ -7,7 +7,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     [Header("점수 설정")]
-    public int curScore;
+    public int stageScore;
+    public int grazeScore;
     public int highScore;
 
     private void Awake()
@@ -22,7 +23,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        UIManager.instance.UpdateCurrentScore(curScore, highScore);
+        UIManager.instance.UpdateCurrentScore(stageScore, highScore);
     }
 
     private void Update()
@@ -34,22 +35,27 @@ public class ScoreManager : MonoBehaviour
 
             highScore = 0;
 
-            UIManager.instance.UpdateCurrentScore(curScore, highScore);
+            UIManager.instance.UpdateCurrentScore(stageScore, highScore);
         }
+    }
+
+    public void GrazeScorePlus(int value)
+    {
+        grazeScore += value;
     }
 
     public void ScorePlus(int value)
     {
-        this.curScore += value;
+        this.stageScore += value;
 
-        if (curScore > highScore)
+        if (stageScore + grazeScore > highScore)
         {
-            highScore = curScore;
+            highScore = stageScore + grazeScore;
 
             PlayerPrefs.SetInt("HighScore", highScore);
             PlayerPrefs.Save();
         }
 
-        UIManager.instance.UpdateCurrentScore(this.curScore, highScore);
+        UIManager.instance.UpdateCurrentScore(this.stageScore, highScore);
     }
 }

@@ -12,12 +12,19 @@ public class BossDeathEffect : MonoBehaviour
 
     public float flashTime;
 
+    public float fallDur;
+
     private PlayerMove playerMove;
     private PlayerShooter playerShooter;
     private BossPatternManager manager;
     private EnemyHit hit;
+    private SpriteRenderer sprite;
+    private Animator anim;
 
     private bool particleEnd;
+
+    private Vector3 startPos;
+    private Vector3 targetPos = new Vector3(0, 2, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +33,10 @@ public class BossDeathEffect : MonoBehaviour
         playerShooter = GameManager.instance.player.GetComponent<PlayerShooter>();
         hit = GetComponent<EnemyHit>();
         manager = GetComponent<BossPatternManager>();
+        sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+
+        startPos = transform.position;
     }
 
     public void BossDeath()
@@ -38,8 +49,10 @@ public class BossDeathEffect : MonoBehaviour
         manager.StopBossPattern();
 
         GameManager.instance.player.GetComponentInChildren<Collider2D>().enabled = false;
+        playerMove.ZeroVelocity();
         playerMove.enabled = false;
         playerShooter.enabled = false;
+        anim.enabled = false;
         GameManager.instance.ClearBullet();
 
         GameTimeManager.instance.HitStopGame(0.15f);
@@ -56,19 +69,36 @@ public class BossDeathEffect : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
 
             Instantiate(particle, particlePos[i].position, Quaternion.identity);
-            CameraShake.instance.Shake(0.1f, 0.1f);
+            CameraShake.instance.Shake(0.05f, 0.05f);
         }
 
         yield return new WaitForSeconds(2);
+
+        StartCoroutine(BossCrash());
     }
 
-    //IEnumerator BossCrash()
-    //{
-    //    while (transform.localScale != Vector3.one * 0.2f)
-    //    {
+    IEnumerator BossCrash()
+    {
+        float timer = 0f;
 
-    //    }
-    //}
+        while (timer < fallDur)
+        {
+            timer += Time.deltaTime;
+            float progress = timer / fallDur;
+
+            float accelProgress = progress * progress;
+
+            transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 0.2f, accelProgress);
+            transform.position = Vector3.Lerp(startPos, targetPos, accelProgress);
+            transform.Rotate(0, 0, 5 * Time.deltaTime);
+
+            yield return null;
+        }
+
+        CameraShake.instance.Shake(0.1f, 0.1f);
+
+        StartCoroutine (FlashEffect());
+    }
 
     IEnumerator FlashEffect()
     {
@@ -86,6 +116,7 @@ public class BossDeathEffect : MonoBehaviour
             yield return null;
         }
 
+        gameObject.SetActive(false);
         flashImg.gameObject.SetActive(false);
     }
 }
