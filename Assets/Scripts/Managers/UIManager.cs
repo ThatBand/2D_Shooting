@@ -15,11 +15,13 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI powerText;
     public TextMeshProUGUI grazeText;
 
+    public TextMeshProUGUI playTimeText;
+
     public Image[] healthIcons;
     public Image[] boomIcons;
 
     public GameObject gameOverPanel;
-    public GameObject gameClearPanel;
+    public StageClearUI gameClearPanel;
 
     public GameObject pausePanel;
     public GameObject settingPanel;
@@ -84,9 +86,21 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
+    public void UpdatePlayTime(float time)
+    {
+        int min = Mathf.FloorToInt(time / 60f);
+        int sec = Mathf.FloorToInt(time % 60f);
+
+        playTimeText.text = $"{min:00}:{sec:00}";
+    }
+
     public void SetGameClearPanel()
     {
-        gameClearPanel.SetActive(true);
+        gameClearPanel.ShowClearUI(GameManager.instance.playTime,
+                                                GameManager.instance.player.GetComponentInChildren<Graze>().grazeCount,
+                                                GameManager.instance.player.GetComponent<PlayerHealth>().curHealth,
+                                                GameManager.instance.player.GetComponent<PlayerInventory>().curBoomCount,
+                                                ScoreManager.instance.stageScore);
     }
 
     public void UpdateSlider(float curValue, float maxValue)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class GameManager : MonoBehaviour
     public PlayerShooter playerShooter;
 
     public GameObject scoreItem;
+
+    public float playTime;
+    public bool isGameClear;
 
     private void Awake()
     {
@@ -27,6 +31,21 @@ public class GameManager : MonoBehaviour
     {
         if (UIManager.instance.noticePanel.activeSelf)
             GameTimeManager.instance.StopGame();
+    }
+
+    private void Update()
+    {
+        if (!isGameClear && Time.timeScale > 0)
+        {
+            playTime += Time.unscaledDeltaTime;
+
+            UIManager.instance.UpdatePlayTime(playTime);
+        }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("InGame");
     }
 
     public void ClearBullet()

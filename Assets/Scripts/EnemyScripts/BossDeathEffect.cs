@@ -116,7 +116,11 @@ public class BossDeathEffect : MonoBehaviour
             yield return null;
         }
 
-        gameObject.SetActive(false);
+        sprite.enabled = false;
         flashImg.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(1);
+
+        UIManager.instance.SetGameClearPanel();
     }
 }

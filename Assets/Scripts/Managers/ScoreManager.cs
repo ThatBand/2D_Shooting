@@ -48,14 +48,32 @@ public class ScoreManager : MonoBehaviour
     {
         this.stageScore += value;
 
-        if (stageScore + grazeScore > highScore)
+        if (stageScore > highScore)
         {
-            highScore = stageScore + grazeScore;
+            highScore = stageScore;
 
             PlayerPrefs.SetInt("HighScore", highScore);
             PlayerPrefs.Save();
         }
 
         UIManager.instance.UpdateCurrentScore(this.stageScore, highScore);
+    }
+
+    public bool UpdateFinalScore(int value)
+    {
+        stageScore = value;
+
+        if (stageScore > highScore)
+        {
+            highScore = stageScore;
+
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+
+            UIManager.instance.UpdateCurrentScore(stageScore, highScore);
+            return true;
+        }
+
+        return false;
     }
 }

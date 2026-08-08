@@ -14,9 +14,7 @@ public class PlayerBullet : Bullet
     {
         if (collision.CompareTag("Enemy"))
         {
-            DamageReceiver receiver = collision.GetComponent<DamageReceiver>();
-
-            if (receiver != null)
+            if (collision.TryGetComponent(out DamageReceiver receiver))
             {
                 receiver.ReceiveDamage(bulletData.damage);
                 Destroy(gameObject);
@@ -24,8 +22,8 @@ public class PlayerBullet : Bullet
 
             else if (receiver == null)
             {
-                EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
-                enemyHealth.TakeDamage(bulletData.damage);
+                if (collision.TryGetComponent(out EnemyHealth enemyHealth))
+                    enemyHealth.TakeDamage(bulletData.damage);
             }
         }
 

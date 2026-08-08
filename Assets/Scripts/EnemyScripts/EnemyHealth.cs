@@ -11,8 +11,6 @@ public class EnemyHealth : MonoBehaviour
     public GameObject item;
     public Image healthBar;
 
-    public UIManager uiManager;
-
     public bool isInvin;
 
     private EnemyHit hit;
@@ -40,18 +38,20 @@ public class EnemyHealth : MonoBehaviour
             healthBar.fillAmount = curHealth / enemyData.health;
 
         if (hit.isBoss && curHealth <= (enemyData.health / 2))
-            //manager?.EnterPhase2();
+        {
+            manager?.EnterPhase2();
+        }
 
         if (curHealth <= 0)
         {
             ScoreManager.instance.ScorePlus(enemyData.enemyScore);
             deathEffect.BossDeath();
+            GameManager.instance.isGameClear = true;
 
             //EnemyHit hit = GetComponent<EnemyHit>();
             //if (hit.isBoss)
             //{
-            //    uiManager.SetGameClearPanel();
-            //    GameTimeManager.instance.StopGame();
+            //    UIManager.instance.SetGameClearPanel();
             //}
         }
     }

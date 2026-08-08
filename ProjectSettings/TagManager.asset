@@ -15,6 +15,7 @@ TagManager:
   - CoreHit
   - InvinEnemy
   - LaserWall
+  - BossBody
   layers:
   - Default
   - TransparentFX
