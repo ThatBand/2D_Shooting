@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     public Image[] healthIcons;
     public Image[] boomIcons;
 
-    public GameObject gameOverPanel;
+    public GameOverUI gameOverPanel;
     public StageClearUI gameClearPanel;
 
     public GameObject pausePanel;
@@ -81,11 +81,6 @@ public class UIManager : MonoBehaviour
         boomIcons[count].gameObject.SetActive(false);
     }
 
-    public void SetGameOverPanel()
-    {
-        gameOverPanel.SetActive(true);
-    }
-
     public void UpdatePlayTime(float time)
     {
         int min = Mathf.FloorToInt(time / 60f);
@@ -101,6 +96,13 @@ public class UIManager : MonoBehaviour
                                                 GameManager.instance.player.GetComponent<PlayerHealth>().curHealth,
                                                 GameManager.instance.player.GetComponent<PlayerInventory>().curBoomCount,
                                                 ScoreManager.instance.stageScore);
+    }
+
+    public void SetGameOverPanel()
+    {
+        gameOverPanel.ShowGameOverUI(GameManager.instance.playTime,
+                                     GameManager.instance.player.GetComponentInChildren<Graze>().grazeCount,
+                                     ScoreManager.instance.stageScore);
     }
 
     public void UpdateSlider(float curValue, float maxValue)

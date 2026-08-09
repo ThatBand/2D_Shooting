@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 024d84aa6131fbe47b3a9c1a5bdcd43c, type: 2}
   speed: 0
-  targetY: 15
+  targetY: 18
   isFinish: 0
 --- !u!114 &748137399474052719
 MonoBehaviour:

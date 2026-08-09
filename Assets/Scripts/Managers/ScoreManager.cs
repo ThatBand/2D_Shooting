@@ -30,13 +30,18 @@ public class ScoreManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            PlayerPrefs.DeleteKey("HighScore");
-            PlayerPrefs.Save();
-
-            highScore = 0;
-
-            UIManager.instance.UpdateCurrentScore(stageScore, highScore);
+            ResetScore();
         }
+    }
+
+    public void ResetScore()
+    {
+        PlayerPrefs.DeleteKey("HighScore");
+        PlayerPrefs.Save();
+
+        highScore = 0;
+
+        UIManager.instance.UpdateCurrentScore(stageScore, highScore);
     }
 
     public void GrazeScorePlus(int value)

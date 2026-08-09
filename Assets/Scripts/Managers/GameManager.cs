@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("InGame");
     }
 
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     public void ClearBullet()
     {
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");

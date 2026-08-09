@@ -15,7 +15,8 @@ public enum BossState
     Prison,
     Quartz,
     RowCol,
-    ShieldMinion
+    ShieldMinion,
+    LaserWall
 }
 
 public class BossPatternManager : MonoBehaviour
@@ -32,6 +33,7 @@ public class BossPatternManager : MonoBehaviour
     private BossQuartzPattern quartzPattern;
     private BossRowColPattern rowColPattern;
     private BossSpawnShieldMinion shieldMinionPattern;
+    private BossLaserWallPattern laserWallPattern;
 
     public BossState curState = BossState.Move;
 
@@ -58,6 +60,7 @@ public class BossPatternManager : MonoBehaviour
         quartzPattern = GetComponent<BossQuartzPattern>();
         rowColPattern = GetComponent<BossRowColPattern>();
         shieldMinionPattern = GetComponent<BossSpawnShieldMinion>();
+        laserWallPattern = GetComponent<BossLaserWallPattern>();
     }
 
     private void Start()
@@ -110,6 +113,9 @@ public class BossPatternManager : MonoBehaviour
                 break;
             case BossState.ShieldMinion:
                 shieldMinionPattern.enabled = true;
+                break;
+            case BossState.LaserWall:
+                laserWallPattern.enabled = true;
                 break;
         }
     }
@@ -165,6 +171,7 @@ public class BossPatternManager : MonoBehaviour
         quartzPattern.StopAllCoroutines();
         rowColPattern.StopAllCoroutines();
         shieldMinionPattern.StopAllCoroutines();
+        laserWallPattern.StopAllCoroutines();
 
         move.enabled = false;
         idle.enabled = false;
@@ -178,5 +185,6 @@ public class BossPatternManager : MonoBehaviour
         quartzPattern.enabled = false;
         rowColPattern.enabled = false;
         shieldMinionPattern.enabled = false;
+        laserWallPattern.enabled = false;
     }
 }

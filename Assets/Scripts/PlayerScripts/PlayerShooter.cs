@@ -43,7 +43,7 @@ public class PlayerShooter : MonoBehaviour
         if (time < fireTime)
             return;
 
-        SoundManager.instance.PlayerShootSound();
+        //SoundManager.instance.PlayerShootSound();
         switch (power)
         {
             case >= 0 and < 10:
