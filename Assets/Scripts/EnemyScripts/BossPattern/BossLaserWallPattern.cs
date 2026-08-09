@@ -76,8 +76,9 @@ public class BossLaserWallPattern : MonoBehaviour
             {
                 Debug.Log(bulletCount);
                 GameObject bullet = Instantiate(data.enemyBullet[5], transform.position, Quaternion.identity);
-                EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
-                BulletProbability(eb);
+                
+                if (bullet.TryGetComponent(out EnemyBullet eBullet))
+                    BulletProbability(eBullet);
 
                 float b = (360f / bulletCount) * i;
                 Vector3 moveDir = Quaternion.Euler(0, 0, b) * Vector3.up;

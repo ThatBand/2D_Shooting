@@ -77,6 +77,14 @@ public class EnemyBullet : Bullet
     {
         if (collision.CompareTag("CoreHit"))
         {
+            if (collision.transform.parent.TryGetComponent(out PlayerHealth playerHealth))
+                playerHealth.TakeDamage();
+
+            Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("GrazeHit"))
+        {
             if (type == bulletType.blue)
             {
                 Debug.Log("파란색 탄막 흡수! 점수 + " + blueBulletScore);
@@ -89,11 +97,6 @@ public class EnemyBullet : Bullet
                 Destroy(gameObject);
                 return;
             }
-            
-            if (collision.transform.parent.TryGetComponent(out PlayerHealth playerHealth))
-                playerHealth.TakeDamage();
-
-            Destroy(gameObject);
         }
     }
 }

@@ -24,13 +24,5 @@ public class PinballBullet : MonoBehaviour
 
             bounceCount--;
         }
-
-        else if (collision.CompareTag("CoreHit"))
-        {
-            if (collision.transform.parent.TryGetComponent(out PlayerHealth health))
-                health.TakeDamage();
-
-            Destroy(gameObject);
-        }
     }
 }
