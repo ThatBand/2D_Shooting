@@ -15930,7 +15930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curState: 0
-  phase1PatternCycle: 0c0000000b000000020000000300000004000000070000000a000000
+  phase1PatternCycle: 0b0000000c000000020000000300000004000000070000000a000000
   phase2PatternCycle: 0500000002000000060000000900000004000000020000000b00000007000000
 --- !u!114 &1844755519
 MonoBehaviour:
@@ -15992,7 +15992,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d439dec43ac0218479a218b8733cf2e0, type: 3}
   m_Name: 

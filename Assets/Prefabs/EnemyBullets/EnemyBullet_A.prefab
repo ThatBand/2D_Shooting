@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3200940876827652532}
   - component: {fileID: 1445672489908372144}
+  - component: {fileID: 5033912575109213133}
   - component: {fileID: 8824461036682233663}
   - component: {fileID: 5379275494587251627}
-  - component: {fileID: 802980261653008607}
   m_Layer: 0
   m_Name: EnemyBullet_A
   m_TagString: EnemyBullet
@@ -88,6 +88,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &5033912575109213133
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864420110316456439}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.15
 --- !u!50 &8824461036682233663
 Rigidbody2D:
   serializedVersion: 4
@@ -128,43 +144,6 @@ MonoBehaviour:
   blueBulletScore: 0
   sprite: {fileID: 3765273303024990984}
   scoreText: {fileID: 9075690829305314047, guid: d40817f6892295f4d81d1c4bf2d7c889, type: 3}
---- !u!60 &802980261653008607
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4864420110316456439}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.040000003, y: 0.24000001}
-      - {x: -0.080000006, y: 0.080000006}
-      - {x: -0.24000001, y: 0.040000003}
-      - {x: -0.24000001, y: -0.040000003}
-      - {x: -0.080000006, y: -0.080000006}
-      - {x: -0.040000003, y: -0.24000001}
-      - {x: 0.040000003, y: -0.24000001}
-      - {x: 0.080000006, y: -0.080000006}
-      - {x: 0.24000001, y: -0.040000003}
-      - {x: 0.24000001, y: 0.040000003}
-      - {x: 0.080000006, y: 0.080000006}
-      - {x: 0.040000003, y: 0.24000001}
 --- !u!1 &5164382453639091290
 GameObject:
   m_ObjectHideFlags: 0
