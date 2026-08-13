@@ -9,10 +9,13 @@ public class PlayerShooter : MonoBehaviour
     public int maxPower;
 
     public float fireTime;
+
+    public float subBulletAngle;
     private float time;
 
-    public GameObject bulletA;
-    public GameObject bulletB;
+    public GameObject mainBullet;
+    public GameObject subBullet;
+    public GameObject induceBullet;
 
     // Update is called once per frame
     void Update()
@@ -48,18 +51,23 @@ public class PlayerShooter : MonoBehaviour
         {
             case >= 0 and < 10:
                 fireTime = 0.2f;
-                GameObject bullet = Instantiate(bulletA, transform.position, Quaternion.identity);
+                GameObject bullet = Instantiate(mainBullet, transform.position, Quaternion.identity);
                 break;
             case >= 10 and < 25:
                 fireTime = 0.15f;
-                GameObject bulletL = Instantiate(bulletA, transform.position + Vector3.left * 0.2f, Quaternion.identity);
-                GameObject bulletR = Instantiate(bulletA, transform.position + Vector3.right * 0.2f, Quaternion.identity);
+                GameObject bulletMainLeft = Instantiate(mainBullet, transform.position + Vector3.left * 0.15f, Quaternion.identity);
+                GameObject bulletMainRight = Instantiate(mainBullet, transform.position + Vector3.right * 0.15f, Quaternion.identity);
                 break;
             case >= 25:
                 fireTime = 0.08f;
-                GameObject bulletLL = Instantiate(bulletA, transform.position + Vector3.left * 0.35f, Quaternion.identity);
-                GameObject bulletCC = Instantiate(bulletB, transform.position, Quaternion.identity);
-                GameObject bulletRR = Instantiate(bulletA, transform.position + Vector3.right * 0.35f, Quaternion.identity);
+                GameObject bulletMainLeft2 = Instantiate(mainBullet, transform.position + Vector3.left * 0.15f, Quaternion.identity);
+                GameObject bulletMainRight2 = Instantiate(mainBullet, transform.position + Vector3.right * 0.15f, Quaternion.identity);
+
+                GameObject bulletSubLeft = Instantiate(subBullet, transform.position + Vector3.left * 0.3f, Quaternion.identity);
+                bulletSubLeft.transform.localRotation = Quaternion.Euler(0, 0, subBulletAngle);
+
+                GameObject bulletSubRight = Instantiate(subBullet, transform.position + Vector3.right * 0.3f, Quaternion.identity);
+                bulletSubRight.transform.localRotation = Quaternion.Euler(0, 0, -subBulletAngle);
                 break;
         }
 

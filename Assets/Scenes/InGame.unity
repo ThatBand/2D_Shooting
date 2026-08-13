@@ -15619,7 +15619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1844755500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19039,8 +19039,10 @@ MonoBehaviour:
   power: 1
   maxPower: 25
   fireTime: 0.2
-  bulletA: {fileID: 850845956947082895, guid: 2f9713508c96a62419980de607a8e5f8, type: 3}
-  bulletB: {fileID: 4864420110316456439, guid: 9b1ca0f4a383a8d4b8fe3b67eb659a6b, type: 3}
+  subBulletAngle: 5
+  mainBullet: {fileID: 850845956947082895, guid: 2f9713508c96a62419980de607a8e5f8, type: 3}
+  subBullet: {fileID: 4864420110316456439, guid: 9b1ca0f4a383a8d4b8fe3b67eb659a6b, type: 3}
+  induceBullet: {fileID: 5049224520960355054, guid: 7e00dd59559968542b8d40a17f096684, type: 3}
 --- !u!114 &2063864317
 MonoBehaviour:
   m_ObjectHideFlags: 0

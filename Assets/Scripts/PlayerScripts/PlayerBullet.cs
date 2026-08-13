@@ -7,7 +7,7 @@ public class PlayerBullet : Bullet
     protected override void Start()
     {
         base.Start();
-        rigid.AddForce(Vector2.up * bulletData.speed, ForceMode2D.Impulse);
+        rigid.AddForce(transform.up * bulletData.speed, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
