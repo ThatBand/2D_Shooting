@@ -7,11 +7,13 @@ public class Bullet : MonoBehaviour
     public BulletData bulletData;
     public bool isDestroy;
 
+    protected Transform target;
     protected Rigidbody2D rigid;
 
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        target = GameManager.instance.boss;
     }
 
     protected virtual void Start()
