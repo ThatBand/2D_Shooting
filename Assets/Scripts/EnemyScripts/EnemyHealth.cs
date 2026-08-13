@@ -45,14 +45,11 @@ public class EnemyHealth : MonoBehaviour
         if (curHealth <= 0)
         {
             ScoreManager.instance.ScorePlus(enemyData.enemyScore);
-            deathEffect.BossDeath();
+            deathEffect?.BossDeath();
             GameManager.instance.isGameClear = true;
 
-            //EnemyHit hit = GetComponent<EnemyHit>();
-            //if (hit.isBoss)
-            //{
-            //    UIManager.instance.SetGameClearPanel();
-            //}
+            if (!hit.isBoss)
+                Destroy(gameObject);
         }
     }
 }

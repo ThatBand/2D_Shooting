@@ -17,8 +17,14 @@ public class BossPrisonDodge : MonoBehaviour
     [Header("발사 쿨타임")]
     public float fireRate;
 
-    [Header("총알 속도")]
-    public float bulletSpeed;
+    public BulletData data;
+
+    private BossPatternManager manager;
+
+    private void Awake()
+    {
+        manager = GetComponent<BossPatternManager>();
+    }
 
     private void OnEnable()
     {
@@ -81,10 +87,12 @@ public class BossPrisonDodge : MonoBehaviour
             Rigidbody2D rigid0 = bullet0.GetComponent<Rigidbody2D>();
             Rigidbody2D rigid1 = bullet1.GetComponent<Rigidbody2D>();
 
-            rigid0.AddForce(Vector2.down * bulletSpeed);
-            rigid1.AddForce(Vector2.down * bulletSpeed);
+            rigid0.velocity = Vector2.down * data.speed;
+            rigid1.velocity = Vector2.down * data.speed;
 
             yield return new WaitForSeconds(fireRate);
         }
+
+        manager.ChangeState(BossState.Idle);
     }
 }

@@ -7,13 +7,21 @@ public class EnemyHit : MonoBehaviour
     public bool isBoss;
 
     public Sprite[] sprites;
+    public Sprite flashSprite;
 
     private SpriteRenderer spriteRenderer;
-    public Animator anim;
+
+    private Coroutine animCo;
+    private Coroutine hitCo;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(AnimRoutine());
     }
 
     public void OnHit()
@@ -26,7 +34,46 @@ public class EnemyHit : MonoBehaviour
         }
 
         else
-            anim.SetTrigger("isHit");
+        {
+            if (hitCo != null)
+                StopCoroutine(hitCo);
+
+            hitCo = StartCoroutine(HitRoutine());
+        }
+    }
+
+    IEnumerator AnimRoutine()
+    {
+        while (true)
+        {
+            for (int i = 0; i < sprites.Length; i++)
+            {
+                spriteRenderer.sprite = sprites[i];
+
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            yield return null;
+        }
+    }
+
+    IEnumerator HitRoutine()
+    {
+        if (animCo != null)
+        {
+            StopCoroutine(animCo);
+            animCo = null;
+        }
+
+        spriteRenderer.sprite = sprites[0];
+        yield return null;
+
+        spriteRenderer.sprite = flashSprite;
+
+        yield return new WaitForSeconds(0.5f);
+
+        animCo = StartCoroutine(AnimRoutine());
+        hitCo = null;
     }
 
     void ReturnSprite()

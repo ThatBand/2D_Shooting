@@ -57,7 +57,6 @@ public class EnemyBullet : Bullet
         if (bulletHealth <= 0)
         {
             Destroy(gameObject);
-            
             GameManager.instance.playerShooter.UpgradePower(2);
         }
     }
@@ -90,7 +89,7 @@ public class EnemyBullet : Bullet
                 Debug.Log("파란색 탄막 흡수! 점수 + " + blueBulletScore);
                 GameObject text = Instantiate(scoreText, transform.position, Quaternion.identity);
                 if (text.TryGetComponent(out ScoreBulletText textSC))
-                    textSC.Setup();
+                    textSC.Setup(blueBulletScore);
 
                 ScoreManager.instance.ScorePlus(blueBulletScore);
 

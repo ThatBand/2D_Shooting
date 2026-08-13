@@ -61,11 +61,11 @@ public class PlayerShooter : MonoBehaviour
         switch (power)
         {
             case >= 0 and < 10:
-                mainFireTime = 0.3f;
+                mainFireTime = 0.25f;
                 GameObject bullet = Instantiate(mainBullet, transform.position, Quaternion.identity);
                 break;
             case >= 10 and < 25:
-                mainFireTime = 0.25f;
+                mainFireTime = 0.2f;
                 GameObject bulletMainLeft = Instantiate(mainBullet, transform.position + Vector3.left * 0.15f, Quaternion.identity);
                 GameObject bulletMainRight = Instantiate(mainBullet, transform.position + Vector3.right * 0.15f, Quaternion.identity);
                 break;

@@ -15619,7 +15619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1844755500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15680,7 +15680,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 4.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -15701,7 +15701,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6f671a3b64a520e46bf7a38385624d0f, type: 2}
   m_CullingMode: 0
@@ -15740,9 +15740,9 @@ MonoBehaviour:
   - {fileID: 2035337633}
   - {fileID: 1259891899}
   - {fileID: 1772047623}
-  red: 80
-  blue: 10
-  yellow: 10
+  red: 8
+  blue: 1
+  yellow: 1
 --- !u!114 &1844755507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15774,9 +15774,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletContainer: {fileID: 495786268}
   RotateSpeed: 60
-  red: 80
-  blue: 10
-  yellow: 10
+  red: 7
+  blue: 1.5
+  yellow: 1.5
   bulletCount: 5
   bulletSpeed: 10
   fireTime: 0.25
@@ -15794,11 +15794,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
-  red: 70
-  blue: 15
-  yellow: 15
+  red: 7
+  blue: 1.5
+  yellow: 1.5
   fireRate: 1.5
-  bulletSpeed: 60
+  data: {fileID: 11400000, guid: 9eb355185b90bc843b2d80b30cabf648, type: 2}
 --- !u!114 &1844755510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15835,9 +15835,9 @@ MonoBehaviour:
   - {fileID: 2145873699}
   - {fileID: 910247301}
   - {fileID: 1995063789}
-  red: 90
-  blue: 5
-  yellow: 5
+  red: 6
+  blue: 2
+  yellow: 2
   patternCount: 8
   bulletCount: 55
   fireDelay: 1.5
@@ -15854,8 +15854,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoss: 1
-  sprites: []
-  anim: {fileID: 1844755502}
+  sprites:
+  - {fileID: 2192450021786810173, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  - {fileID: -7537196482120660328, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  - {fileID: -860468679390908754, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  flashSprite: {fileID: -7945901444079236628, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
 --- !u!114 &1844755514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16003,7 +16006,7 @@ MonoBehaviour:
   - {x: -5.5, y: 6}
   - {x: 5.5, y: 6}
   red: 7
-  blue: 1e+12
+  blue: 1.5
   yellow: 1.5
   bulletCount: 55
   circlePatternCount: 3
@@ -19037,8 +19040,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1
-  maxPower: 25
-  fireTime: 0.2
+  maxPower: 40
+  mainFireTime: 0
+  subFireTime: 0
+  induceFireTime: 0
   subBulletAngle: 5
   mainBullet: {fileID: 850845956947082895, guid: 2f9713508c96a62419980de607a8e5f8, type: 3}
   subBullet: {fileID: 4864420110316456439, guid: 9b1ca0f4a383a8d4b8fe3b67eb659a6b, type: 3}

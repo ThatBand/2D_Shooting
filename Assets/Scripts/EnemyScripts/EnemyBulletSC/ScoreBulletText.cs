@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ScoreBulletText : MonoBehaviour
 {
-    public ItemData scoreData;
-
     public float speed;
     public float alphaSpeed;
     public float destroyTime;
@@ -19,9 +17,9 @@ public class ScoreBulletText : MonoBehaviour
         tmp = GetComponent<TextMeshPro>();
     }
 
-    public void Setup()
+    public void Setup(int value)
     {
-        tmp.text = scoreData.amount.ToString();
+        tmp.text = value.ToString();
 
         textColor = tmp.color;
         Destroy(gameObject, destroyTime);
