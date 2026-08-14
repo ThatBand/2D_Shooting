@@ -144,6 +144,7 @@ MonoBehaviour:
   blueBulletScore: 250
   sprite: {fileID: 3765273303024990984}
   scoreText: {fileID: 9075690829305314047, guid: d40817f6892295f4d81d1c4bf2d7c889, type: 3}
+  powerText: {fileID: 9075690829305314047, guid: 38262cbfab51049419c5ce31bc428b38, type: 3}
 --- !u!1 &5164382453639091290
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,12 +16,37 @@ public class EnemyBullet : Bullet
     public SpriteRenderer sprite;
 
     public GameObject scoreText;
+    public GameObject powerText;
+
+    private bool canMove;
 
     protected override void Start()
     {
         base.Start();
 
         bulletHealth = bulletData.health;
+    }
+
+    public void MoveStart()
+    {
+        StartCoroutine(MoveStartRoutine());
+    }
+
+    IEnumerator MoveStartRoutine()
+    {
+        yield return new WaitForSeconds(1);
+
+        canMove = true;
+    }
+
+    private void Update()
+    {
+        if (!canMove)
+            return;
+
+        Vector2 dir = (GameManager.instance.player.position - transform.position).normalized;
+
+        rigid.velocity = dir * 1;
     }
 
     public void Setup(bulletType newType)
@@ -56,6 +81,10 @@ public class EnemyBullet : Bullet
 
         if (bulletHealth <= 0)
         {
+            GameObject text = Instantiate(powerText, transform.position, Quaternion.identity);
+            if (text.TryGetComponent(out PowerBulletText textSC))
+                textSC.Setup();
+
             Destroy(gameObject);
             GameManager.instance.playerShooter.UpgradePower(2);
         }
