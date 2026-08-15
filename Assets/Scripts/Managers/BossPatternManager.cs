@@ -6,6 +6,7 @@ public enum BossState
 {
     Move,
     Idle,
+    Tutorial,
     Strike,
     Laser,
     Spread,
@@ -23,6 +24,7 @@ public class BossPatternManager : MonoBehaviour
 {
     private BossMove move;
     private BossIdle idle;
+    private BossTutorialPattern tutorial;
     private BossStrike strike;
     private BossLaser laser;
     private BossSpiralSpread sprialSpread;
@@ -50,6 +52,7 @@ public class BossPatternManager : MonoBehaviour
     {
         move = GetComponent<BossMove>();
         idle = GetComponent<BossIdle>();
+        tutorial = GetComponent<BossTutorialPattern>();
         strike = GetComponent<BossStrike>();
         laser = GetComponent<BossLaser>();
         sprialSpread = GetComponent<BossSpiralSpread>();
@@ -83,6 +86,9 @@ public class BossPatternManager : MonoBehaviour
                 break;
             case BossState.Idle:
                 idle.enabled = true;
+                break;
+            case BossState.Tutorial:
+                tutorial.enabled = true;
                 break;
             case BossState.Strike:
                 strike.enabled = true;
@@ -161,6 +167,7 @@ public class BossPatternManager : MonoBehaviour
     {
         move.StopAllCoroutines();
         idle.StopAllCoroutines();
+        tutorial.StopAllCoroutines();
         strike.StopAllCoroutines();
         laser.StopAllCoroutines();
         sprialSpread.StopAllCoroutines();
@@ -175,6 +182,7 @@ public class BossPatternManager : MonoBehaviour
 
         move.enabled = false;
         idle.enabled = false;
+        tutorial.enabled = false;
         strike.enabled = false;
         laser.enabled = false;
         sprialSpread.enabled = false;

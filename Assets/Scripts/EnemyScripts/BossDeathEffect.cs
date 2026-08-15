@@ -49,7 +49,7 @@ public class BossDeathEffect : MonoBehaviour
         manager.StopBossPattern();
 
         GameManager.instance.player.GetComponentInChildren<Collider2D>().enabled = false;
-        playerMove.ZeroVelocity();
+        playerMove.StopPlayer();
         playerMove.enabled = false;
         playerShooter.enabled = false;
         anim.enabled = false;

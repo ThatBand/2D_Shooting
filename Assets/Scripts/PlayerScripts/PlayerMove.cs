@@ -26,11 +26,6 @@ public class PlayerMove : MonoBehaviour
         dir.y = Input.GetAxisRaw("Vertical");
     }
 
-    public void ZeroVelocity()
-    {
-        rigid.velocity = Vector2.zero;
-    }
-
     private void FixedUpdate()
     {
         rigid.position = new Vector3(Mathf.Clamp(rigid.position.x, -6.5f, 6.5f),
@@ -43,5 +38,10 @@ public class PlayerMove : MonoBehaviour
     private void LateUpdate()
     {
         anim.SetInteger("move", (int)dir.x);
+    }
+
+    public void StopPlayer()
+    {
+        rigid.velocity = Vector2.zero;
     }
 }

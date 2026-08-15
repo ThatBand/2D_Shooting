@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: -20
     m_Right: 0
-    m_Top: 0
+    m_Top: 50
     m_Bottom: 0
   m_ChildAlignment: 3
   m_Spacing: 40
@@ -4243,7 +4243,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1844755501}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &501122913
 GameObject:
@@ -6529,7 +6529,7 @@ RectTransform:
   m_Children:
   - {fileID: 845947231}
   m_Father: {fileID: 1844755501}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9467,6 +9467,37 @@ Transform:
   m_Father: {fileID: 1031657494}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &926596309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926596310}
+  m_Layer: 0
+  m_Name: Tutorial_Bullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &926596310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926596309}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1844755501}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &927564810
 GameObject:
   m_ObjectHideFlags: 0
@@ -10258,7 +10289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &996252694
 Transform:
   m_ObjectHideFlags: 0
@@ -10722,7 +10753,7 @@ Transform:
   - {fileID: 916875291}
   - {fileID: 1466231176}
   m_Father: {fileID: 1844755501}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1053800102
 GameObject:
@@ -12552,7 +12583,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -90, y: 45}
+  m_AnchoredPosition: {x: -90, y: 20}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1270909049
@@ -12647,7 +12678,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: -20
     m_Right: 0
-    m_Top: -100
+    m_Top: -30
     m_Bottom: 0
   m_ChildAlignment: 3
   m_Spacing: 40
@@ -13100,7 +13131,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1844755501}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1319128351
 MonoBehaviour:
@@ -14614,7 +14645,7 @@ GameObject:
   - component: {fileID: 1608042400}
   - component: {fileID: 1608042401}
   m_Layer: 0
-  m_Name: BodyCollider
+  m_Name: Normal_Collider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14633,7 +14664,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1844755501}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1608042400
 BoxCollider2D:
@@ -17010,6 +17041,7 @@ GameObject:
   - component: {fileID: 1844755523}
   - component: {fileID: 1844755516}
   - component: {fileID: 1844755519}
+  - component: {fileID: 1844755524}
   - component: {fileID: 1844755506}
   - component: {fileID: 1844755507}
   - component: {fileID: 1844755508}
@@ -17022,7 +17054,6 @@ GameObject:
   - component: {fileID: 1844755521}
   - component: {fileID: 1844755522}
   - component: {fileID: 1844755518}
-  - component: {fileID: 1844755524}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -17094,6 +17125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 926596310}
   - {fileID: 1319128350}
   - {fileID: 1608042397}
   - {fileID: 2146121681}
@@ -17343,8 +17375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curState: 0
-  phase1PatternCycle: 0b0000000c000000020000000300000004000000070000000a000000
-  phase2PatternCycle: 0500000002000000060000000900000004000000020000000b00000007000000
+  phase1PatternCycle: 020000000b0000000c0000000d0000000300000004000000080000000a000000
+  phase2PatternCycle: 0500000003000000060000000a000000040000000d0000000b00000007000000
 --- !u!114 &1844755519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17459,10 +17491,14 @@ MonoBehaviour:
   - {x: -3.5, y: 0, z: 0}
   - {x: 3.5, y: -1, z: 0}
   - {x: 2, y: 1, z: 0}
-  blueCount: 25
-  radius: 3
+  keyGuideObj: {fileID: 1270909047}
+  blueCount: 20
+  yellowCount: 10
+  blueRadius: 2
+  yellowRadius: 3
   bossData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
   player: {fileID: 2063864312}
+  bulletContainer: {fileID: 926596310}
 --- !u!1 &1853835342
 GameObject:
   m_ObjectHideFlags: 0
@@ -21732,7 +21768,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1844755501}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2146121683
 BoxCollider2D:
