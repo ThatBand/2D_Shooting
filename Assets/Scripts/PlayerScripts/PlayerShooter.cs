@@ -58,6 +58,8 @@ public class PlayerShooter : MonoBehaviour
         if (mainTimer < mainFireTime)
             return;
 
+        SoundManager.instance.PlayerShootSound();
+
         switch (power)
         {
             case >= 0 and < 10:
