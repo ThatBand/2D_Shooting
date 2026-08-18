@@ -15,7 +15,9 @@ public class SoundManager : MonoBehaviour
     public AudioSource systemSFXSource;
 
     [Header("오디오 클립")]
-    public AudioClip playerShootingSound;
+    public AudioClip playerMainShootSound;
+    public AudioClip playerSubShootSound;
+    public AudioClip playerInduceShootSound;
     public AudioClip grazeSound;
     public AudioClip getBombSound;
     public AudioClip bossNormalHitSound;
@@ -30,12 +32,30 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void PlayerShootSound()
+    public void PlayerMainShootSound()
     {
-        if (playerSFXSource != null && playerShootingSound != null)
+        if (playerSFXSource != null && playerMainShootSound != null)
         {
             playerSFXSource.pitch = Random.Range(0.9f, 1.05f);
-            playerSFXSource.PlayOneShot(playerShootingSound, 0.15f);
+            playerSFXSource.PlayOneShot(playerMainShootSound, 0.15f);
+        }
+    }
+
+    public void PlayerSubShootSound()
+    {
+        if (playerSFXSource != null && playerSubShootSound != null)
+        {
+            playerSFXSource.pitch = Random.Range(0.6f, 0.8f);
+            playerSFXSource.PlayOneShot(playerSubShootSound, 0.1f);
+        }
+    }
+
+    public void PlayerInduceShootSound()
+    {
+        if (playerSFXSource != null && playerInduceShootSound != null)
+        {
+            playerSFXSource.pitch = Random.Range(0.2f, 0.6f);
+            playerSFXSource.PlayOneShot(playerInduceShootSound, 0.03f);
         }
     }
 
