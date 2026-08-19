@@ -15,13 +15,27 @@ public class SoundManager : MonoBehaviour
     public AudioSource systemSFXSource;
 
     [Header("오디오 클립")]
+
+    [Header("플레이어 발사 효과음")]
     public AudioClip playerMainShootSound;
     public AudioClip playerSubShootSound;
     public AudioClip playerInduceShootSound;
+
+    [Header("그레이즈 효과음")]
     public AudioClip grazeSound;
+
+    [Header("폭탄 효과음")]
     public AudioClip getBombSound;
+    public AudioClip useBombSound;
+
+    [Header("파워업 효과음")]
+    public AudioClip powerUpSound;
+
+    [Header("보스 히트 효과음")]
     public AudioClip bossNormalHitSound;
     public AudioClip bossCriticalHitSound;
+
+    public AudioClip enemyShootSound;
 
     private void Awake()
     {
@@ -46,7 +60,7 @@ public class SoundManager : MonoBehaviour
         if (playerSFXSource != null && playerSubShootSound != null)
         {
             playerSFXSource.pitch = Random.Range(0.6f, 0.8f);
-            playerSFXSource.PlayOneShot(playerSubShootSound, 0.1f);
+            playerSFXSource.PlayOneShot(playerSubShootSound, 0.05f);
         }
     }
 
@@ -54,8 +68,8 @@ public class SoundManager : MonoBehaviour
     {
         if (playerSFXSource != null && playerInduceShootSound != null)
         {
-            playerSFXSource.pitch = Random.Range(0.2f, 0.6f);
-            playerSFXSource.PlayOneShot(playerInduceShootSound, 0.03f);
+            playerSFXSource.pitch = Random.Range(0.45f, 0.6f);
+            playerSFXSource.PlayOneShot(playerInduceShootSound, 0.05f);
         }
     }
 
@@ -64,6 +78,14 @@ public class SoundManager : MonoBehaviour
         if (systemSFXSource != null && grazeSound != null)
         {
             systemSFXSource.PlayOneShot(grazeSound, 0.4f);
+        }
+    }
+
+    public void PowerUpSound()
+    {
+        if (systemSFXSource != null && powerUpSound != null)
+        {
+            systemSFXSource.PlayOneShot(powerUpSound, 0.05f);
         }
     }
 
@@ -88,6 +110,15 @@ public class SoundManager : MonoBehaviour
         if (enemySFXSource != null && bossCriticalHitSound != null)
         {
             enemySFXSource.PlayOneShot(bossCriticalHitSound, 0.5f);
+        }
+    }
+
+    public void EnemyShootSound()
+    {
+        if (enemySFXSource != null && enemyShootSound != null)
+        {
+            playerSFXSource.pitch = Random.Range(0.2f, 0.8f);
+            enemySFXSource.PlayOneShot(enemyShootSound, 0.15f);
         }
     }
 }

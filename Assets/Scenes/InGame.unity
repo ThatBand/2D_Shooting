@@ -3811,12 +3811,15 @@ MonoBehaviour:
   enemySFXSource: {fileID: 533680980}
   systemSFXSource: {fileID: 533680979}
   playerMainShootSound: {fileID: 8300000, guid: e5a41a7b4d327cb4ea93df71a1b7b9be, type: 3}
-  playerSubShootSound: {fileID: 8300000, guid: 724131bc8a7f34041bb9f1701f0cb58d, type: 3}
+  playerSubShootSound: {fileID: 8300000, guid: b696952fb73f8984f952a46550be119e, type: 3}
   playerInduceShootSound: {fileID: 8300000, guid: f37372b76a9f3b848a5ba55ac0157ab1, type: 3}
   grazeSound: {fileID: 8300000, guid: f37372b76a9f3b848a5ba55ac0157ab1, type: 3}
   getBombSound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
+  useBombSound: {fileID: 0}
+  powerUpSound: {fileID: 8300000, guid: 7e59349da1eb1cb409dfafa1ab964df3, type: 3}
   bossNormalHitSound: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
   bossCriticalHitSound: {fileID: 8300000, guid: 437aeb1863f1749408b06a2e762d79e0, type: 3}
+  enemyShootSound: {fileID: 8300000, guid: f58127ebe558673459bd01be43c268f9, type: 3}
 --- !u!4 &533680976
 Transform:
   m_ObjectHideFlags: 0
@@ -14513,7 +14516,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56c04c6ece9dd3142bed223112015d27, type: 3}
   m_Name: 
@@ -14566,7 +14569,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ce871a8d1be34429773ffca921245c, type: 3}
   m_Name: 
@@ -17719,7 +17722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ad44c2aa559b64fba4afc510d3cfb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 44
+  power: 1
   maxPower: 40
   mainFireTime: 0
   subFireTime: 0

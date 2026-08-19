@@ -21,7 +21,8 @@ public class EnemyHit : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(AnimRoutine());
+        if (isBoss)
+            StartCoroutine(AnimRoutine());
     }
 
     public void OnHit()

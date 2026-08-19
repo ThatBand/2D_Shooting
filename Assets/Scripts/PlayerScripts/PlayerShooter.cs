@@ -49,6 +49,8 @@ public class PlayerShooter : MonoBehaviour
             UIManager.instance.UpdateMaxPower();
         }
 
+        SoundManager.instance.PowerUpSound();
+
         power += value;
         UIManager.instance.UpdatePower(power);
     }
@@ -57,13 +59,13 @@ public class PlayerShooter : MonoBehaviour
     {
         if (mainTimer < mainFireTime)
             return;
-
-        SoundManager.instance.PlayerMainShootSound();
-
+        
         switch (power)
         {
             case >= 0 and < 10:
                 mainFireTime = 0.25f;
+
+                SoundManager.instance.PlayerMainShootSound();
 
                 GameObject bullet = Instantiate(mainBullet, transform.position, Quaternion.identity);
                 break;
@@ -115,7 +117,7 @@ public class PlayerShooter : MonoBehaviour
                 bulletSubRight.transform.localRotation = Quaternion.Euler(0, 0, -subBulletAngle);
                 break;
             case >= 25 and < 30:
-                subFireTime = 0.35f;
+                subFireTime = 0.45f;
 
                 SoundManager.instance.PlayerSubShootSound();
 
@@ -126,7 +128,7 @@ public class PlayerShooter : MonoBehaviour
                 bulletSubRight2.transform.localRotation = Quaternion.Euler(0, 0, -subBulletAngle);
                 break;
             case >= 30 and < 40:
-                subFireTime = 0.2f;
+                subFireTime = 0.3f;
 
                 SoundManager.instance.PlayerSubShootSound();
 
@@ -137,7 +139,7 @@ public class PlayerShooter : MonoBehaviour
                 bulletSubRight3.transform.localRotation = Quaternion.Euler(0, 0, -subBulletAngle);
                 break;
             case >= 40:
-                subFireTime = 0.175f;
+                subFireTime = 0.25f;
 
                 SoundManager.instance.PlayerSubShootSound();
 
@@ -160,8 +162,10 @@ public class PlayerShooter : MonoBehaviour
         switch (power)
         {
             case >= 40:
-                induceFireTime = 0.15f;
+                induceFireTime = 0.2f;
+
                 SoundManager.instance.PlayerInduceShootSound();
+
                 GameObject induceBulletLeft = Instantiate(induceBullet, transform.position + Vector3.left * 0.5f, Quaternion.identity);
                 induceBulletLeft.transform.localRotation = Quaternion.Euler(0, 0, 20);
 

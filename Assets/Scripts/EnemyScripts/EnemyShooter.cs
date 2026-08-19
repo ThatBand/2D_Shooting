@@ -59,6 +59,8 @@ public class EnemyShooter : MonoBehaviour
                 if (attackSpeed > time)
                     return;
 
+                SoundManager.instance.EnemyShootSound();
+
                 GameObject bullet = Instantiate(enemyBullet, transform.position, Quaternion.identity);
                 Rigidbody2D bulletRigid = bullet.GetComponent<Rigidbody2D>();
                 EnemyBullet bulletScript = bullet.GetComponent<EnemyBullet>();
