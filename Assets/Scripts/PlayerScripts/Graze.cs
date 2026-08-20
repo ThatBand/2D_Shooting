@@ -41,7 +41,8 @@ public class Graze : MonoBehaviour
                 grazeCount++;
                 UIManager.instance.UpdateGraze(grazeCount);
                 ScoreManager.instance.GrazeScorePlus(grazeScore);
-                //SoundManager.instance.GrazeSound();
+
+                SoundManager.instance.GrazeSound();
 
                 if (grazeCount == bombPiece)
                 {

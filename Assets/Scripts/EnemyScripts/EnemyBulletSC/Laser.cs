@@ -57,6 +57,8 @@ public class Laser : MonoBehaviour
 
         laser.localScale = end;
 
+        SoundManager.instance.LaserSound();
+
         yield return new WaitForSeconds(2);
 
         isEnd = true;

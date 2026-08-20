@@ -48,6 +48,8 @@ public class EnemyHealth : MonoBehaviour
             deathEffect?.BossDeath();
             GameManager.instance.isGameClear = true;
 
+            SoundManager.instance.EnemyDeathSound();
+
             if (!hit.isBoss)
                 Destroy(gameObject);
         }

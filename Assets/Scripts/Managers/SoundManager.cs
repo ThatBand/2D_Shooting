@@ -21,6 +21,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip playerSubShootSound;
     public AudioClip playerInduceShootSound;
 
+    [Header("플레이어 사망 효과음")]
+    public AudioClip playerDeathSound;
+
     [Header("그레이즈 효과음")]
     public AudioClip grazeSound;
 
@@ -35,7 +38,11 @@ public class SoundManager : MonoBehaviour
     public AudioClip bossNormalHitSound;
     public AudioClip bossCriticalHitSound;
 
+    [Header("적  효과음")]
     public AudioClip enemyShootSound;
+    public AudioClip enemyDeathSound;
+
+    public AudioClip laserSound;
 
     private void Awake()
     {
@@ -44,6 +51,14 @@ public class SoundManager : MonoBehaviour
 
         else
             Destroy(gameObject);
+    }
+
+    public void PlayerDeathSound()
+    {
+        if (playerSFXSource != null && playerDeathSound != null)
+        {
+            playerSFXSource.PlayOneShot(playerDeathSound, 0.2f);
+        }
     }
 
     public void PlayerMainShootSound()
@@ -77,7 +92,8 @@ public class SoundManager : MonoBehaviour
     {
         if (systemSFXSource != null && grazeSound != null)
         {
-            systemSFXSource.PlayOneShot(grazeSound, 0.4f);
+            systemSFXSource.pitch = Random.Range(0.45f, 0.6f);
+            systemSFXSource.PlayOneShot(grazeSound, 0.25f);
         }
     }
 
@@ -117,8 +133,26 @@ public class SoundManager : MonoBehaviour
     {
         if (enemySFXSource != null && enemyShootSound != null)
         {
-            playerSFXSource.pitch = Random.Range(0.2f, 0.8f);
+            enemySFXSource.pitch = Random.Range(0.8f, 1f);
             enemySFXSource.PlayOneShot(enemyShootSound, 0.15f);
+        }
+    }
+
+    public void EnemyDeathSound()
+    {
+        if (enemySFXSource != null && enemyDeathSound != null)
+        {
+            enemySFXSource.pitch = Random.Range(0.8f, 1f);
+            enemySFXSource.PlayOneShot(enemyDeathSound, 0.15f);
+        }
+    }
+
+    public void LaserSound()
+    {
+        if (systemSFXSource != null && laserSound != null)
+        {
+            systemSFXSource.pitch = Random.Range(0.5f, 0.8f);
+            systemSFXSource.PlayOneShot(laserSound, 0.15f);
         }
     }
 }

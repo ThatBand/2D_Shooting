@@ -3813,13 +3813,16 @@ MonoBehaviour:
   playerMainShootSound: {fileID: 8300000, guid: e5a41a7b4d327cb4ea93df71a1b7b9be, type: 3}
   playerSubShootSound: {fileID: 8300000, guid: b696952fb73f8984f952a46550be119e, type: 3}
   playerInduceShootSound: {fileID: 8300000, guid: f37372b76a9f3b848a5ba55ac0157ab1, type: 3}
-  grazeSound: {fileID: 8300000, guid: f37372b76a9f3b848a5ba55ac0157ab1, type: 3}
+  playerDeathSound: {fileID: 8300000, guid: fa25e77b237cf184aa322fc1c9e98197, type: 3}
+  grazeSound: {fileID: 8300000, guid: 18312d398bec7664983e6a6d8a46f08d, type: 3}
   getBombSound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
   useBombSound: {fileID: 0}
-  powerUpSound: {fileID: 8300000, guid: 7e59349da1eb1cb409dfafa1ab964df3, type: 3}
+  powerUpSound: {fileID: 8300000, guid: 18312d398bec7664983e6a6d8a46f08d, type: 3}
   bossNormalHitSound: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
   bossCriticalHitSound: {fileID: 8300000, guid: 437aeb1863f1749408b06a2e762d79e0, type: 3}
   enemyShootSound: {fileID: 8300000, guid: f58127ebe558673459bd01be43c268f9, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 8470942195b6a744c9c5d31d9978b08f, type: 3}
+  laserSound: {fileID: 8300000, guid: 446bc274a1aba104181fca3ced7eac66, type: 3}
 --- !u!4 &533680976
 Transform:
   m_ObjectHideFlags: 0
@@ -8340,7 +8343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &996252694
 Transform:
   m_ObjectHideFlags: 0
@@ -14395,7 +14398,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ac4eb08d9b0158429a9f37c23716c98, type: 3}
   m_Name: 
@@ -14569,7 +14572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ce871a8d1be34429773ffca921245c, type: 3}
   m_Name: 
@@ -14607,7 +14610,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c148280673981fe4ea8a94049fada9a4, type: 3}
   m_Name: 

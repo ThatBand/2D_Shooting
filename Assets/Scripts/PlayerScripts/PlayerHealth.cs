@@ -32,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
         curHealth--;
         uiManager.HitHealthIcon(curHealth);
 
+        SoundManager.instance.PlayerDeathSound();
+
         if (curHealth == 0)
         {
             isDead = true;
