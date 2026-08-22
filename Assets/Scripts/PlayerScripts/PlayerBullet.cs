@@ -6,6 +6,13 @@ public class PlayerBullet : Bullet
 {
     public bool isInduce;
 
+    private bool isHit;
+
+    private void OnEnable()
+    {
+        isHit = false;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -33,6 +40,9 @@ public class PlayerBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isHit)
+            return;
+
         if (collision.CompareTag("Enemy"))
         {
             if (collision.TryGetComponent(out DamageReceiver receiver))
@@ -46,6 +56,8 @@ public class PlayerBullet : Bullet
                 if (collision.TryGetComponent(out EnemyHealth enemyHealth))
                     enemyHealth.TakeDamage(bulletData.damage);
             }
+
+            isHit = true;
         }
 
         if (collision.CompareTag("EnemyBullet"))
@@ -56,6 +68,8 @@ public class PlayerBullet : Bullet
                 Destroy(gameObject);
                 eBullet.EnemyBulletDamaged(bulletData.damage);
             }
+
+            isHit = true;
         }
     }
 }

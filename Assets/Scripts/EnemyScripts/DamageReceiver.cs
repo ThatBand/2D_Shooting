@@ -36,6 +36,8 @@ public class DamageReceiver : MonoBehaviour
             bossHealth.TakeDamage(baseDmg);
             //SoundManager.instance.BossNormalHitSound();
 
+            GetComponentInParent<BossHitAudio>().PlayHitSound();
+
             tmp.Setup(baseDmg, false);
             
             Debug.Log("보스 히트! 기본 데미지");

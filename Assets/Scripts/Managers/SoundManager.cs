@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     [Header("효과음 소스")]
     public AudioSource playerSFXSource;
     public AudioSource enemySFXSource;
+    public AudioSource bossSFXSound;
     public AudioSource systemSFXSource;
 
     [Header("오디오 클립")]
@@ -115,17 +116,19 @@ public class SoundManager : MonoBehaviour
 
     public void BossNormalHitSound()
     {
-        if (enemySFXSource != null && bossNormalHitSound != null)
+        if (bossSFXSound != null && bossNormalHitSound != null)
         {
-            enemySFXSource.PlayOneShot(bossNormalHitSound, 0.5f);
+            bossSFXSound.pitch = Random.Range(0.6f, 1f);
+            bossSFXSound.PlayOneShot(bossNormalHitSound, 0.15f);
         }
     }
 
     public void BossCriticalHitSound()
     {
-        if (enemySFXSource != null && bossCriticalHitSound != null)
+        if (bossSFXSound != null && bossCriticalHitSound != null)
         {
-            enemySFXSource.PlayOneShot(bossCriticalHitSound, 0.5f);
+            bossSFXSound.pitch = Random.Range(0.7f, 1f);
+            bossSFXSound.PlayOneShot(bossCriticalHitSound, 0.2f);
         }
     }
 
