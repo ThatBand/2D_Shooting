@@ -54,6 +54,8 @@ public class BossStrike : MonoBehaviour
         {
             for (int k = 0; k < bullets.Length; k++)
             {
+                SoundManager.instance.BossShootSound();
+
                 bullets[k] = Instantiate(data.enemyBullet[0], points[k]);
                 EnemyBullet bullet = bullets[k].GetComponent<EnemyBullet>();
                 BulletProbability(bullet);

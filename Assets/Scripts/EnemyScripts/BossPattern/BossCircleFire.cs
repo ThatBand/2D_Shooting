@@ -106,6 +106,7 @@ public class BossCircleFire : MonoBehaviour
 
                 yield return new WaitForSeconds(0.3f);
             }
+            SoundManager.instance.BossShootSound();
 
             yield return new WaitForSeconds(fireDelay);
 

@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("효과음 소스")]
     public AudioSource playerSFXSource;
+
     public AudioSource enemySFXSource;
     public AudioSource bossSFXSound;
     public AudioSource systemSFXSource;
@@ -43,7 +44,12 @@ public class SoundManager : MonoBehaviour
     public AudioClip enemyShootSound;
     public AudioClip enemyDeathSound;
 
+    [Header("보스 발사 효과음")]
     public AudioClip laserSound;
+    public AudioClip bossShootSound;
+
+    private float lastHitSoundTime;
+    private float hitSoundCooldown = 0.05f;
 
     private void Awake()
     {
@@ -118,8 +124,12 @@ public class SoundManager : MonoBehaviour
     {
         if (bossSFXSound != null && bossNormalHitSound != null)
         {
-            bossSFXSound.pitch = Random.Range(0.6f, 1f);
-            bossSFXSound.PlayOneShot(bossNormalHitSound, 0.15f);
+            if (Time.time - lastHitSoundTime >= hitSoundCooldown)
+            {
+                bossSFXSound.pitch = Random.Range(0.6f, 1f);
+                bossSFXSound.PlayOneShot(bossNormalHitSound, 0.15f);
+                lastHitSoundTime = Time.time;
+            }
         }
     }
 
@@ -127,8 +137,21 @@ public class SoundManager : MonoBehaviour
     {
         if (bossSFXSound != null && bossCriticalHitSound != null)
         {
-            bossSFXSound.pitch = Random.Range(0.7f, 1f);
-            bossSFXSound.PlayOneShot(bossCriticalHitSound, 0.2f);
+            if (Time.time - lastHitSoundTime >= hitSoundCooldown)
+            {
+                bossSFXSound.pitch = Random.Range(0.7f, 1f);
+                bossSFXSound.PlayOneShot(bossCriticalHitSound, 0.2f);
+                lastHitSoundTime = Time.time;
+            }
+        }
+    }
+
+    public void BossShootSound()
+    {
+        if (bossSFXSound != null && bossShootSound != null)
+        {
+            bossSFXSound.pitch = Random.Range(0.8f, 1f);
+            bossSFXSound.PlayOneShot(bossShootSound, 0.3f);
         }
     }
 
