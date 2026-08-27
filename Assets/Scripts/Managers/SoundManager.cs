@@ -36,6 +36,9 @@ public class SoundManager : MonoBehaviour
     [Header("파워업 효과음")]
     public AudioClip powerUpSound;
 
+    [Header("파랑 총알 충돌 효과음")]
+    public AudioClip blueBulletSound;
+
     [Header("보스 히트 효과음")]
     public AudioClip bossNormalHitSound;
     public AudioClip bossCriticalHitSound;
@@ -46,7 +49,9 @@ public class SoundManager : MonoBehaviour
 
     [Header("보스 발사 효과음")]
     public AudioClip laserSound;
-    public AudioClip bossShootSound;
+    public AudioClip bossShotSound_0;
+    public AudioClip bossShotSound_1;
+    public AudioClip bossShotSound_2;
 
     private float lastHitSoundTime;
     private float hitSoundCooldown = 0.05f;
@@ -112,6 +117,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void BlueBulletSound()
+    {
+        if (systemSFXSource != null && blueBulletSound != null)
+        {
+            systemSFXSource.PlayOneShot(blueBulletSound, 0.15f);
+        }
+    }
+
     public void GetBombSound()
     {
         if (systemSFXSource != null && getBombSound != null)
@@ -146,12 +159,30 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void BossShootSound()
+    public void BossShotSound_0()
     {
-        if (bossSFXSound != null && bossShootSound != null)
+        if (bossSFXSound != null && bossShotSound_0 != null)
         {
             bossSFXSound.pitch = Random.Range(0.8f, 1f);
-            bossSFXSound.PlayOneShot(bossShootSound, 0.3f);
+            bossSFXSound.PlayOneShot(bossShotSound_0, 0.3f);
+        }
+    }
+
+    public void BossShotSound_1()
+    {
+        if (bossSFXSound != null && bossShotSound_1 != null)
+        {
+            bossSFXSound.pitch = Random.Range(0.3f, 0.5f);
+            bossSFXSound.PlayOneShot(bossShotSound_1, 0.05f);
+        }
+    }
+
+    public void BossShotSound_2()
+    {
+        if (bossSFXSound != null && bossShotSound_2 != null)
+        {
+            bossSFXSound.pitch = Random.Range(0.3f, 0.5f);
+            bossSFXSound.PlayOneShot(bossShotSound_2, 0.4f);
         }
     }
 

@@ -67,6 +67,8 @@ public class BossSpiralSpread : MonoBehaviour
         {
             for (int i = 0; i < bulletCount; i++)
             {
+                SoundManager.instance.BossShotSound_1();
+
                 GameObject bullet = Instantiate(bossData.enemyBullet[1], bulletContainer.position, Quaternion.identity, bulletContainer);
                 EnemyBullet bullstSC = bullet.GetComponent<EnemyBullet>();
                 BulletProbability(bullstSC);

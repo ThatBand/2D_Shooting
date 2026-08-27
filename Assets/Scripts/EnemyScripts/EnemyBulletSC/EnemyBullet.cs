@@ -120,7 +120,7 @@ public class EnemyBullet : Bullet
                 if (text.TryGetComponent(out ScoreBulletText textSC))
                     textSC.Setup(blueBulletScore);
 
-                //SoundManager.instance.PowerUpSound();
+                SoundManager.instance.BlueBulletSound();
 
                 ScoreManager.instance.ScorePlus(blueBulletScore);
 

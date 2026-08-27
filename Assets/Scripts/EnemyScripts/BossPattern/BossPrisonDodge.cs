@@ -55,6 +55,8 @@ public class BossPrisonDodge : MonoBehaviour
     {
         for (int i = 0; i < 8; i++)
         {
+            SoundManager.instance.BossShotSound_2();
+
             rand = Random.Range(0, 3);
 
             Vector3 bullet0Pos = Vector3.zero;
