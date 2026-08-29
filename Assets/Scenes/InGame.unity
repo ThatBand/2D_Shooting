@@ -3823,12 +3823,19 @@ MonoBehaviour:
   getBombSound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
   useBombSound: {fileID: 8300000, guid: 8817289634b51fa4e8fdd9f77440dfb2, type: 3}
   powerUpSound: {fileID: 8300000, guid: 18312d398bec7664983e6a6d8a46f08d, type: 3}
+  blueBulletSound: {fileID: 8300000, guid: c20005fbba4bfe44885f2d04d1797a11, type: 3}
   bossNormalHitSound: {fileID: 8300000, guid: 1588b23f01e0a3741b06c264414115ed, type: 3}
   bossCriticalHitSound: {fileID: 8300000, guid: 0b52d33b3fa53794592597d49ec3620a, type: 3}
   enemyShootSound: {fileID: 8300000, guid: f58127ebe558673459bd01be43c268f9, type: 3}
   enemyDeathSound: {fileID: 8300000, guid: 8470942195b6a744c9c5d31d9978b08f, type: 3}
+  warningSound: {fileID: 8300000, guid: 643e39686fc0ee2458081475d055354f, type: 3}
   laserSound: {fileID: 8300000, guid: 446bc274a1aba104181fca3ced7eac66, type: 3}
-  bossShootSound: {fileID: 8300000, guid: 68f8062fc41358c42806251179cf0a90, type: 3}
+  bossShotSound_0: {fileID: 8300000, guid: 68f8062fc41358c42806251179cf0a90, type: 3}
+  bossShotSound_1: {fileID: 8300000, guid: 4751e8a0a1cf7a7419605b0f9786edf5, type: 3}
+  bossShotSound_2: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+  bossShotSound_3: {fileID: 8300000, guid: f2fac7b8d9bfa804e82a3fa616485ba6, type: 3}
+  bossShotSound_4: {fileID: 8300000, guid: 5414282ba06b02141a3b14a867fc8e80, type: 3}
+  createQuartz: {fileID: 8300000, guid: 4f3859b484696994b804aff1f63c92ed, type: 3}
 --- !u!4 &533680976
 Transform:
   m_ObjectHideFlags: 0
@@ -14703,7 +14710,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d27e3ab37d8652344b980056b57bd261, type: 3}
   m_Name: 
@@ -14760,7 +14767,7 @@ MonoBehaviour:
   blue: 1.5
   yellow: 1.5
   bulletCount: 5
-  bulletSpeed: 10
+  bulletSpeed: 8
   fireTime: 0.25
   bossData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
 --- !u!114 &1844755509

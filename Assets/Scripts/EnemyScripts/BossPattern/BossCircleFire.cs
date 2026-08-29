@@ -84,6 +84,8 @@ public class BossCircleFire : MonoBehaviour
 
         while (a < patternCount)
         {
+            SoundManager.instance.BossShotSound_3();
+
             for (int k = 0; k < 2; k++)
             {
                 float randSpeed = Random.Range(70f, 75f);
@@ -106,7 +108,7 @@ public class BossCircleFire : MonoBehaviour
 
                 yield return new WaitForSeconds(0.3f);
             }
-            SoundManager.instance.BossShotSound_0();
+            
 
             yield return new WaitForSeconds(fireDelay);
 

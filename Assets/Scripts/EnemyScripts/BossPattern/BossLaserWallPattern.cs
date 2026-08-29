@@ -60,6 +60,12 @@ public class BossLaserWallPattern : MonoBehaviour
             GameObject enemy = Instantiate(enemy_L, targetPos[i], Quaternion.identity);
         }
 
+        SoundManager.instance.WarningSound();
+
+        yield return new WaitForSeconds(2f);
+
+        SoundManager.instance.WarningSound();
+
         yield return new WaitForSeconds(3);
 
         StartCoroutine(CircularPattern());
@@ -72,9 +78,10 @@ public class BossLaserWallPattern : MonoBehaviour
 
         while (a < circlePatternCount)
         {
+            SoundManager.instance.BossShotSound_4();
+
             for (int i = 0; i < bulletCount; i++)
             {
-                Debug.Log(bulletCount);
                 GameObject bullet = Instantiate(data.enemyBullet[5], transform.position, Quaternion.identity);
                 
                 if (bullet.TryGetComponent(out EnemyBullet eBullet))

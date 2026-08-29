@@ -67,6 +67,8 @@ public class BossRowColPattern : MonoBehaviour
 
         for (int i = 0; i < patternCount; i++)
         {
+            SoundManager.instance.BossShotSound_0();
+
             for (int k = 0; k < bulletCount; k++)
             {
                 float spawnX = startX + (spacingX * k);

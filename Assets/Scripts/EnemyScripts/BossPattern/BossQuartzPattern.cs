@@ -37,6 +37,8 @@ public class BossQuartzPattern : MonoBehaviour
 
             float randCycle = Random.Range((float)creationCycle.x, (float)creationCycle.y);
 
+            SoundManager.instance.CreateQuartz();
+
             Quartz spawnQ = Instantiate(quartzPrefab, new Vector2(randX, randY), Quaternion.identity);
             spawnedQuartzList.Add(spawnQ);
 

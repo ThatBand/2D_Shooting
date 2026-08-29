@@ -16,7 +16,7 @@ public class BossSpiralSpread : MonoBehaviour
     public int bulletCount;
 
     [Header("총알 속도")]
-    public int bulletSpeed;
+    public float bulletSpeed;
 
     [Header("발사 쿨타임")]
     public float fireTime;
@@ -80,8 +80,10 @@ public class BossSpiralSpread : MonoBehaviour
                 bulletRigid.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
             }
 
+            //bulletSpeed = Mathf.Cos(Time.time);
+
             o++;
-            yield return new WaitForSeconds(fireTime);
+            yield return new WaitForSeconds(fireTime * 3);
         }
 
         manager.ChangeState(BossState.Idle);
