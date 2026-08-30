@@ -41,8 +41,7 @@ public class PlayerHealth : MonoBehaviour
             uiManager.SetGameOverPanel();
             return;
         }
-
+        
         OnDamaged?.Invoke();
     }
-
 }

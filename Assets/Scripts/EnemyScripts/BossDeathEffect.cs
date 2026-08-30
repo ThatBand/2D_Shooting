@@ -68,6 +68,8 @@ public class BossDeathEffect : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
 
+            SoundManager.instance.BossBreakSound();
+
             Instantiate(particle, particlePos[i].position, Quaternion.identity);
             CameraShake.instance.Shake(0.05f, 0.05f);
         }

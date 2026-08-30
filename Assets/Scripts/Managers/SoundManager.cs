@@ -266,6 +266,15 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void BossBreakSound()
+    {
+        if (bossSFXSound != null && bossBreakSound != null)
+        {
+            bossSFXSound.pitch = Random.Range(0.05f, 0.4f);
+            bossSFXSound.PlayOneShot(bossBreakSound, 0.05f);
+        }
+    }
+
     public void EnemyShootSound()
     {
         if (enemySFXSource != null && enemyShootSound != null)

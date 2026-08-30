@@ -4177,7 +4177,7 @@ MonoBehaviour:
   bossShotSound_3: {fileID: 8300000, guid: f2fac7b8d9bfa804e82a3fa616485ba6, type: 3}
   bossShotSound_4: {fileID: 8300000, guid: 5414282ba06b02141a3b14a867fc8e80, type: 3}
   createQuartz: {fileID: 8300000, guid: 4f3859b484696994b804aff1f63c92ed, type: 3}
-  bossBreakSound: {fileID: 0}
+  bossBreakSound: {fileID: 8300000, guid: 655d86ff1884684409a0eb424da8b151, type: 3}
 --- !u!4 &533680976
 Transform:
   m_ObjectHideFlags: 0
