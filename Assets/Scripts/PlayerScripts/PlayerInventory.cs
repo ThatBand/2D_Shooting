@@ -46,6 +46,8 @@ public class PlayerInventory : MonoBehaviour
 
         invincibility.StartInvincibility();
 
+        SoundManager.instance.UseBombSound();
+
         CameraShake.instance.Shake(0.5f, 0.15f);
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

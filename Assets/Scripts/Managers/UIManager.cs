@@ -9,22 +9,28 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    [Header("점수 텍스트")]
     public TextMeshProUGUI curScoreText;
     public TextMeshProUGUI highScoreText;
 
+    [Header("ㅤ")]
     public TextMeshProUGUI powerText;
     public TextMeshProUGUI grazeText;
 
+    [Header("ㅤ")]
     public TextMeshProUGUI playTimeText;
 
     public Image[] healthIcons;
     public Image[] boomIcons;
 
+    [Header("게임 오버 / 클리어 패널")]
     public GameOverUI gameOverPanel;
     public StageClearUI gameClearPanel;
 
+    [Header("정보 패널")]
     public GameObject pausePanel;
     public GameObject settingPanel;
+    public GameObject volumeSetPanel;
     public GameObject noticePanel;
 
     public Slider timeControlSlider;
@@ -122,6 +128,11 @@ public class UIManager : MonoBehaviour
         pausePanel.SetActive(false);
     }
 
+    public void OpenVolumeSettingPanel()
+    {
+        volumeSetPanel.SetActive(true);
+    }
+
     public void OpenNoticePanel()
     {
         settingPanel.SetActive(false);
@@ -138,6 +149,11 @@ public class UIManager : MonoBehaviour
     {
         settingPanel.SetActive(false);
         GameTimeManager.instance.NormalMode();
+    }
+
+    public void CloseVolumeSettingPanel()
+    {
+        volumeSetPanel.SetActive(false);
     }
 
     public void ExitGame()
@@ -161,6 +177,9 @@ public class UIManager : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Escape) && pausePanel.activeSelf)
             ClosePausePanel();
+
+        else if (Input.GetKeyDown(KeyCode.Escape) && settingPanel.activeSelf && volumeSetPanel.activeSelf)
+            CloseVolumeSettingPanel();
 
         else if (Input.GetKeyDown(KeyCode.Escape) && settingPanel.activeSelf)
             CloseSettingPanel();

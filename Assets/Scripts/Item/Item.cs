@@ -13,6 +13,8 @@ public class Item : MonoBehaviour
         {
             UseItem(collision.gameObject);
             Destroy(gameObject);
+
+            SoundManager.instance.BlueBulletSound();
         }
     }
 

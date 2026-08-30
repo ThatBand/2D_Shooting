@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     public void ClearBullet()
     {
+        SoundManager.instance.BulletToCoinSound();
+
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
 
         foreach (GameObject bullet in bullets)

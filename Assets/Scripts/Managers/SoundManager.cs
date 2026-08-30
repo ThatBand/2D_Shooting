@@ -11,7 +11,6 @@ public class SoundManager : MonoBehaviour
 
     [Header("효과음 소스")]
     public AudioSource playerSFXSource;
-
     public AudioSource enemySFXSource;
     public AudioSource bossSFXSound;
     public AudioSource systemSFXSource;
@@ -39,6 +38,9 @@ public class SoundManager : MonoBehaviour
     [Header("파랑 총알 충돌 효과음")]
     public AudioClip blueBulletSound;
 
+    [Header("ㅤ")]
+    public AudioClip bullet2CoinSound;
+
     [Header("보스 히트 효과음")]
     public AudioClip bossNormalHitSound;
     public AudioClip bossCriticalHitSound;
@@ -52,13 +54,18 @@ public class SoundManager : MonoBehaviour
 
     [Header("보스 발사 효과음")]
     public AudioClip laserSound;
+
+    [Header("ㅤ")]
     public AudioClip bossShotSound_0;
     public AudioClip bossShotSound_1;
     public AudioClip bossShotSound_2;
     public AudioClip bossShotSound_3;
     public AudioClip bossShotSound_4;
 
+    [Header("ㅤ")]
     public AudioClip createQuartz;
+
+    public AudioClip bossBreakSound;
 
     private float lastHitSoundTime;
     private float hitSoundCooldown = 0.05f;
@@ -81,13 +88,18 @@ public class SoundManager : MonoBehaviour
 
             systemSFXSource.pitch = 1;
         }
-            
     }
 
     public void WarningSound()
     {
         if (systemSFXSource != null && warningSound != null)
             systemSFXSource.PlayOneShot(warningSound, 0.5f);
+    }
+
+    public void BulletToCoinSound()
+    {
+        if (systemSFXSource != null && bullet2CoinSound != null)
+            systemSFXSource.PlayOneShot(bullet2CoinSound, 0.5f);
     }
 
     public void PlayerDeathSound()
@@ -104,6 +116,7 @@ public class SoundManager : MonoBehaviour
         {
             playerSFXSource.pitch = Random.Range(0.9f, 1.05f);
             playerSFXSource.PlayOneShot(playerMainShootSound, 0.15f);
+
             playerSFXSource.pitch = 1;
         }
     }
@@ -114,6 +127,7 @@ public class SoundManager : MonoBehaviour
         {
             playerSFXSource.pitch = Random.Range(0.6f, 0.8f);
             playerSFXSource.PlayOneShot(playerSubShootSound, 0.05f);
+
             playerSFXSource.pitch = 1;
         }
     }
@@ -124,6 +138,7 @@ public class SoundManager : MonoBehaviour
         {
             playerSFXSource.pitch = Random.Range(0.45f, 0.6f);
             playerSFXSource.PlayOneShot(playerInduceShootSound, 0.05f);
+
             playerSFXSource.pitch = 1;
         }
     }
@@ -134,6 +149,7 @@ public class SoundManager : MonoBehaviour
         {
             systemSFXSource.pitch = Random.Range(0.45f, 0.6f);
             systemSFXSource.PlayOneShot(grazeSound, 0.25f);
+
             systemSFXSource.pitch = 1;
         }
     }
@@ -159,6 +175,14 @@ public class SoundManager : MonoBehaviour
         if (systemSFXSource != null && getBombSound != null)
         {
             systemSFXSource.PlayOneShot(getBombSound);
+        }
+    }
+
+    public void UseBombSound()
+    {
+        if (systemSFXSource != null && useBombSound != null)
+        {
+            systemSFXSource.PlayOneShot(useBombSound, 0.85f);
         }
     }
 
