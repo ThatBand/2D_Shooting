@@ -24,6 +24,9 @@ public class PlayerTimeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (uiManager.isPause)
+            return;
+
         if (curGauge < 0.1 && !isCooldown)
         {
             curGauge = 0;

@@ -33,7 +33,7 @@ public class PlayerShooter : MonoBehaviour
         subTimer += Time.deltaTime;
         induceTimer += Time.deltaTime;
 
-        if (!Input.GetKey(KeyCode.Z))
+        if (!Input.GetKey(KeyCode.Z) || UIManager.instance.isPause)
             return;
 
         FireMain();

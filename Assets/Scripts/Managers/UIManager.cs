@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
 
     public Slider timeControlSlider;
 
+    public bool isPause;
+
     private void Awake()
     {
         if (instance == null)
@@ -120,6 +122,8 @@ public class UIManager : MonoBehaviour
     {
         pausePanel.SetActive(true);
         GameTimeManager.instance.StopGame();
+
+        isPause = true;
     }
 
     public void OpenSettingPanel()
@@ -143,12 +147,16 @@ public class UIManager : MonoBehaviour
     {
         pausePanel.SetActive(false);
         GameTimeManager.instance.NormalMode();
+
+        isPause = false;
     }
 
     public void CloseSettingPanel()
     {
         settingPanel.SetActive(false);
         GameTimeManager.instance.NormalMode();
+
+        isPause = false;
     }
 
     public void CloseVolumeSettingPanel()
