@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -10,14 +11,28 @@ public class VolumeController : MonoBehaviour
     [Header("UI 슬라이더")]
     public Slider masterSlider;
     public Slider bgmSlider;
-    public Slider sgxSlider;
+    public Slider sfxSlider;
+
+    [Header("볼륨 사이즈")]
+    public TextMeshProUGUI masterSize;
+    public TextMeshProUGUI bgmSize;
+    public TextMeshProUGUI sfxSize;
+
 
     // Start is called before the first frame update
     void Start()
     {
         masterSlider.onValueChanged.AddListener(SetMaserVol);
         bgmSlider.onValueChanged.AddListener(SetBgmVol);
-        sgxSlider.onValueChanged.AddListener(SetSfxVol);
+        sfxSlider.onValueChanged.AddListener(SetSfxVol);
+
+        masterSlider.value = PlayerPrefs.GetFloat("MasterVol", 0.5f);
+        bgmSlider.value = PlayerPrefs.GetFloat("BgmVol", 0.5f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SfxVol", 0.5f);
+
+        masterSize.text = masterSlider.value.ToString("F2");
+        bgmSize.text = bgmSlider.value.ToString("F2");
+        sfxSize.text = sfxSlider.value.ToString("F2");
     }
 
     public void SetMaserVol(float value)
@@ -27,6 +42,10 @@ public class VolumeController : MonoBehaviour
 
         else
             audioMixer.SetFloat("MasterVOL", Mathf.Log10(value) * 20);
+
+        masterSize.text = masterSlider.value.ToString("F2");
+
+        PlayerPrefs.SetFloat("MasterVol", value);
     }
 
     public void SetBgmVol(float value)
@@ -36,6 +55,10 @@ public class VolumeController : MonoBehaviour
 
         else
             audioMixer.SetFloat("BgmVOL", Mathf.Log10(value) * 20);
+
+        bgmSize.text = bgmSlider.value.ToString("F2");
+
+        PlayerPrefs.SetFloat("BgmVol", value);
     }
 
     public void SetSfxVol(float value)
@@ -45,5 +68,9 @@ public class VolumeController : MonoBehaviour
 
         else
             audioMixer.SetFloat("SfxVOL", Mathf.Log10(value) * 20);
+
+        sfxSize.text = sfxSlider.value.ToString("F2");
+
+        PlayerPrefs.SetFloat("SfxVol", value);
     }
 }

@@ -65,7 +65,17 @@ public class SoundManager : MonoBehaviour
     [Header("ㅤ")]
     public AudioClip createQuartz;
 
+    [Header("보스 폭파 사운드")]
     public AudioClip bossBreakSound;
+    public AudioClip bossExplosionSound;
+
+    [Header("게임 클리어 / 오버 사운드")]
+    public AudioClip gameClearSound;
+    public AudioClip gameOverSound;
+
+    [Header("점수 카운트 / 하이스코어 갱신 사운드")]
+    public AudioClip scoreCountSound;
+    public AudioClip highScoreSound;
 
     private float lastHitSoundTime;
     private float hitSoundCooldown = 0.05f;
@@ -77,6 +87,36 @@ public class SoundManager : MonoBehaviour
 
         else
             Destroy(gameObject);
+    }
+
+    public void ScoreSound()
+    {
+        if (systemSFXSource != null && scoreCountSound != null)
+            systemSFXSource.PlayOneShot(scoreCountSound, 0.15f);
+    }
+
+    public void HighScoreSound()
+    {
+        if (systemSFXSource != null && highScoreSound != null)
+            systemSFXSource.PlayOneShot(highScoreSound, 0.6f);
+    }
+
+    public void GameClearSound()
+    {
+        if (systemSFXSource != null && gameClearSound != null)
+            systemSFXSource.PlayOneShot(gameClearSound, 0.2f);
+    }
+
+    public void GameOverSound()
+    {
+        if (systemSFXSource != null && gameOverSound != null)
+            systemSFXSource.PlayOneShot(gameOverSound, 0.2f);
+    }
+
+    public void BossExplosionSound()
+    {
+        if (bossSFXSound != null && bossExplosionSound != null)
+            bossSFXSound.PlayOneShot(bossExplosionSound, 0.5f);
     }
 
     public void CreateQuartz()
@@ -263,6 +303,8 @@ public class SoundManager : MonoBehaviour
         {
             bossSFXSound.pitch = Random.Range(0.9f, 1.05f);
             bossSFXSound.PlayOneShot(bossShotSound_4, 0.15f);
+
+            bossSFXSound.pitch = 1;
         }
     }
 
@@ -272,6 +314,8 @@ public class SoundManager : MonoBehaviour
         {
             bossSFXSound.pitch = Random.Range(0.05f, 0.4f);
             bossSFXSound.PlayOneShot(bossBreakSound, 0.05f);
+
+            bossSFXSound.pitch = 1;
         }
     }
 

@@ -104,6 +104,8 @@ public class BossDeathEffect : MonoBehaviour
 
     IEnumerator FlashEffect()
     {
+        SoundManager.instance.BossExplosionSound();
+
         flashImg.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(flashTime);
@@ -121,7 +123,7 @@ public class BossDeathEffect : MonoBehaviour
         sprite.enabled = false;
         flashImg.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
         UIManager.instance.SetGameClearPanel();
     }

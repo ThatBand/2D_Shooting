@@ -40,16 +40,25 @@ public class StageClearUI : MonoBehaviour
         yield return new WaitForSecondsRealtime(delay);
 
         int grazeBonus = grazeCount * 200;
-        yield return StartCoroutine(CountUpRoutine(grazeCountText, 0, grazeBonus));
-        yield return new WaitForSecondsRealtime(delay);
-
+        if (grazeCount > 0)
+        {
+            yield return StartCoroutine(CountUpRoutine(grazeCountText, 0, grazeBonus));
+            yield return new WaitForSecondsRealtime(delay);
+        }
+        
         int lifeBonus = remainingLives * 10000;
-        yield return StartCoroutine(CountUpRoutine(lifeBonusText, 0, lifeBonus));
-        yield return new WaitForSecondsRealtime(delay);
+        if (remainingLives > 0)
+        {
+            yield return StartCoroutine(CountUpRoutine(lifeBonusText, 0, lifeBonus));
+            yield return new WaitForSecondsRealtime(delay);
+        }
 
         int bombBonus = remainingBombs * 5000;
-        yield return StartCoroutine(CountUpRoutine(bombBonusText, 0, bombBonus));
-        yield return new WaitForSecondsRealtime(delay);
+        if (remainingBombs > 0)
+        {
+            yield return StartCoroutine(CountUpRoutine(bombBonusText, 0, bombBonus));
+            yield return new WaitForSecondsRealtime(delay);
+        }
 
         int totalScore = baseScore + grazeBonus + lifeBonus + bombBonus;
         
@@ -58,7 +67,10 @@ public class StageClearUI : MonoBehaviour
         bool isNewRecord = ScoreManager.instance.UpdateFinalScore(totalScore);
 
         if (isNewRecord)
+        {
+            SoundManager.instance.HighScoreSound();
             highScore.SetActive(true);
+        }
     }
 
     private IEnumerator CountUpRoutine(TMP_Text textElement, int startValue, int targetValue, float customDuration = -1f)
@@ -66,16 +78,22 @@ public class StageClearUI : MonoBehaviour
         float duration = customDuration > 0 ? customDuration : lineCountDuration;
         float timer = 0f;
 
+        float lastSoundTime = 0;
+        float soundInterval = 0.04f;
+
         while (timer < duration)
         {
-            // timeScale = 0 상태에서도 작동하도록 unscaledDeltaTime 사용
             timer += Time.unscaledDeltaTime;
 
-            // Lerp로 수치 간간히 상승
             int currentValue = (int)Mathf.Lerp(startValue, targetValue, timer / duration);
 
-            // "N0"는 천 단위 쉼표(1,000) 포맷
             textElement.text = currentValue.ToString("N0");
+
+            if (timer - lastSoundTime >= soundInterval)
+            {
+                SoundManager.instance.ScoreSound();
+                lastSoundTime = timer;
+            }
 
             yield return null;
         }

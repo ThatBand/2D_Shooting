@@ -99,6 +99,7 @@ public class UIManager : MonoBehaviour
 
     public void SetGameClearPanel()
     {
+        SoundManager.instance.GameClearSound();
         gameClearPanel.ShowClearUI(GameManager.instance.playTime,
                                                 GameManager.instance.player.GetComponentInChildren<Graze>().grazeCount,
                                                 GameManager.instance.player.GetComponent<PlayerHealth>().curHealth,
@@ -108,6 +109,7 @@ public class UIManager : MonoBehaviour
 
     public void SetGameOverPanel()
     {
+        SoundManager.instance.GameOverSound();
         gameOverPanel.ShowGameOverUI(GameManager.instance.playTime,
                                      GameManager.instance.player.GetComponentInChildren<Graze>().grazeCount,
                                      ScoreManager.instance.stageScore);
