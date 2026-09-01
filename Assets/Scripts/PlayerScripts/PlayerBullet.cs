@@ -65,8 +65,9 @@ public class PlayerBullet : Bullet
             if (collision.TryGetComponent(out EnemyBullet eBullet) && eBullet.type == EnemyBullet.bulletType.yellow)
             {
                 Debug.Log("노랑 총알과 충돌");
-                Destroy(gameObject);
                 eBullet.EnemyBulletDamaged(bulletData.damage);
+
+                Destroy(gameObject);
             }
 
             isHit = true;
