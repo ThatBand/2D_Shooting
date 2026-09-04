@@ -66,7 +66,7 @@ public class BossPatternManager : MonoBehaviour
         laserWallPattern = GetComponent<BossLaserWallPattern>();
     }
 
-    private void Start()
+    public void BossMoveStart()
     {
         curSequence = phase1PatternCycle;
 
@@ -147,6 +147,8 @@ public class BossPatternManager : MonoBehaviour
 
         StopAllCoroutines();
         GameManager.instance.ClearBullet();
+
+        SoundManager.instance.Change2PhaseBGM();
 
         isPhase2 = true;
         Debug.Log("보스 2페이즈 시작!");

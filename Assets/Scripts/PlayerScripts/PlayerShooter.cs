@@ -46,7 +46,6 @@ public class PlayerShooter : MonoBehaviour
         if (power >= maxPower)
         {
             ScoreManager.instance.ScorePlus(300);
-            UIManager.instance.UpdateMaxPower();
         }
 
         SoundManager.instance.PowerUpSound();

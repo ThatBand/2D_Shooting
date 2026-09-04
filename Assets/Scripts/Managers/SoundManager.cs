@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
+
+    [Header("오디오 믹서")]
+    public AudioMixer mixer;
 
     [Header("배경음 소스")]
     public AudioSource bgmSource;
@@ -17,6 +21,10 @@ public class SoundManager : MonoBehaviour
 
     [Header("오디오 클립")]
 
+    [Header("BGM 클립")]
+    public AudioClip bgm_0;
+    public AudioClip bgm_1;
+
     [Header("플레이어 발사 효과음")]
     public AudioClip playerMainShootSound;
     public AudioClip playerSubShootSound;
@@ -27,6 +35,10 @@ public class SoundManager : MonoBehaviour
 
     [Header("그레이즈 효과음")]
     public AudioClip grazeSound;
+
+    [Header("시간 감속 사용 / 해제 효과음")]
+    public AudioClip focusInSound;
+    public AudioClip focusOutSound;
 
     [Header("폭탄 효과음")]
     public AudioClip getBombSound;
@@ -80,6 +92,8 @@ public class SoundManager : MonoBehaviour
     private float lastHitSoundTime;
     private float hitSoundCooldown = 0.05f;
 
+    private bool isFocus;
+
     private void Awake()
     {
         if (instance == null)
@@ -89,10 +103,57 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void PlayFocusInSound()
+    {
+        if (isFocus)
+            return;
+
+        isFocus = true;
+
+        if (systemSFXSource != null && focusInSound != null)
+        {
+            systemSFXSource.Stop();
+            systemSFXSource.PlayOneShot(focusInSound, 1f);
+        }
+
+        mixer.SetFloat("BgmCutOff", 500f);
+    }
+
+    public void PlayFocusOutSound()
+    {
+        if (!isFocus)
+            return;
+
+        isFocus = false;
+
+        if (systemSFXSource != null && focusOutSound != null)
+        {
+            systemSFXSource.Stop();
+            systemSFXSource.PlayOneShot(focusOutSound, 0.5f);
+        }
+
+        mixer.SetFloat("BgmCutOff", 5000f);
+    }
+
+    public void Change1PhaseBGM()
+    {
+        if (bgmSource != null && bgm_0 != null)
+            bgmSource.PlayOneShot(bgm_0, 0.3f);
+    }
+
+    public void Change2PhaseBGM()
+    {
+        if (bgmSource != null && bgm_1 != null)
+        {
+            bgmSource.Stop();
+            bgmSource.PlayOneShot(bgm_1, 0.3f);
+        }
+    }
+
     public void ScoreSound()
     {
         if (systemSFXSource != null && scoreCountSound != null)
-            systemSFXSource.PlayOneShot(scoreCountSound, 0.15f);
+            systemSFXSource.PlayOneShot(scoreCountSound, 0.2f);
     }
 
     public void HighScoreSound()
@@ -105,12 +166,16 @@ public class SoundManager : MonoBehaviour
     {
         if (systemSFXSource != null && gameClearSound != null)
             systemSFXSource.PlayOneShot(gameClearSound, 0.2f);
+
+        bgmSource.Stop();
     }
 
     public void GameOverSound()
     {
         if (systemSFXSource != null && gameOverSound != null)
             systemSFXSource.PlayOneShot(gameOverSound, 0.2f);
+
+        bgmSource.Stop();
     }
 
     public void BossExplosionSound()
@@ -146,7 +211,7 @@ public class SoundManager : MonoBehaviour
     {
         if (playerSFXSource != null && playerDeathSound != null)
         {
-            playerSFXSource.PlayOneShot(playerDeathSound, 0.2f);
+            playerSFXSource.PlayOneShot(playerDeathSound, 0.25f);
         }
     }
 
@@ -155,7 +220,7 @@ public class SoundManager : MonoBehaviour
         if (playerSFXSource != null && playerMainShootSound != null)
         {
             playerSFXSource.pitch = Random.Range(0.9f, 1.05f);
-            playerSFXSource.PlayOneShot(playerMainShootSound, 0.15f);
+            playerSFXSource.PlayOneShot(playerMainShootSound, 0.2f);
 
             playerSFXSource.pitch = 1;
         }
@@ -166,7 +231,7 @@ public class SoundManager : MonoBehaviour
         if (playerSFXSource != null && playerSubShootSound != null)
         {
             playerSFXSource.pitch = Random.Range(0.6f, 0.8f);
-            playerSFXSource.PlayOneShot(playerSubShootSound, 0.05f);
+            playerSFXSource.PlayOneShot(playerSubShootSound, 0.15f);
 
             playerSFXSource.pitch = 1;
         }
@@ -177,7 +242,7 @@ public class SoundManager : MonoBehaviour
         if (playerSFXSource != null && playerInduceShootSound != null)
         {
             playerSFXSource.pitch = Random.Range(0.45f, 0.6f);
-            playerSFXSource.PlayOneShot(playerInduceShootSound, 0.05f);
+            playerSFXSource.PlayOneShot(playerInduceShootSound, 0.1f);
 
             playerSFXSource.pitch = 1;
         }
@@ -188,7 +253,7 @@ public class SoundManager : MonoBehaviour
         if (systemSFXSource != null && grazeSound != null)
         {
             systemSFXSource.pitch = Random.Range(0.45f, 0.6f);
-            systemSFXSource.PlayOneShot(grazeSound, 0.25f);
+            systemSFXSource.PlayOneShot(grazeSound, 0.3f);
 
             systemSFXSource.pitch = 1;
         }
@@ -198,7 +263,7 @@ public class SoundManager : MonoBehaviour
     {
         if (systemSFXSource != null && powerUpSound != null)
         {
-            systemSFXSource.PlayOneShot(powerUpSound, 0.05f);
+            systemSFXSource.PlayOneShot(powerUpSound, 0.1f);
         }
     }
 
@@ -206,7 +271,7 @@ public class SoundManager : MonoBehaviour
     {
         if (systemSFXSource != null && blueBulletSound != null)
         {
-            systemSFXSource.PlayOneShot(blueBulletSound, 0.15f);
+            systemSFXSource.PlayOneShot(blueBulletSound, 0.2f);
         }
     }
 
@@ -222,7 +287,7 @@ public class SoundManager : MonoBehaviour
     {
         if (systemSFXSource != null && useBombSound != null)
         {
-            systemSFXSource.PlayOneShot(useBombSound, 0.85f);
+            systemSFXSource.PlayOneShot(useBombSound, 1f);
         }
     }
 
@@ -233,7 +298,7 @@ public class SoundManager : MonoBehaviour
             if (Time.time - lastHitSoundTime >= hitSoundCooldown)
             {
                 bossSFXSound.pitch = Random.Range(0.6f, 1f);
-                bossSFXSound.PlayOneShot(bossNormalHitSound, 0.15f);
+                bossSFXSound.PlayOneShot(bossNormalHitSound, 0.3f);
                 lastHitSoundTime = Time.time;
 
                 bossSFXSound.pitch = 1;
@@ -248,7 +313,7 @@ public class SoundManager : MonoBehaviour
             if (Time.time - lastHitSoundTime >= hitSoundCooldown)
             {
                 bossSFXSound.pitch = Random.Range(0.7f, 1f);
-                bossSFXSound.PlayOneShot(bossCriticalHitSound, 0.2f);
+                bossSFXSound.PlayOneShot(bossCriticalHitSound, 0.4f);
                 lastHitSoundTime = Time.time;
 
                 bossSFXSound.pitch = 1;

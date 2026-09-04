@@ -7,6 +7,9 @@ public class Graze : MonoBehaviour
     [Header("그레이즈 성공 시 획득할 경험치")]
     public int grazeScore;
 
+    [Header("그레이즈 성공 시 획득할 시간 감속 게이지 증가량")]
+    public float gaugeHealValue;
+
     [Header("그레이즈 성공 횟수")]
     public int grazeCount;
 
@@ -17,17 +20,19 @@ public class Graze : MonoBehaviour
     private PlayerHealth playerHealth;
     private PlayerInvincibility playerInvincibility;
     private PlayerInventory inventory;
-
-    private void Start()
-    {
-        savePiece = bombPiece;
-    }
+    private PlayerTimeControl timeControl;
 
     private void Awake()
     {
         inventory = GetComponentInParent<PlayerInventory>();
         playerInvincibility = GetComponentInParent<PlayerInvincibility>();
         playerHealth = GetComponentInParent<PlayerHealth>();
+        timeControl = GetComponentInParent<PlayerTimeControl>();
+    }
+
+    private void Start()
+    {
+        savePiece = bombPiece;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -41,6 +46,8 @@ public class Graze : MonoBehaviour
                 grazeCount++;
                 UIManager.instance.UpdateGraze(grazeCount);
                 ScoreManager.instance.GrazeScorePlus(grazeScore);
+
+                timeControl.AddGauge(gaugeHealValue);
 
                 SoundManager.instance.GrazeSound();
 

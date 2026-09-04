@@ -7,14 +7,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("플레이어 / 보스")]
     public Transform player;
     public Transform boss;
-    public PlayerShooter playerShooter;
 
+    [Header("")]
     public GameObject scoreItem;
+
+    [Header("일시정지 버튼")]
+    public GameObject pauseButton;
 
     public float playTime;
     public bool isGameClear;
+
+    private bool isGameStart;
 
     private void Awake()
     {
@@ -33,14 +39,28 @@ public class GameManager : MonoBehaviour
             GameTimeManager.instance.StopGame();
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     private void Update()
     {
-        if (!isGameClear && Time.timeScale > 0)
+        if (!isGameClear && Time.timeScale > 0 && isGameStart)
         {
             playTime += Time.unscaledDeltaTime;
 
             UIManager.instance.UpdatePlayTime(playTime);
         }
+    }
+
+    public void GameStart()
+    {
+        isGameStart = true;
+        boss.GetComponent<BossPatternManager>().BossMoveStart();
+        SoundManager.instance.Change1PhaseBGM();
+
+        pauseButton.SetActive(true);
     }
 
     public void Restart()

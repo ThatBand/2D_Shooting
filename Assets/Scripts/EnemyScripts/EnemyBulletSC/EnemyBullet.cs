@@ -86,7 +86,7 @@ public class EnemyBullet : Bullet
                 textSC.Setup();
 
             Destroy(gameObject);
-            GameManager.instance.playerShooter.UpgradePower(2);
+            GameManager.instance.player.GetComponent<PlayerShooter>().UpgradePower(2);
         }
     }
 

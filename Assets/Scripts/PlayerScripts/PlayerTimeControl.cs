@@ -34,6 +34,8 @@ public class PlayerTimeControl : MonoBehaviour
             GameTimeManager.instance.NormalMode();
             StartIncreaseGauge();
             uiManager.UpdateSlider(curGauge, maxGauge);
+
+            SoundManager.instance.mixer.SetFloat("BgmCutOff", 5000f);
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && !isCooldown)
@@ -42,6 +44,8 @@ public class PlayerTimeControl : MonoBehaviour
             curGauge = Mathf.Max(curGauge - decreaseSpeed * Time.unscaledDeltaTime, 0);
 
             uiManager.UpdateSlider(curGauge, maxGauge);
+
+            SoundManager.instance.PlayFocusInSound();
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift) && !isCooldown)
@@ -50,7 +54,15 @@ public class PlayerTimeControl : MonoBehaviour
             StartIncreaseGauge();
 
             uiManager.UpdateSlider(curGauge, maxGauge);
+
+            SoundManager.instance.PlayFocusOutSound();
         }
+    }
+
+    public void AddGauge(float amount)
+    {
+        curGauge = Mathf.Min(curGauge + amount, maxGauge);
+        uiManager.UpdateSlider(curGauge, maxGauge);
     }
 
     public void StartIncreaseGauge()

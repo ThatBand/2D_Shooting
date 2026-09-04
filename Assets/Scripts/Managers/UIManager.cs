@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [Header("ㅤ")]
     public TextMeshProUGUI playTimeText;
 
+    [Header("아이콘들")]
     public Image[] healthIcons;
     public Image[] boomIcons;
 
@@ -55,12 +56,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePower(int power)
     {
-        powerText.text = $"{power:n0}";
-    }
+        if (power >= GameManager.instance.player.GetComponent<PlayerShooter>().maxPower)
+            powerText.text = "MAX";
 
-    public void UpdateMaxPower()
-    {
-        powerText.text = "MAX";
+        else
+            powerText.text = $"{power:n0}";
     }
 
     public void UpdateGraze(int graze)
@@ -164,11 +164,6 @@ public class UIManager : MonoBehaviour
     public void CloseVolumeSettingPanel()
     {
         volumeSetPanel.SetActive(false);
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
     }
 
     public void PauseButton()
