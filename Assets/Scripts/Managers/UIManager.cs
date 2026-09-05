@@ -122,6 +122,9 @@ public class UIManager : MonoBehaviour
 
     public void OpenPausePanel()
     {
+        SoundManager.instance.ButtonClickSound();
+        SoundManager.instance.SetPauseBGM(true);
+
         pausePanel.SetActive(true);
         GameTimeManager.instance.StopGame();
 
@@ -130,23 +133,32 @@ public class UIManager : MonoBehaviour
 
     public void OpenSettingPanel()
     {
+        SoundManager.instance.ButtonClickSound();
+
         settingPanel.SetActive(true);
         pausePanel.SetActive(false);
     }
 
     public void OpenVolumeSettingPanel()
     {
+        SoundManager.instance.ButtonClickSound();
+
         volumeSetPanel.SetActive(true);
     }
 
     public void OpenNoticePanel()
     {
+        SoundManager.instance.ButtonClickSound();
+
         settingPanel.SetActive(false);
         noticePanel.SetActive(true);
     }
 
     public void ClosePausePanel()
     {
+        SoundManager.instance.ButtonClickSound();
+        SoundManager.instance.SetPauseBGM(false);
+
         pausePanel.SetActive(false);
         GameTimeManager.instance.NormalMode();
 
@@ -155,6 +167,8 @@ public class UIManager : MonoBehaviour
 
     public void CloseSettingPanel()
     {
+        SoundManager.instance.SetPauseBGM(false);
+
         settingPanel.SetActive(false);
         GameTimeManager.instance.NormalMode();
 
@@ -163,6 +177,7 @@ public class UIManager : MonoBehaviour
 
     public void CloseVolumeSettingPanel()
     {
+        //SoundManager.instance.SetPauseBGM(false);
         volumeSetPanel.SetActive(false);
     }
 

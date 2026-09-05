@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
     [Header("")]
     public GameObject scoreItem;
 
-    [Header("일시정지 버튼")]
+    [Header("일시정지 버튼 / 타임 카운터")]
     public GameObject pauseButton;
+    public GameObject timeCounter;
 
     public float playTime;
     public bool isGameClear;
@@ -41,6 +42,8 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        SoundManager.instance.ButtonClickSound();
+
         Application.Quit();
     }
 
@@ -61,16 +64,21 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.Change1PhaseBGM();
 
         pauseButton.SetActive(true);
+        timeCounter.SetActive(true);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("InGame");
+        SoundManager.instance.ButtonClickSound();
+
+        
     }
 
     public void Menu()
     {
-        SceneManager.LoadScene("Menu");
+        SoundManager.instance.ButtonClickSound();
+
+        SceneManager.LoadScene("InGame");
     }
 
     public void ClearBullet()

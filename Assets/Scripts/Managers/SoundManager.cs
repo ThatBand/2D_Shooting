@@ -89,6 +89,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip scoreCountSound;
     public AudioClip highScoreSound;
 
+    [Header("버튼 클릭 사운드")]
+    public AudioClip buttonClickSound;
+
     private float lastHitSoundTime;
     private float hitSoundCooldown = 0.05f;
 
@@ -101,6 +104,14 @@ public class SoundManager : MonoBehaviour
 
         else
             Destroy(gameObject);
+    }
+
+    public void ButtonClickSound()
+    {
+        if (systemSFXSource != null && buttonClickSound != null)
+        {
+            systemSFXSource.PlayOneShot(buttonClickSound, 0.75f);
+        }
     }
 
     public void PlayFocusInSound()
@@ -150,6 +161,15 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void SetPauseBGM(bool isPaused)
+    {
+        if (isPaused)
+            bgmSource.Pause();
+
+        else
+            bgmSource.UnPause();
+    }
+
     public void ScoreSound()
     {
         if (systemSFXSource != null && scoreCountSound != null)
@@ -181,7 +201,7 @@ public class SoundManager : MonoBehaviour
     public void BossExplosionSound()
     {
         if (bossSFXSound != null && bossExplosionSound != null)
-            bossSFXSound.PlayOneShot(bossExplosionSound, 0.5f);
+            bossSFXSound.PlayOneShot(bossExplosionSound, 0.2f);
     }
 
     public void CreateQuartz()

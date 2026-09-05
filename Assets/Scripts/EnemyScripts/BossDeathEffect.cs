@@ -21,6 +21,8 @@ public class BossDeathEffect : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
+    private BossMove move;
+
     private bool particleEnd;
 
     private Vector3 startPos;
@@ -36,7 +38,9 @@ public class BossDeathEffect : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
-        startPos = transform.position;
+        move = GetComponent<BossMove>();
+
+        startPos = move.targetPos;
     }
 
     public void BossDeath()
@@ -48,6 +52,7 @@ public class BossDeathEffect : MonoBehaviour
     {
         manager.StopBossPattern();
 
+        SoundManager.instance.SetPauseBGM(true);
         GameManager.instance.player.GetComponentInChildren<Collider2D>().enabled = false;
         playerMove.StopPlayer();
         playerMove.enabled = false;

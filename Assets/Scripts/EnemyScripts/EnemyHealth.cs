@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
     public GameObject item;
     public Image healthBar;
 
+    public GameObject prison;
+
     public bool isInvin;
 
     private EnemyHit hit;
@@ -44,6 +46,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (curHealth <= 0)
         {
+            prison.SetActive(false);
+
             ScoreManager.instance.ScorePlus(enemyData.enemyScore);
             deathEffect?.BossDeath();
             GameManager.instance.isGameClear = true;
