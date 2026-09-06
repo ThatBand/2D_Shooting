@@ -41,10 +41,12 @@ public class BossPatternManager : MonoBehaviour
 
     public BossState[] phase1PatternCycle;
     public BossState[] phase2PatternCycle;
+    public BossState[] phase3PatternCycle;
 
     private BossState[] curSequence;
 
     private bool isPhase2;
+    private bool isPhase3;
 
     private int curPatternIndex;
 
@@ -64,11 +66,6 @@ public class BossPatternManager : MonoBehaviour
         rowColPattern = GetComponent<BossRowColPattern>();
         shieldMinionPattern = GetComponent<BossSpawnShieldMinion>();
         laserWallPattern = GetComponent<BossLaserWallPattern>();
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void BossMoveStart()
@@ -150,12 +147,13 @@ public class BossPatternManager : MonoBehaviour
         if (isPhase2)
             return;
 
+        isPhase2 = true;
+
         StopAllCoroutines();
         GameManager.instance.ClearBullet();
 
         SoundManager.instance.Change2PhaseBGM();
 
-        isPhase2 = true;
         Debug.Log("보스 2페이즈 시작!");
 
         curSequence = phase2PatternCycle;
@@ -164,6 +162,27 @@ public class BossPatternManager : MonoBehaviour
         CameraShake.instance.Shake(0.5f, 0.1f);
         ChangeState(BossState.Prison);
     }
+
+    public void EnterPhase3()
+    {
+        if (isPhase3)
+            return;
+
+        isPhase3 = true;
+
+        StopAllCoroutines();
+        GameManager.instance.ClearBullet();
+
+        //SoundManager.instance.Change2PhaseBGM();
+
+        Debug.Log("보스 3페이즈 시작!");
+
+        curSequence = phase3PatternCycle;
+        curPatternIndex = 0;
+
+        CameraShake.instance.Shake(0.5f, 0.1f);
+    }
+
 
     public void StopBossPattern()
     {

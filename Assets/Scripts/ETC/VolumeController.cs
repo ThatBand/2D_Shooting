@@ -18,33 +18,40 @@ public class VolumeController : MonoBehaviour
     public TextMeshProUGUI bgmSize;
     public TextMeshProUGUI sfxSize;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        // 이벤트 리스너 등록은 스크립트가 로드될 때 딱 한 번만 수행
         masterSlider.onValueChanged.AddListener(SetMaserVol);
         bgmSlider.onValueChanged.AddListener(SetBgmVol);
         sfxSlider.onValueChanged.AddListener(SetSfxVol);
+    }
 
-        masterSlider.value = PlayerPrefs.GetFloat("MasterVol", 0.5f);
-        bgmSlider.value = PlayerPrefs.GetFloat("BgmVol", 0.5f);
-        sfxSlider.value = PlayerPrefs.GetFloat("SfxVol", 0.5f);
+    // 설정창(GameObject)이 SetActive(true)로 열릴 때마다 매번 실행됨
+    private void OnEnable()
+    {
+        // 저장된 최신 PlayerPrefs 값을 가져와서 슬라이더 및 믹서 동기화
+        float master = PlayerPrefs.GetFloat("MasterVol", 0.3f);
+        float bgm = PlayerPrefs.GetFloat("BgmVol", 0.3f);
+        float sfx = PlayerPrefs.GetFloat("SfxVol", 0.3f);
 
-        masterSize.text = masterSlider.value.ToString("F2");
-        bgmSize.text = bgmSlider.value.ToString("F2");
-        sfxSize.text = sfxSlider.value.ToString("F2");
+        masterSlider.value = master;
+        bgmSlider.value = bgm;
+        sfxSlider.value = sfx;
+
+        // 슬라이더 값 변경에 따른 UI 텍스트 및 오디오 믹서 최신화
+        SetMaserVol(master);
+        SetBgmVol(bgm);
+        SetSfxVol(sfx);
     }
 
     public void SetMaserVol(float value)
     {
         if (value <= 0.001f)
             audioMixer.SetFloat("MasterVOL", -80f);
-
         else
             audioMixer.SetFloat("MasterVOL", Mathf.Log10(value) * 20);
 
         masterSize.text = masterSlider.value.ToString("F2");
-
         PlayerPrefs.SetFloat("MasterVol", value);
     }
 
@@ -52,25 +59,21 @@ public class VolumeController : MonoBehaviour
     {
         if (value <= 0.001f)
             audioMixer.SetFloat("BgmVOL", -80f);
-
         else
             audioMixer.SetFloat("BgmVOL", Mathf.Log10(value) * 20);
 
         bgmSize.text = bgmSlider.value.ToString("F2");
-
         PlayerPrefs.SetFloat("BgmVol", value);
     }
 
     public void SetSfxVol(float value)
     {
-        if(value <= 0.001f)
+        if (value <= 0.001f)
             audioMixer.SetFloat("SfxVOL", -80f);
-
         else
             audioMixer.SetFloat("SfxVOL", Mathf.Log10(value) * 20);
 
         sfxSize.text = sfxSlider.value.ToString("F2");
-
         PlayerPrefs.SetFloat("SfxVol", value);
     }
 }

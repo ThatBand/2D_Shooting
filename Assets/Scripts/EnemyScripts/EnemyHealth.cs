@@ -19,6 +19,8 @@ public class EnemyHealth : MonoBehaviour
     private BossPatternManager manager;
     private BossDeathEffect deathEffect;
 
+    private int curPhase = 0;
+
     private void Awake()
     {
         curHealth = enemyData.health;
@@ -39,9 +41,19 @@ public class EnemyHealth : MonoBehaviour
         if (healthBar != null)
             healthBar.fillAmount = curHealth / enemyData.health;
 
-        if (hit.isBoss && curHealth <= (enemyData.health / 2))
+        if (hit.isBoss)
         {
-            manager?.EnterPhase2();
+            if (curHealth <= (enemyData.health / 3) * 2 && curPhase < 2)
+            {
+                curPhase = 2;
+                manager?.EnterPhase2();
+            }
+
+            else if (curHealth <= (enemyData.health / 3) && curPhase < 3)
+            {
+                curPhase = 3;
+                manager?.EnterPhase3();
+            }
         }
 
         if (curHealth <= 0)

@@ -36,6 +36,8 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetScore()
     {
+        SoundManager.instance.ButtonClickSound();
+
         PlayerPrefs.DeleteKey("HighScore");
         PlayerPrefs.Save();
 

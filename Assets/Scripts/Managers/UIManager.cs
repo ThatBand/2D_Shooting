@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -32,7 +31,10 @@ public class UIManager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject settingPanel;
     public GameObject volumeSetPanel;
+    public GameObject startVolSetPanel;
     public GameObject noticePanel;
+    public GameObject startPanel;
+    public GameObject startSettingPanel;
 
     public Slider timeControlSlider;
 
@@ -154,6 +156,22 @@ public class UIManager : MonoBehaviour
         noticePanel.SetActive(true);
     }
 
+    public void OpenStartSetPanel()
+    {
+        SoundManager.instance.ButtonClickSound();
+
+        startPanel.SetActive(false);
+        startSettingPanel.SetActive(true);
+    }
+
+    public void OpenStartVolSetPanel()
+    {
+        SoundManager.instance.ButtonClickSound();
+
+        startSettingPanel.SetActive(false);
+        startVolSetPanel.SetActive(true);
+    }
+
     public void ClosePausePanel()
     {
         SoundManager.instance.ButtonClickSound();
@@ -179,6 +197,22 @@ public class UIManager : MonoBehaviour
     {
         //SoundManager.instance.SetPauseBGM(false);
         volumeSetPanel.SetActive(false);
+    }
+
+    public void CloseStartSetPanel()
+    {
+        SoundManager.instance.ButtonClickSound();
+
+        startSettingPanel.SetActive(false);
+        startPanel.SetActive(true);
+    }
+
+    public void CloseStartVolSetPanel()
+    {
+        SoundManager.instance.ButtonClickSound();
+
+        startVolSetPanel.SetActive(false);
+        startSettingPanel.SetActive(true);
     }
 
     public void PauseButton()
