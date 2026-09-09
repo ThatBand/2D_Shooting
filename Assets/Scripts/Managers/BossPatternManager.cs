@@ -14,6 +14,7 @@ public enum BossState
     PLaser,
     Circle,
     Prison,
+    PrisonShield,
     Quartz,
     RowCol,
     ShieldMinion,
@@ -32,6 +33,7 @@ public class BossPatternManager : MonoBehaviour
     private BossPrisonLaser prisonLaser;
     private BossCircleFire circleFire;
     private BossMakePrison makePrison;
+    private BossPrisonShield prisonShield;
     private BossQuartzPattern quartzPattern;
     private BossRowColPattern rowColPattern;
     private BossSpawnShieldMinion shieldMinionPattern;
@@ -62,6 +64,7 @@ public class BossPatternManager : MonoBehaviour
         prisonLaser = GetComponent<BossPrisonLaser>();
         circleFire = GetComponent<BossCircleFire>();
         makePrison = GetComponent<BossMakePrison>();
+        prisonShield = GetComponent<BossPrisonShield>();
         quartzPattern = GetComponent<BossQuartzPattern>();
         rowColPattern = GetComponent<BossRowColPattern>();
         shieldMinionPattern = GetComponent<BossSpawnShieldMinion>();
@@ -112,6 +115,9 @@ public class BossPatternManager : MonoBehaviour
                 break;
             case BossState.Prison:
                 makePrison.enabled = true;
+                break;
+            case BossState.PrisonShield:
+                prisonShield.enabled = true;
                 break;
             case BossState.Quartz:
                 quartzPattern.enabled = true;
@@ -181,6 +187,7 @@ public class BossPatternManager : MonoBehaviour
         curPatternIndex = 0;
 
         CameraShake.instance.Shake(0.5f, 0.1f);
+        ChangeState(BossState.PrisonShield);
     }
 
 
@@ -201,6 +208,7 @@ public class BossPatternManager : MonoBehaviour
         prisonLaser.StopAllCoroutines();
         circleFire.StopAllCoroutines();
         makePrison.StopAllCoroutines();
+        prisonShield.StopAllCoroutines();
         quartzPattern.StopAllCoroutines();
         rowColPattern.StopAllCoroutines();
         shieldMinionPattern.StopAllCoroutines();
@@ -216,6 +224,7 @@ public class BossPatternManager : MonoBehaviour
         prisonLaser.enabled = false;
         circleFire.enabled = false;
         makePrison.enabled = false;
+        prisonShield.enabled = false;
         quartzPattern.enabled = false;
         rowColPattern.enabled = false;
         shieldMinionPattern.enabled = false;

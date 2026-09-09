@@ -5422,6 +5422,7 @@ MonoBehaviour:
   systemSFXSource: {fileID: 533680981}
   bgm_0: {fileID: 8300000, guid: 72a8cca03a49e0548b4b2cd5681a3448, type: 3}
   bgm_1: {fileID: 8300000, guid: 746fe15f2ff076e418490328a2897087, type: 3}
+  bgm_2: {fileID: 8300000, guid: a80329586bc5e8b4f85b4057ca4c2d16, type: 3}
   playerMainShootSound: {fileID: 8300000, guid: e5a41a7b4d327cb4ea93df71a1b7b9be, type: 3}
   playerSubShootSound: {fileID: 8300000, guid: b696952fb73f8984f952a46550be119e, type: 3}
   playerInduceShootSound: {fileID: 8300000, guid: f37372b76a9f3b848a5ba55ac0157ab1, type: 3}
@@ -20638,7 +20639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.2, z: 0}
+  m_LocalPosition: {x: 0, y: 11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -20896,6 +20897,7 @@ MonoBehaviour:
   curState: 0
   phase1PatternCycle: 05000000020000000c0000000d0000000300000004000000080000000a000000
   phase2PatternCycle: 0500000003000000060000000a000000040000000d0000000b00000007000000
+  phase3PatternCycle: 
 --- !u!114 &1844755519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21030,7 +21032,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b8581ef42a3204498eb856f605f5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shield: {fileID: 771314697}
+  shield: {fileID: 771314699}
+  prison: {fileID: 1833052347}
+  prisonObjs:
+  - {fileID: 1389088841}
+  - {fileID: 774906564}
+  - {fileID: 937318792}
+  - {fileID: 135824004}
 --- !u!1 &1853835342
 GameObject:
   m_ObjectHideFlags: 0
@@ -24932,7 +24940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063864309}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -24,6 +24,7 @@ public class SoundManager : MonoBehaviour
     [Header("BGM 클립")]
     public AudioClip bgm_0;
     public AudioClip bgm_1;
+    public AudioClip bgm_2;
 
     [Header("플레이어 발사 효과음")]
     public AudioClip playerMainShootSound;
@@ -158,6 +159,15 @@ public class SoundManager : MonoBehaviour
         {
             bgmSource.Stop();
             bgmSource.PlayOneShot(bgm_1, 0.3f);
+        }
+    }
+
+    public void Change3PhaseBGM()
+    {
+        if (bgmSource != null && bgm_2 != null)
+        {
+            bgmSource.Stop();
+            bgmSource.PlayOneShot(bgm_2, 0.3f);
         }
     }
 
