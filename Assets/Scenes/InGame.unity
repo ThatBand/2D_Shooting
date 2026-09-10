@@ -14060,7 +14060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 549fbba7f4ede5a4e9020770495a3399, type: 2}
   m_sharedMaterial: {fileID: -6717262445498690923, guid: 549fbba7f4ede5a4e9020770495a3399, type: 2}
@@ -20889,15 +20889,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844755499}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56c04c6ece9dd3142bed223112015d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   curState: 0
-  phase1PatternCycle: 05000000020000000c0000000d0000000300000004000000080000000a000000
-  phase2PatternCycle: 0500000003000000060000000a000000040000000d0000000b00000007000000
-  phase3PatternCycle: 
+  phase1PatternCycle: 02000000030000000d0000000500000004000000
+  phase2PatternCycle: 0600000003000000060000000800000005000000
+  phase3PatternCycle: 0c0000000e0000000b000000080000000d000000
 --- !u!114 &1844755519
 MonoBehaviour:
   m_ObjectHideFlags: 0

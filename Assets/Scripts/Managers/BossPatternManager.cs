@@ -71,6 +71,11 @@ public class BossPatternManager : MonoBehaviour
         laserWallPattern = GetComponent<BossLaserWallPattern>();
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void BossMoveStart()
     {
         curSequence = phase1PatternCycle;
@@ -145,7 +150,7 @@ public class BossPatternManager : MonoBehaviour
         curPatternIndex++;
 
         if (curPatternIndex >= curSequence.Length)
-            curPatternIndex = 0;
+            curPatternIndex = 1;
     }
 
     public void EnterPhase2()

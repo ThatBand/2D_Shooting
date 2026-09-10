@@ -23,7 +23,7 @@ public class BossPrisonLaser : MonoBehaviour
 
     private void OnDisable()
     {
-        Destroy(activeLaser.gameObject);
+        //Destroy(activeLaser.gameObject);
         StopAllCoroutines();
     }
 

@@ -17,6 +17,7 @@ public class BossPrisonShield : MonoBehaviour
     IEnumerator BreakPrison()
     {
         GameManager.instance.player.GetComponent<PlayerShooter>().enabled = false;
+        GameManager.instance.player.GetComponent<PlayerMove>().StopPlayer();
         GameManager.instance.player.GetComponent<PlayerMove>().enabled = false;
 
         for (int i = 0; i < prisonObjs.Length; i++)
