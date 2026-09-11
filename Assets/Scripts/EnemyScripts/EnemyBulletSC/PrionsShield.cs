@@ -22,4 +22,10 @@ public class PrionsShield : MonoBehaviour
             yield return null;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerBullet"))
+            Destroy(collision.gameObject);
+    }
 }

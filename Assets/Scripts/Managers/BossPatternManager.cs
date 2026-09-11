@@ -184,7 +184,7 @@ public class BossPatternManager : MonoBehaviour
         StopAllCoroutines();
         GameManager.instance.ClearBullet();
 
-        //SoundManager.instance.Change2PhaseBGM();
+        SoundManager.instance.Change3PhaseBGM();
 
         Debug.Log("보스 3페이즈 시작!");
 

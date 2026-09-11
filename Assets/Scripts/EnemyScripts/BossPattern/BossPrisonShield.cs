@@ -27,7 +27,7 @@ public class BossPrisonShield : MonoBehaviour
         }
 
         float timer = 0;
-        float dur = 4f;
+        float dur = 2f;
 
         while (timer <= dur)
         {
@@ -36,12 +36,13 @@ public class BossPrisonShield : MonoBehaviour
             float t = timer / dur;
 
             prison.transform.position = Vector3.Lerp(prison.transform.position, GameManager.instance.boss.position, t);
-            prison.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 0.2f, t);
+            prison.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 0.1f, t);
 
             yield return null;
         }
 
         prison.transform.position = GameManager.instance.boss.position;
+        prison.transform.localScale = Vector3.one * 0.1f;
         prison.SetActive(false);
 
         yield return new WaitForSeconds(1.5f);

@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public GameObject pauseButton;
     public GameObject timeCounter;
 
+    [Header("시간 감속 슬라이더")]
+    public GameObject slowTimeBar;
+
     public float playTime;
     public bool isGameClear;
 
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
 
         pauseButton.SetActive(true);
         timeCounter.SetActive(true);
+        slowTimeBar.SetActive(true);
     }
 
     public void Restart()
