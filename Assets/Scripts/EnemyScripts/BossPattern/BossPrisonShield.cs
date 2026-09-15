@@ -9,6 +9,13 @@ public class BossPrisonShield : MonoBehaviour
     public GameObject prison;
     public GameObject[] prisonObjs;
 
+    private BossPatternManager manager;
+
+    private void Awake()
+    {
+        manager = GetComponent<BossPatternManager>();
+    }
+
     private void OnEnable()
     {
         StartCoroutine(BreakPrison());
@@ -55,5 +62,7 @@ public class BossPrisonShield : MonoBehaviour
 
         GameManager.instance.player.GetComponent<PlayerShooter>().enabled = true;
         GameManager.instance.player.GetComponent<PlayerMove>().enabled = true;
+
+        manager.ChangeState(BossState.Idle);
     }
 }

@@ -63,11 +63,21 @@ public class GameOverUI : MonoBehaviour
         float duration = customDuration > 0 ? customDuration : countDuration;
         float timer = 0f;
 
+        float lastSoundTime = 0;
+        float soundInterval = 0.04f;
+
         while (timer < duration)
         {
             timer += Time.unscaledDeltaTime;
             int currentValue = (int)Mathf.Lerp(startValue, targetValue, timer / duration);
             textElement.text = currentValue.ToString("N0");
+
+            if (timer - lastSoundTime >= soundInterval)
+            {
+                SoundManager.instance.ScoreSound();
+                lastSoundTime = timer;
+            }
+
             yield return null;
         }
 

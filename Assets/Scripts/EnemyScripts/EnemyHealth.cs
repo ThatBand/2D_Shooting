@@ -58,7 +58,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (curHealth <= 0)
         {
-            shield.SetActive(false);
+            if (shield != null)
+                shield.SetActive(false);
 
             ScoreManager.instance.ScorePlus(enemyData.enemyScore);
             deathEffect?.BossDeath();

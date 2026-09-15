@@ -114,7 +114,7 @@ public class BossTutorialPattern : MonoBehaviour
 
         while (t < 11)
         {
-            bulletContainer.Rotate(0, 0, 10 * Time.deltaTime);
+            bulletContainer.Rotate(0, 0, 20 * Time.deltaTime);
 
             t += Time.deltaTime;
             yield return null;

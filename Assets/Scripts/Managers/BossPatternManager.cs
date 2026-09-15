@@ -188,13 +188,12 @@ public class BossPatternManager : MonoBehaviour
 
         Debug.Log("보스 3페이즈 시작!");
 
-        curSequence = phase3PatternCycle;
         curPatternIndex = 0;
-
+        curSequence = phase3PatternCycle;
+        
         CameraShake.instance.Shake(0.5f, 0.1f);
         ChangeState(BossState.PrisonShield);
     }
-
 
     public void StopBossPattern()
     {
