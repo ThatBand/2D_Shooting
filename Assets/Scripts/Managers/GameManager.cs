@@ -74,8 +74,6 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SoundManager.instance.ButtonClickSound();
-
-        
     }
 
     public void Menu()

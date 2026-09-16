@@ -15,10 +15,13 @@ public class PlayerTimeControl : MonoBehaviour
     public bool isCooldown;
 
     private Coroutine increaseRoutine;
+    private PlayerTrail trail;
 
     private void Awake()
     {
         curGauge = maxGauge;
+        
+        trail = GetComponent<PlayerTrail>();
     }
 
     // Update is called once per frame
@@ -36,9 +39,11 @@ public class PlayerTimeControl : MonoBehaviour
             uiManager.UpdateSlider(curGauge, maxGauge);
 
             SoundManager.instance.mixer.SetFloat("BgmCutOff", 5000f);
+
+            trail.StopTrail();
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && !isCooldown)
+        if (Input.GetKey(KeyCode.LeftShift) && !isCooldown && curGauge > 0.0001)
         {
             GameTimeManager.instance.SlowMode();
             curGauge = Mathf.Max(curGauge - decreaseSpeed * Time.unscaledDeltaTime, 0);
@@ -46,6 +51,8 @@ public class PlayerTimeControl : MonoBehaviour
             uiManager.UpdateSlider(curGauge, maxGauge);
 
             SoundManager.instance.PlayFocusInSound();
+            
+            trail.StartTrail();
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift) && !isCooldown)
@@ -56,6 +63,8 @@ public class PlayerTimeControl : MonoBehaviour
             uiManager.UpdateSlider(curGauge, maxGauge);
 
             SoundManager.instance.PlayFocusOutSound();
+
+            trail.StopTrail();
         }
     }
 

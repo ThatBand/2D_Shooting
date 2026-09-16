@@ -63,7 +63,7 @@ public class BossSpiralSpread : MonoBehaviour
     {
         int o = 0;
 
-        while ( o < 60)
+        while ( o < 30)
         {
             for (int i = 0; i < bulletCount; i++)
             {
@@ -77,10 +77,14 @@ public class BossSpiralSpread : MonoBehaviour
 
                 float a = (360f / bulletCount) * i + 1;
                 bullet.transform.localRotation = Quaternion.Euler(0, 0, a);
+
+                //float speed = bulletSpeed + Mathf.Sin(Time.time * 2) * (bulletSpeed * 0.5f);
                 bulletRigid.AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
             }
 
             //bulletSpeed = Mathf.Cos(Time.time);
+            if (o % 10 == 0)
+                RotateSpeed *= -1;
 
             o++;
             yield return new WaitForSeconds(fireTime * 3);

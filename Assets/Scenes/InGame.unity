@@ -697,6 +697,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43769637}
   m_CullTransparentMesh: 1
+--- !u!1 &45062578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45062579}
+  - component: {fileID: 45062581}
+  - component: {fileID: 45062580}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &45062579
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45062578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 725845863}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &45062580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45062578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.77226824, g: 0.46907264, b: 0.7830189, a: 0.27450982}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &45062581
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45062578}
+  m_CullTransparentMesh: 1
 --- !u!1 &62667715
 GameObject:
   m_ObjectHideFlags: 0
@@ -9055,6 +9131,7 @@ RectTransform:
   - {fileID: 991394456}
   - {fileID: 881762894}
   - {fileID: 521863933}
+  - {fileID: 45062579}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12455,7 +12532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &996252694
 Transform:
   m_ObjectHideFlags: 0
@@ -20653,7 +20730,7 @@ Transform:
   - {fileID: 1031657494}
   - {fileID: 771314698}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1844755502
 Animator:
@@ -20735,13 +20812,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletContainer: {fileID: 495786268}
-  RotateSpeed: 65
+  RotateSpeed: 50
   red: 7
   blue: 1.5
   yellow: 1.5
   bulletCount: 7
-  bulletSpeed: 8
-  fireTime: 0.15
+  bulletSpeed: 6
+  fireTime: 0.2
   bossData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
 --- !u!114 &1844755509
 MonoBehaviour:
@@ -20896,8 +20973,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curState: 0
-  phase1PatternCycle: 02000000030000000d0000000500000004000000
-  phase2PatternCycle: 0600000003000000060000000800000005000000
+  phase1PatternCycle: 03000000030000000d0000000500000004000000
+  phase2PatternCycle: 0600000005000000070000000800000003000000
   phase3PatternCycle: 0c0000000e0000000b000000080000000d000000
 --- !u!114 &1844755519
 MonoBehaviour:
@@ -24860,6 +24937,7 @@ GameObject:
   - component: {fileID: 2063864321}
   - component: {fileID: 2063864322}
   - component: {fileID: 2063864323}
+  - component: {fileID: 2063864324}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -24949,7 +25027,7 @@ Transform:
   - {fileID: 2047897906}
   - {fileID: 305589567}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2063864313
 Rigidbody2D:
@@ -25117,6 +25195,21 @@ MonoBehaviour:
   startPos: {x: 0, y: -10, z: 0}
   targetPos: {x: 0, y: -4, z: 0}
   flyDur: 1.5
+--- !u!114 &2063864324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063864309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7c8a3c4eb97724badd134c811bd509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 0.05
+  dur: 0.3
+  color: {r: 0.5, g: 0.5, b: 1, a: 0.5}
 --- !u!1 &2075398575
 GameObject:
   m_ObjectHideFlags: 0

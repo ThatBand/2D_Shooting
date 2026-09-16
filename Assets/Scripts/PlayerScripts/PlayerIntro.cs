@@ -11,14 +11,17 @@ public class PlayerIntro : MonoBehaviour
 
     private PlayerShooter shooter;
     private PlayerMove move;
+    private PlayerTimeControl timeCon;
 
     private void Awake()
     {
         shooter = GetComponent<PlayerShooter>();
         move = GetComponent<PlayerMove>();
+        timeCon = GetComponent<PlayerTimeControl>();
 
         shooter.enabled = false;
         move.enabled = false;
+        timeCon.enabled = false;
 
         transform.position = startPos;
     }
@@ -40,5 +43,6 @@ public class PlayerIntro : MonoBehaviour
 
         shooter.enabled = true;
         move.enabled = true;
+        timeCon.enabled = true;
     }
 }

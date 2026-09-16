@@ -39,10 +39,16 @@ public class BossPatternManager : MonoBehaviour
     private BossSpawnShieldMinion shieldMinionPattern;
     private BossLaserWallPattern laserWallPattern;
 
+    [Header("현재 진행 중인 패턴")]
     public BossState curState = BossState.Move;
 
+    [Header("1 페이즈 패턴")]
     public BossState[] phase1PatternCycle;
+
+    [Header("2 페이즈 패턴")]
     public BossState[] phase2PatternCycle;
+
+    [Header("3 페이즈 패턴")]
     public BossState[] phase3PatternCycle;
 
     private BossState[] curSequence;
@@ -160,6 +166,8 @@ public class BossPatternManager : MonoBehaviour
 
         isPhase2 = true;
 
+        idle.idleTime = 2.5f;
+
         StopAllCoroutines();
         GameManager.instance.ClearBullet();
 
@@ -180,6 +188,8 @@ public class BossPatternManager : MonoBehaviour
             return;
 
         isPhase3 = true;
+
+        idle.idleTime = 1.25f;
 
         StopAllCoroutines();
         GameManager.instance.ClearBullet();
