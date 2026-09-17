@@ -61,13 +61,14 @@ public class EnemyHealth : MonoBehaviour
             if (shield != null)
                 shield.SetActive(false);
 
-            ScoreManager.instance.ScorePlus(enemyData.enemyScore);
-            deathEffect?.BossDeath();
-            GameManager.instance.isGameClear = true;
+            if (hit.isBoss)
+            {
+                ScoreManager.instance.ScorePlus(enemyData.enemyScore);
+                deathEffect?.BossDeath();
+                SoundManager.instance.EnemyDeathSound();
+            }
 
-            SoundManager.instance.EnemyDeathSound();
-
-            if (!hit.isBoss)
+            else
                 Destroy(gameObject);
         }
     }

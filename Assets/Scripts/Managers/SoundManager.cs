@@ -111,7 +111,7 @@ public class SoundManager : MonoBehaviour
     {
         if (systemSFXSource != null && buttonClickSound != null)
         {
-            systemSFXSource.PlayOneShot(buttonClickSound, 0.75f);
+            systemSFXSource.PlayOneShot(buttonClickSound, 0.5f);
         }
     }
 
@@ -183,7 +183,10 @@ public class SoundManager : MonoBehaviour
     public void ScoreSound()
     {
         if (systemSFXSource != null && scoreCountSound != null)
+        {
+            systemSFXSource.Stop();
             systemSFXSource.PlayOneShot(scoreCountSound, 0.2f);
+        }
     }
 
     public void HighScoreSound()
@@ -194,24 +197,28 @@ public class SoundManager : MonoBehaviour
 
     public void GameClearSound()
     {
-        if (systemSFXSource != null && gameClearSound != null)
-            systemSFXSource.PlayOneShot(gameClearSound, 0.2f);
-
         bgmSource.Stop();
+
+        if (bgmSource != null && gameClearSound != null)
+            bgmSource.PlayOneShot(gameClearSound, 0.2f);
     }
 
     public void GameOverSound()
     {
-        if (systemSFXSource != null && gameOverSound != null)
-            systemSFXSource.PlayOneShot(gameOverSound, 0.2f);
-
         bgmSource.Stop();
+
+        if (bgmSource != null && gameOverSound != null)
+            bgmSource.PlayOneShot(gameOverSound, 0.2f);
     }
 
     public void BossExplosionSound()
     {
         if (bossSFXSound != null && bossExplosionSound != null)
-            bossSFXSound.PlayOneShot(bossExplosionSound, 0.2f);
+        {
+            bossSFXSound.Stop();
+            systemSFXSource.Stop();
+            bossSFXSound.PlayOneShot(bossExplosionSound, 0.1f);
+        }
     }
 
     public void CreateQuartz()
@@ -407,8 +414,10 @@ public class SoundManager : MonoBehaviour
     {
         if (bossSFXSound != null && bossBreakSound != null)
         {
-            bossSFXSound.pitch = Random.Range(0.05f, 0.4f);
-            bossSFXSound.PlayOneShot(bossBreakSound, 0.05f);
+            bossSFXSound.Stop();
+            systemSFXSource.Stop();
+            bossSFXSound.pitch = Random.Range(0.3f, 0.55f);
+            bossSFXSound.PlayOneShot(bossBreakSound, 0.1f);
 
             bossSFXSound.pitch = 1;
         }

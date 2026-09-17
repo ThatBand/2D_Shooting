@@ -18,7 +18,8 @@ public enum BossState
     Quartz,
     RowCol,
     ShieldMinion,
-    LaserWall
+    LaserWall,
+    BlossomBullet
 }
 
 public class BossPatternManager : MonoBehaviour
@@ -38,6 +39,7 @@ public class BossPatternManager : MonoBehaviour
     private BossRowColPattern rowColPattern;
     private BossSpawnShieldMinion shieldMinionPattern;
     private BossLaserWallPattern laserWallPattern;
+    private BossBlossomingPattern blossomPattern;
 
     [Header("현재 진행 중인 패턴")]
     public BossState curState = BossState.Move;
@@ -75,6 +77,7 @@ public class BossPatternManager : MonoBehaviour
         rowColPattern = GetComponent<BossRowColPattern>();
         shieldMinionPattern = GetComponent<BossSpawnShieldMinion>();
         laserWallPattern = GetComponent<BossLaserWallPattern>();
+        blossomPattern = GetComponent<BossBlossomingPattern>();
     }
 
     private void Update()
@@ -141,6 +144,9 @@ public class BossPatternManager : MonoBehaviour
                 break;
             case BossState.LaserWall:
                 laserWallPattern.enabled = true;
+                break;
+            case BossState.BlossomBullet:
+                blossomPattern.enabled = true;
                 break;
         }
     }
@@ -227,6 +233,7 @@ public class BossPatternManager : MonoBehaviour
         rowColPattern.StopAllCoroutines();
         shieldMinionPattern.StopAllCoroutines();
         laserWallPattern.StopAllCoroutines();
+        blossomPattern.StopAllCoroutines();
 
         move.enabled = false;
         idle.enabled = false;
@@ -243,5 +250,6 @@ public class BossPatternManager : MonoBehaviour
         rowColPattern.enabled = false;
         shieldMinionPattern.enabled = false;
         laserWallPattern.enabled = false;
+        blossomPattern.enabled = false;
     }
 }

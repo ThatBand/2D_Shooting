@@ -8138,7 +8138,6 @@ MonoBehaviour:
   timeCounter: {fileID: 2094994672}
   slowTimeBar: {fileID: 62667715}
   playTime: 0
-  isGameClear: 0
 --- !u!4 &644952266
 Transform:
   m_ObjectHideFlags: 0
@@ -20649,6 +20648,7 @@ GameObject:
   - component: {fileID: 1844755520}
   - component: {fileID: 1844755521}
   - component: {fileID: 1844755522}
+  - component: {fileID: 1844755526}
   - component: {fileID: 1844755518}
   m_Layer: 0
   m_Name: Boss
@@ -20973,7 +20973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curState: 0
-  phase1PatternCycle: 03000000030000000d0000000500000004000000
+  phase1PatternCycle: 02000000030000000d0000000f00000004000000
   phase2PatternCycle: 0600000005000000070000000800000003000000
   phase3PatternCycle: 0c0000000e0000000b000000080000000d000000
 --- !u!114 &1844755519
@@ -21117,6 +21117,26 @@ MonoBehaviour:
   - {fileID: 774906564}
   - {fileID: 937318792}
   - {fileID: 135824004}
+--- !u!114 &1844755526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844755499}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17698c1825fcfc344b24650c8423175e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossData: {fileID: 11400000, guid: 6183809773a9c454c9680128f32fd1c9, type: 2}
+  minPos: -5.5
+  maxPos: 5.5
+  yPos: 5
+  patternCount: 12
+  patternCoolTime: 0.41
+  petalCount: 4
+  petal: {fileID: 9187968446401392580, guid: 6acd6d9c453dfe649acd710c7c139a92, type: 3}
 --- !u!1 &1853835342
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class BossDeathEffect : MonoBehaviour
     private bool particleEnd;
 
     private Vector3 startPos;
-    private Vector3 targetPos = new Vector3(0, 2, 0);
+    private Vector3 targetPos;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +39,6 @@ public class BossDeathEffect : MonoBehaviour
         anim = GetComponent<Animator>();
 
         move = GetComponent<BossMove>();
-
-        startPos = move.targetPos;
     }
 
     public void BossDeath()
@@ -86,6 +84,8 @@ public class BossDeathEffect : MonoBehaviour
 
     IEnumerator BossCrash()
     {
+        startPos = transform.position;
+        targetPos = new Vector3(transform.position.x, transform.position.y - 2, 0);
         float timer = 0f;
 
         while (timer < fallDur)

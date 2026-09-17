@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject slowTimeBar;
 
     public float playTime;
-    public bool isGameClear;
+    private bool isGameClear;
 
     private bool isGameStart;
 
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isGameClear && Time.timeScale > 0 && isGameStart)
+        if (!isGameClear && isGameStart)
         {
             playTime += Time.unscaledDeltaTime;
 
