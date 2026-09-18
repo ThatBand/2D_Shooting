@@ -75,7 +75,9 @@ public class BossRowColPattern : MonoBehaviour
                 Vector2 spawnPos = new Vector2(spawnX, startY);
 
                 GameObject bullet = Instantiate(bossData.enemyBullet[4], spawnPos, Quaternion.identity);
-                BulletProbability(bullet.GetComponent<EnemyBullet>());
+
+                if (bullet.TryGetComponent(out EnemyBullet eBullet))
+                    BulletUtility.SetRandomType(eBullet, red, blue, yellow);
 
                 bullet.GetComponent<Rigidbody2D>()?.AddForce(Vector2.down * 70);
             }

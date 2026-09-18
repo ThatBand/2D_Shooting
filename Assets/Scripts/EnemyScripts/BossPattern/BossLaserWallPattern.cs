@@ -36,21 +36,6 @@ public class BossLaserWallPattern : MonoBehaviour
         StartCoroutine(MakeEnemy());
     }
 
-    private void BulletProbability(EnemyBullet eBullet)
-    {
-        float total = red + blue + yellow;
-        float randNum = Random.Range(0f, total);
-
-        if (randNum < red)
-            eBullet.Setup(EnemyBullet.bulletType.red);
-
-        else if (randNum < red + blue)
-            eBullet.Setup(EnemyBullet.bulletType.blue);
-
-        else
-            eBullet.Setup(EnemyBullet.bulletType.yellow);
-    }
-
     IEnumerator MakeEnemy()
     {
         for (int i = 0; i < targetPos.Length; i++)
@@ -85,7 +70,7 @@ public class BossLaserWallPattern : MonoBehaviour
                 GameObject bullet = Instantiate(data.enemyBullet[5], transform.position, Quaternion.identity);
                 
                 if (bullet.TryGetComponent(out EnemyBullet eBullet))
-                    BulletProbability(eBullet);
+                    BulletUtility.SetRandomType(eBullet, red, blue, yellow);
 
                 float b = (360f / bulletCount) * i;
                 Vector3 moveDir = Quaternion.Euler(0, 0, b) * Vector3.up;

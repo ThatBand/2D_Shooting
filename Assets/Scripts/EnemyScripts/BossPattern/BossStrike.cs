@@ -33,21 +33,6 @@ public class BossStrike : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void BulletProbability(EnemyBullet eBullet)
-    {
-        float total = red + blue + yellow;
-        float randNum = Random.Range(0f, total);
-
-        if (randNum < red)
-            eBullet.Setup(EnemyBullet.bulletType.red);
-
-        else if (randNum < red + blue)
-            eBullet.Setup(EnemyBullet.bulletType.blue);
-
-        else
-            eBullet.Setup(EnemyBullet.bulletType.yellow);
-    }
-
     IEnumerator MakeBullet()
     {
         for (int i = 0; i < 2; i++)
@@ -57,8 +42,9 @@ public class BossStrike : MonoBehaviour
                 SoundManager.instance.BossShotSound_0();
 
                 bullets[k] = Instantiate(data.enemyBullet[0], points[k]);
-                EnemyBullet bullet = bullets[k].GetComponent<EnemyBullet>();
-                BulletProbability(bullet);
+
+                if (bullets[k].TryGetComponent(out EnemyBullet eBullet))
+                    BulletUtility.SetRandomType(eBullet, red, blue, yellow);
 
                 yield return new WaitForSeconds(0.5f);
             }

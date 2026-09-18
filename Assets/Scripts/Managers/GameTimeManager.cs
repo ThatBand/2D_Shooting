@@ -9,7 +9,7 @@ public class GameTimeManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKey(KeyCode.F))
-            Time.timeScale = 2;
+            Time.timeScale = 3;
 
         if (Input.GetKeyUp(KeyCode.F))
             Time.timeScale = 1;

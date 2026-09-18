@@ -44,21 +44,6 @@ public class BossSpiralSpread : MonoBehaviour
         bulletContainer.Rotate(Vector3.forward, RotateSpeed * Time.deltaTime);
     }
 
-    private void BulletProbability(EnemyBullet eBullet)
-    {
-        float total = red + blue + yellow;
-        float randNum = Random.Range(0f, total);
-
-        if (randNum < red)
-            eBullet.Setup(EnemyBullet.bulletType.red);
-
-        else if (randNum < red + blue)
-            eBullet.Setup(EnemyBullet.bulletType.blue);
-
-        else
-            eBullet.Setup(EnemyBullet.bulletType.yellow);
-    }
-
     IEnumerator SprialBullet()
     {
         int o = 0;
@@ -70,8 +55,9 @@ public class BossSpiralSpread : MonoBehaviour
                 SoundManager.instance.BossShotSound_1();
 
                 GameObject bullet = Instantiate(bossData.enemyBullet[1], bulletContainer.position, Quaternion.identity, bulletContainer);
-                EnemyBullet bullstSC = bullet.GetComponent<EnemyBullet>();
-                BulletProbability(bullstSC);
+                
+                if (bullet.TryGetComponent(out EnemyBullet eBullet))
+                    BulletUtility.SetRandomType(eBullet, red, blue, yellow);
 
                 Rigidbody2D bulletRigid = bullet.GetComponent<Rigidbody2D>();
 

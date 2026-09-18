@@ -12531,7 +12531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &996252694
 Transform:
   m_ObjectHideFlags: 0
@@ -20973,7 +20973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curState: 0
-  phase1PatternCycle: 02000000030000000d0000000f00000004000000
+  phase1PatternCycle: 0d000000030000000d0000000f00000004000000
   phase2PatternCycle: 0600000005000000070000000800000003000000
   phase3PatternCycle: 0c0000000e0000000b000000080000000d000000
 --- !u!114 &1844755519
@@ -21029,6 +21029,9 @@ MonoBehaviour:
   enemy_S: {fileID: 5674355918247331594, guid: b9cdfb2f92dc9604594d3625e9b1e4f3, type: 3}
   enemyCount: 8
   radius: 3
+  red: 4
+  blue: 3
+  yellow: 3
 --- !u!114 &1844755522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24673,7 +24676,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.45
 --- !u!114 &2047897908
 MonoBehaviour:
   m_ObjectHideFlags: 0

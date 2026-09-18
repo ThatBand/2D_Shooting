@@ -10,6 +10,11 @@ public class BossSpawnShieldMinion : MonoBehaviour
     public int enemyCount;
     public float radius;
 
+    [Header("총알 등장 확률")]
+    public float red;
+    public float blue;
+    public float yellow;
+
     private BossPatternManager manager;
 
     private bool a;
@@ -40,6 +45,9 @@ public class BossSpawnShieldMinion : MonoBehaviour
             Vector3 pos = transform.position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
 
             GameObject enemy = Instantiate(enemy_S, pos, Quaternion.identity);
+
+            if (enemy.TryGetComponent(out EnemyShooter shooter))
+                shooter.BulletType(red, blue, yellow);
 
             if (enemy.TryGetComponent(out ShieldMinion enemySC))
                 spawnEnemy.Add(enemySC);

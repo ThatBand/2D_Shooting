@@ -44,21 +44,6 @@ public class BossCircleFire : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void BulletProbability(EnemyBullet eBullet)
-    {
-        float total = red + blue + yellow;
-        float randNum = Random.Range(0f, total);
-
-        if (randNum < red)
-            eBullet.Setup(EnemyBullet.bulletType.red);
-
-        else if (randNum < red + blue)
-            eBullet.Setup(EnemyBullet.bulletType.blue);
-
-        else
-            eBullet.Setup(EnemyBullet.bulletType.yellow);
-    }
-
     IEnumerator MoveToPosition()
     {
         while (true)
@@ -95,7 +80,7 @@ public class BossCircleFire : MonoBehaviour
                     GameObject bullet = Instantiate(bossData.enemyBullet[3], transform.position + Vector3.down * 0.6f, Quaternion.identity);
 
                     if (bullet.TryGetComponent(out EnemyBullet eBullet))
-                        BulletProbability(eBullet);
+                        BulletUtility.SetRandomType(eBullet, red, blue, yellow);
 
                     float b = (360f / bulletCount) * i;
                     Vector3 moveDir = Quaternion.Euler(0, 0, b) * Vector3.up;

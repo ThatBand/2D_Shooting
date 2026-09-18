@@ -36,21 +36,6 @@ public class BossPrisonDodge : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void BulletProbability(EnemyBullet eBullet)
-    {
-        float total = red + blue + yellow;
-        float randNum = Random.Range(0f, total);
-
-        if (randNum < red)
-            eBullet.Setup(EnemyBullet.bulletType.red);
-
-        else if (randNum < red + blue)
-            eBullet.Setup(EnemyBullet.bulletType.blue);
-
-        else
-            eBullet.Setup(EnemyBullet.bulletType.yellow);
-    }
-
     IEnumerator dodge()
     {
         for (int i = 0; i < 8; i++)
@@ -82,9 +67,9 @@ public class BossPrisonDodge : MonoBehaviour
             GameObject bullet1 = Instantiate(bossData.enemyBullet[2], bullet1Pos, Quaternion.identity);
 
             EnemyBullet bulletSC0 = bullet0.GetComponent<EnemyBullet>();
-            BulletProbability(bulletSC0);
+            BulletUtility.SetRandomType(bulletSC0, red, blue, yellow);
             EnemyBullet bulletSC1 = bullet1.GetComponent<EnemyBullet>();
-            BulletProbability(bulletSC1);
+            BulletUtility.SetRandomType(bulletSC1, red, blue, yellow);
 
             Rigidbody2D rigid0 = bullet0.GetComponent<Rigidbody2D>();
             Rigidbody2D rigid1 = bullet1.GetComponent<Rigidbody2D>();

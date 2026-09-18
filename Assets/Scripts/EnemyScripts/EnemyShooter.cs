@@ -5,9 +5,15 @@ using static EnemyBullet;
 
 public class EnemyShooter : MonoBehaviour
 {
+    [Header("적 데이터")]
     public EnemyData enemyData;
 
+    [Header("")]
     public int attackCount;
+
+    private float red;
+    private float blue;
+    private float yellow;
 
     private float attackSpeed;
     private float time;
@@ -51,6 +57,13 @@ public class EnemyShooter : MonoBehaviour
         }
     }
 
+    public void BulletType(float a, float b, float c)
+    {
+        red = a;
+        blue = b;
+        yellow = c;
+    }
+
     void Fire()
     {
         switch (enemyData.shootType)
@@ -64,7 +77,8 @@ public class EnemyShooter : MonoBehaviour
                 GameObject bullet = Instantiate(enemyBullet, transform.position, Quaternion.identity);
                 Rigidbody2D bulletRigid = bullet.GetComponent<Rigidbody2D>();
                 EnemyBullet bulletScript = bullet.GetComponent<EnemyBullet>();
-                bulletScript.Setup(bulletType.red);
+                BulletUtility.SetRandomType(bulletScript, red, blue, yellow);
+
                 Vector3 dir = GameManager.instance.player.transform.position - transform.position;
 
                 bulletRigid?.AddForce(dir.normalized * bulletScript.bulletData.speed, ForceMode2D.Impulse);
@@ -72,37 +86,34 @@ public class EnemyShooter : MonoBehaviour
 
                 time = 0;
                 break;
-            case ShootType.Charging:
-                StartCoroutine(ChargingShoot());
-                break;
         }
     }
 
-    IEnumerator ChargingShoot()
-    {
-        if (isCharging)
-            yield break;
+    //IEnumerator ChargingShoot()
+    //{
+    //    if (isCharging)
+    //        yield break;
 
-        isCharging = true;
-        int count = 0;
+    //    isCharging = true;
+    //    int count = 0;
 
-        while (count < attackCount)
-        {
-            //1초간 내려옴으로서 플레이어에게 적이 생성됨을 알려줌
-            yield return new WaitForSeconds(1f);
-            move.isStop = true;
+    //    while (count < attackCount)
+    //    {
+    //        //1초간 내려옴으로서 플레이어에게 적이 생성됨을 알려줌
+    //        yield return new WaitForSeconds(1f);
+    //        move.isStop = true;
 
-            GameObject curBullet = Instantiate(enemyData.enemyBullet[0], transform.position + Vector3.down * 1.2f, Quaternion.identity);
-            EnemyBullet bulletSC = curBullet.GetComponent<EnemyBullet>();
-            bulletSC.Setup(bulletType.red);
+    //        GameObject curBullet = Instantiate(enemyData.enemyBullet[0], transform.position + Vector3.down * 1.2f, Quaternion.identity);
+    //        EnemyBullet bulletSC = curBullet.GetComponent<EnemyBullet>();
+    //        bulletSC.Setup(bulletType.red);
 
-            //총알 생성 후 발사까지 걸리는 속도
-            yield return new WaitForSeconds(2f);
+    //        //총알 생성 후 발사까지 걸리는 속도
+    //        yield return new WaitForSeconds(2f);
 
-            count++;
-        }
+    //        count++;
+    //    }
 
-        yield return new WaitForSeconds(4f);
-        move.isStop = false;
-    }
+    //    yield return new WaitForSeconds(4f);
+    //    move.isStop = false;
+    //}
 }

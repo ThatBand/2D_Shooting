@@ -72,7 +72,8 @@ public class BossBlossomingPattern : MonoBehaviour
 
             timer += Time.deltaTime;
 
-            float waveX = Mathf.Sin(timer * 3) * 2;
+            float a = Random.Range(0.5f, 2);
+            float waveX = Mathf.Sin(timer * 6) * a;
 
             rigid.velocity = new Vector2(waveX, -3);
 
@@ -81,10 +82,12 @@ public class BossBlossomingPattern : MonoBehaviour
 
         rigid.velocity = Vector2.zero;
 
+        bullet.transform.rotation = Quaternion.identity;
+
         GameObject[] spawnedPetals = new GameObject[petalCount];
         for (int k = 0; k < petalCount; k++)
         {
-            float a = (360 / 4) * k;
+            float a = (360f / petalCount) * k;
             Vector3 offset = Quaternion.Euler(0, 0, a) * Vector3.up * 0.5f;
 
             spawnedPetals[k] = Instantiate(petal, bullet.transform.position + offset, Quaternion.Euler(0, 0, a), bullet.transform);
@@ -93,13 +96,21 @@ public class BossBlossomingPattern : MonoBehaviour
         float bloomTime = Random.Range(1.5f, 3.5f);
         yield return new WaitForSeconds(bloomTime);
 
+        Transform player = GameManager.instance.player;
+
+        Vector2 dir = player.position - bullet.transform.position;
+        float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(0, 0, targetAngle);
+
+        rigid.angularVelocity = 0;
+
         foreach (var petal in spawnedPetals)
         {
             if (petal.TryGetComponent(out Rigidbody2D petalRigid))
             {
                 petal.transform.SetParent(null);
-                Vector2 dir = (petal.transform.position - bullet.transform.position).normalized;
-                petalRigid.velocity = dir * 3;
+                Vector2 dir_ = (petal.transform.position - bullet.transform.position).normalized;
+                petalRigid.velocity = dir_ * 6;
             }
         }
 
