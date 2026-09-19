@@ -21,7 +21,12 @@ public class GameManager : MonoBehaviour
     [Header("시간 감속 슬라이더")]
     public GameObject slowTimeBar;
 
+    [Header("플레이 타임")]
     public float playTime;
+
+    [Header("")]
+    public bool isTest;
+
     private bool isGameClear;
 
     private bool isGameStart;
@@ -63,7 +68,9 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         isGameStart = true;
-        boss.GetComponent<BossPatternManager>().BossMoveStart();
+
+        if (!isTest)
+            boss.GetComponent<BossPatternManager>().BossMoveStart();
         SoundManager.instance.Change1PhaseBGM();
 
         pauseButton.SetActive(true);

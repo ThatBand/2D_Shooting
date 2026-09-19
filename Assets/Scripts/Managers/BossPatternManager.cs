@@ -55,6 +55,7 @@ public class BossPatternManager : MonoBehaviour
 
     private BossState[] curSequence;
 
+    private bool isPhase1;
     private bool isPhase2;
     private bool isPhase3;
 
@@ -98,6 +99,7 @@ public class BossPatternManager : MonoBehaviour
 
         curState = nextState;
 
+        //switch를 이용해 해당 패턴만 enabled = true
         switch (curState)
         {
             case BossState.Move:
@@ -162,7 +164,13 @@ public class BossPatternManager : MonoBehaviour
         curPatternIndex++;
 
         if (curPatternIndex >= curSequence.Length)
-            curPatternIndex = 1;
+        {
+            if (!isPhase2 && !isPhase3)
+                curPatternIndex = 1;
+
+            else
+                curPatternIndex = 0;
+        }
     }
 
     public void EnterPhase2()

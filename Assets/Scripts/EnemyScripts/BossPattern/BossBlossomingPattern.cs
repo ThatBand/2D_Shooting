@@ -45,6 +45,7 @@ public class BossBlossomingPattern : MonoBehaviour
         for (int i = 0; i < patternCount; i++)
         {
             GameObject bullet = Instantiate(bossData.enemyBullet[5], new Vector3(Random.Range(minPos, maxPos), yPos, 0), Quaternion.identity);
+            SoundManager.instance.BossShotSound_0();
 
             activePetal++;
             StartCoroutine(BlossomBullet(bullet));
@@ -92,6 +93,8 @@ public class BossBlossomingPattern : MonoBehaviour
 
             spawnedPetals[k] = Instantiate(petal, bullet.transform.position + offset, Quaternion.Euler(0, 0, a), bullet.transform);
         }
+
+        SoundManager.instance.BlossomBulletSound();
 
         float bloomTime = Random.Range(1.5f, 3.5f);
         yield return new WaitForSeconds(bloomTime);

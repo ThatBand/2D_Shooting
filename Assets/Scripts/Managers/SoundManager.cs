@@ -75,6 +75,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip bossShotSound_3;
     public AudioClip bossShotSound_4;
 
+    [Header("개화 사운드")]
+    public AudioClip blossomSound;
+
     [Header("ㅤ")]
     public AudioClip createQuartz;
 
@@ -113,6 +116,15 @@ public class SoundManager : MonoBehaviour
         {
             systemSFXSource.PlayOneShot(buttonClickSound, 0.5f);
         }
+    }
+    
+    public void BlossomBulletSound()
+    {
+        if (bossSFXSound != null && blossomSound != null)
+        {
+            bossSFXSound.pitch = Random.Range(0.95f, 1.05f);
+            bossSFXSound.PlayOneShot(blossomSound, 0.5f);
+        }    
     }
 
     public void PlayFocusInSound()
