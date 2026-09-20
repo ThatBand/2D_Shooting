@@ -48,10 +48,10 @@ public class PlayerTimeControl : MonoBehaviour
             GameTimeManager.instance.SlowMode();
             curGauge = Mathf.Max(curGauge - decreaseSpeed * Time.unscaledDeltaTime, 0);
 
+            //UI, 사운드, 이펙트 효과
             uiManager.UpdateSlider(curGauge, maxGauge);
 
             SoundManager.instance.PlayFocusInSound();
-            
             trail.StartTrail();
         }
 
@@ -60,10 +60,10 @@ public class PlayerTimeControl : MonoBehaviour
             GameTimeManager.instance.NormalMode();
             StartIncreaseGauge();
 
+            //UI, 사운드, 이펙트 효과
             uiManager.UpdateSlider(curGauge, maxGauge);
 
             SoundManager.instance.PlayFocusOutSound();
-
             trail.StopTrail();
         }
     }

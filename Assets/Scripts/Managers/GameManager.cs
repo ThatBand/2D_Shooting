@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private bool isGameClear;
 
-    private bool isGameStart;
+    public bool isGameStart;
 
     private void Awake()
     {
@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
     {
         if (UIManager.instance.noticePanel.activeSelf)
             GameTimeManager.instance.StopGame();
+
+        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.Save();
     }
 
     public void ExitGame()

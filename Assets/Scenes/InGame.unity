@@ -8140,6 +8140,7 @@ MonoBehaviour:
   slowTimeBar: {fileID: 62667715}
   playTime: 0
   isTest: 0
+  isGameStart: 0
 --- !u!4 &644952266
 Transform:
   m_ObjectHideFlags: 0

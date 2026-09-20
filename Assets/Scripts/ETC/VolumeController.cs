@@ -26,8 +26,7 @@ public class VolumeController : MonoBehaviour
         sfxSlider.onValueChanged.AddListener(SetSfxVol);
     }
 
-    // 설정창(GameObject)이 SetActive(true)로 열릴 때마다 매번 실행됨
-    private void OnEnable()
+    private void Start()
     {
         // 저장된 최신 PlayerPrefs 값을 가져와서 슬라이더 및 믹서 동기화
         float master = PlayerPrefs.GetFloat("MasterVol", 0.3f);
@@ -42,6 +41,12 @@ public class VolumeController : MonoBehaviour
         SetMaserVol(master);
         SetBgmVol(bgm);
         SetSfxVol(sfx);
+    }
+
+    // 설정창(GameObject)이 SetActive(true)로 열릴 때마다 매번 실행됨
+    private void OnEnable()
+    {
+        
     }
 
     public void SetMaserVol(float value)

@@ -223,6 +223,9 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.instance.isGameStart)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Escape) && !pausePanel.activeSelf && !settingPanel.activeSelf && !noticePanel.activeSelf)
             OpenPausePanel();
 
