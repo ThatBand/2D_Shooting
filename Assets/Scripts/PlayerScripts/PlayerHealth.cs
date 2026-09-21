@@ -45,12 +45,13 @@ public class PlayerHealth : MonoBehaviour
         OnDamaged?.Invoke();
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("EnemyBullet"))
-    //    {
-    //        Destroy(collision.gameObject);
-    //        TakeDamage();
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyBullet"))
+        {
+            //Enter2D를 지우면 문제해결
+            TakeDamage();
+            Destroy(collision.gameObject);
+        }
+    }
 }
