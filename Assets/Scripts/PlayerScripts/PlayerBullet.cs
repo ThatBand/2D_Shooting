@@ -28,10 +28,8 @@ public class PlayerBullet : Bullet
             Vector2 direction = (Vector2)target.position - (Vector2)transform.position;
             direction.Normalize();
 
-            // 현재 전방(transform.up)과 보스 방향 사이의 각도 차이 계산
             float rotateAmount = Vector3.Cross(direction, transform.up).z;
 
-            // 보스 쪽으로 조금씩 꺾기
             transform.Rotate(0, 0, -rotateAmount * 200 * Time.deltaTime);
         }
 
@@ -47,6 +45,7 @@ public class PlayerBullet : Bullet
         {
             if (collision.TryGetComponent(out DamageReceiver receiver))
             {
+                isHit = true;
                 receiver.ReceiveDamage(bulletData.damage);
                 Destroy(gameObject);
             }
@@ -56,8 +55,6 @@ public class PlayerBullet : Bullet
                 if (collision.TryGetComponent(out EnemyHealth enemyHealth))
                     enemyHealth.TakeDamage(bulletData.damage);
             }
-
-            isHit = true;
         }
 
         if (collision.CompareTag("EnemyBullet"))

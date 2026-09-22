@@ -101,7 +101,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.14, y: 0.67}
+  m_Size: {x: 0.1, y: 0.65}
   m_Direction: 0
 --- !u!50 &3619173629226250311
 Rigidbody2D:
@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletData: {fileID: 11400000, guid: cf8c6e206e388bc45ac575f4f7b25979, type: 2}
   isDestroy: 0
+  isInduce: 0

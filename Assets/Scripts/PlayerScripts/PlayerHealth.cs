@@ -49,7 +49,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.CompareTag("EnemyBullet"))
         {
-            //Enter2D를 지우면 문제해결
             TakeDamage();
             Destroy(collision.gameObject);
         }

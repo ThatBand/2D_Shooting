@@ -29,9 +29,10 @@ public class DamageReceiver : MonoBehaviour
             tmp.Setup(baseDmg * 2, true);
 
             Debug.Log("약점 히트! 크리티컬 데미지 두 배!");
+            return;
         }
 
-        else
+        if (!isWeakness)
         {
             bossHealth.TakeDamage(baseDmg);
             SoundManager.instance.BossNormalHitSound();

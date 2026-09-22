@@ -16,6 +16,8 @@ TagManager:
   - InvinEnemy
   - LaserWall
   - BossBody
+  - NormalWeak
+  - CriticalWeak
   layers:
   - Default
   - TransparentFX

@@ -105,7 +105,6 @@ public class EnemyBullet : Bullet
     {
         if (collision.CompareTag("CoreHit"))
         {
-            //아래 코드를 활성화시키면 문제 해결
             //if (collision.transform.parent.TryGetComponent(out PlayerHealth playerHealth))
             //    playerHealth.TakeDamage();
 

@@ -21,6 +21,8 @@ public class EnemyHealth : MonoBehaviour
 
     private int curPhase = 0;
 
+    private bool isHit;
+
     private void Awake()
     {
         curHealth = enemyData.health;
@@ -34,7 +36,12 @@ public class EnemyHealth : MonoBehaviour
         if (isInvin)
             return;
 
+        if (isHit)
+            return;
+
+        isHit = true;
         curHealth -= damage;
+        isHit = false;
 
         hit?.OnHit();
 
