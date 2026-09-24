@@ -29,7 +29,7 @@ public class EnemyMove : MonoBehaviour
         if (collision.CompareTag("CoreHit"))
         {
             if (collision.transform.parent.TryGetComponent(out PlayerHealth health))
-                health.TakeDamage();
+                health.TakeDamage(1);
 
             if (isDestroy)
                 Destroy(gameObject);

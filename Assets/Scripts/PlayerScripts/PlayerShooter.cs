@@ -66,6 +66,7 @@ public class PlayerShooter : MonoBehaviour
 
                 SoundManager.instance.PlayerMainShootSound();
 
+                //GameObject bullet = PoolManager.Instance.Get("PlayerBulletA", transform.position, Quaternion.identity);
                 GameObject bullet = Instantiate(mainBullet, transform.position, Quaternion.identity);
                 break;
             case >= 10 and < 25:

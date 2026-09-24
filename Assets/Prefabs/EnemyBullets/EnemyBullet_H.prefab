@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletData: {fileID: 11400000, guid: 57ac6532ed9a4a546b4bf3b7764e7057, type: 2}
   isDestroy: 1
+  poolName: 
   type: 0
   bulletHealth: 0
   blueBulletScore: 250

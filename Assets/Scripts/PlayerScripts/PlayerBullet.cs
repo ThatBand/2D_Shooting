@@ -8,24 +8,39 @@ public class PlayerBullet : Bullet
 
     private bool isHit;
 
-    private void OnEnable()
+    //protected override void OnEnable()
+    //{
+    //    base.OnEnable();
+
+    //    isHit = false;
+
+    //    if (!isInduce)
+    //        rigid.AddForce(transform.up * bulletData.speed, ForceMode2D.Impulse);
+    //}
+
+    //protected override void OnDisable()
+    //{
+    //    base.OnDisable();
+    //}
+
+    protected override void Awake()
     {
-        isHit = false;
+        base.Awake();
     }
 
     protected override void Start()
     {
         base.Start();
-
+        isHit = false;
         if (!isInduce)
             rigid.AddForce(transform.up * bulletData.speed, ForceMode2D.Impulse);
     }
 
     private void Update()
     {
-        if (target != null && isInduce)
+        if (GameManager.instance.boss != null && isInduce)
         {
-            Vector2 direction = (Vector2)target.position - (Vector2)transform.position;
+            Vector2 direction = (Vector2)GameManager.instance.boss.position - (Vector2)transform.position;
             direction.Normalize();
 
             float rotateAmount = Vector3.Cross(direction, transform.up).z;
@@ -47,13 +62,21 @@ public class PlayerBullet : Bullet
             {
                 isHit = true;
                 receiver.ReceiveDamage(bulletData.damage);
+                //PoolManager.Instance.Return(poolName, gameObject);
+
                 Destroy(gameObject);
             }
 
             else if (receiver == null)
             {
+                isHit = true;
+
                 if (collision.TryGetComponent(out EnemyHealth enemyHealth))
                     enemyHealth.TakeDamage(bulletData.damage);
+
+                //PoolManager.Instance.Return(poolName, gameObject);
+
+                Destroy(gameObject);
             }
         }
 
@@ -62,12 +85,21 @@ public class PlayerBullet : Bullet
             if (collision.TryGetComponent(out EnemyBullet eBullet) && eBullet.type == EnemyBullet.bulletType.yellow)
             {
                 Debug.Log("노랑 총알과 충돌");
-                eBullet.EnemyBulletDamaged(bulletData.damage);
+                eBullet.TakeDamage(bulletData.damage);
+                isHit = true;
+                //PoolManager.Instance.Return(poolName, gameObject);
 
                 Destroy(gameObject);
             }
 
             isHit = true;
         }
+
+        if (collision.CompareTag("Boundary"))
+        {
+            //PoolManager.Instance.Return(poolName, gameObject);
+            Destroy(gameObject);
+        }
+            
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamageable
 {
     public int maxHealth = 3;
     public int curHealth;
@@ -24,12 +24,12 @@ public class PlayerHealth : MonoBehaviour
         curHealth = maxHealth;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float dmg)
     {
         if (playerInvincibility.IsInvincibility || isDead)
             return;
 
-        curHealth--;
+        curHealth -= (int)dmg;
         uiManager.HitHealthIcon(curHealth);
 
         SoundManager.instance.PlayerDeathSound();
@@ -45,12 +45,12 @@ public class PlayerHealth : MonoBehaviour
         OnDamaged?.Invoke();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("EnemyBullet"))
-        {
-            TakeDamage();
-            Destroy(collision.gameObject);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("EnemyBullet"))
+    //    {
+    //        TakeDamage(1);
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
 }

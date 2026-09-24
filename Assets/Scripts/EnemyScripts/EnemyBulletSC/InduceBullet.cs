@@ -10,12 +10,11 @@ public class InduceBullet : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        player = GameManager.instance.player;
     }
 
     private void FixedUpdate()
     {
-        Vector2 dir = (player.position - transform.position).normalized;
+        Vector2 dir = (GameManager.instance.player.position - transform.position).normalized;
 
         float angle = Vector2.SignedAngle(transform.up, dir);
 

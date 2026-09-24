@@ -9,7 +9,7 @@ public class BossBody : MonoBehaviour
         if (collision.CompareTag("GrazeHit"))
         {
             if (collision.transform.parent.TryGetComponent(out PlayerHealth health))
-                health.TakeDamage();
+                health.TakeDamage(1);
         }
     }
 }

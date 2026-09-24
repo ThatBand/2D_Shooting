@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;
+    public static SoundManager instance { get; private set; }
 
     [Header("오디오 믹서")]
     public AudioMixer mixer;
@@ -104,13 +104,17 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
 
         else
+        {
             Destroy(gameObject);
+            return;
+        }
     }
-
-    
 
     public void ButtonClickSound()
     {
@@ -164,15 +168,28 @@ public class SoundManager : MonoBehaviour
     public void Change1PhaseBGM()
     {
         if (bgmSource != null && bgm_0 != null)
-            bgmSource.PlayOneShot(bgm_0, 0.3f);
+        {
+            if (bgmSource.clip == bgm_0 && bgmSource.isPlaying)
+                return;
+
+            bgmSource.Stop();
+            bgmSource.clip = bgm_0;
+            bgmSource.loop = true;
+            bgmSource.Play();
+        }
     }
 
     public void Change2PhaseBGM()
     {
         if (bgmSource != null && bgm_1 != null)
         {
+            if (bgmSource.clip == bgm_1 && bgmSource.isPlaying)
+                return;
+
             bgmSource.Stop();
-            bgmSource.PlayOneShot(bgm_1, 0.3f);
+            bgmSource.clip = bgm_1;
+            bgmSource.loop = true;
+            bgmSource.Play();
         }
     }
 
@@ -180,8 +197,13 @@ public class SoundManager : MonoBehaviour
     {
         if (bgmSource != null && bgm_2 != null)
         {
+            if (bgmSource.clip == bgm_2 && bgmSource.isPlaying)
+                return;
+
             bgmSource.Stop();
-            bgmSource.PlayOneShot(bgm_2, 0.3f);
+            bgmSource.clip = bgm_2;
+            bgmSource.loop = true;
+            bgmSource.Play();
         }
     }
 

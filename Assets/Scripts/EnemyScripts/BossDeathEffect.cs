@@ -19,7 +19,6 @@ public class BossDeathEffect : MonoBehaviour
     private BossPatternManager manager;
     private EnemyHit hit;
     private SpriteRenderer sprite;
-    private Animator anim;
 
     private BossMove move;
 
@@ -36,7 +35,6 @@ public class BossDeathEffect : MonoBehaviour
         hit = GetComponent<EnemyHit>();
         manager = GetComponent<BossPatternManager>();
         sprite = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
 
         move = GetComponent<BossMove>();
     }
@@ -55,7 +53,6 @@ public class BossDeathEffect : MonoBehaviour
         playerMove.StopPlayer();
         playerMove.enabled = false;
         playerShooter.enabled = false;
-        anim.enabled = false;
         GameManager.instance.ClearBullet();
 
         GameTimeManager.instance.HitStopGame(0.15f);

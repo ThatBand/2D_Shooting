@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Boundary : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet") || collision.CompareTag("PlayerBullet") || collision.CompareTag("Item"))
-            Destroy(collision.gameObject);
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyBullet") || collision.CompareTag("PlayerBullet") || collision.CompareTag("Item"))
+    //        Destroy(collision.gameObject);
+    //}
 }

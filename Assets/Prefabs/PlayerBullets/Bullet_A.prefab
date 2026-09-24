@@ -138,4 +138,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletData: {fileID: 11400000, guid: cf8c6e206e388bc45ac575f4f7b25979, type: 2}
   isDestroy: 0
+  a: PlayerBulletA
   isInduce: 0

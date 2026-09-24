@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : Bullet
+public class EnemyBullet : Bullet, IDamageable
 {
     //빨간색: 피하기만 해야함
     //파란색: 부딪히면 점수 획득
@@ -20,10 +20,29 @@ public class EnemyBullet : Bullet
 
     private bool canMove;
 
+    //protected override void OnEnable()
+    //{
+    //    base.OnEnable();
+    //    bulletHealth = bulletData.health;
+    //}
+
+    //protected override void OnDisable()
+    //{
+    //    base.OnDisable();
+    //}
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     protected override void Start()
     {
         base.Start();
+    }
 
+    private void OnEnable()
+    {
         bulletHealth = bulletData.health;
     }
 
@@ -70,7 +89,7 @@ public class EnemyBullet : Bullet
         }
     }
 
-    public void EnemyBulletDamaged(float dmg)
+    public void TakeDamage(float dmg)
     {
         if (type != bulletType.yellow)
             return;
@@ -105,8 +124,8 @@ public class EnemyBullet : Bullet
     {
         if (collision.CompareTag("CoreHit"))
         {
-            //if (collision.transform.parent.TryGetComponent(out PlayerHealth playerHealth))
-            //    playerHealth.TakeDamage();
+            if (collision.GetComponentInParent<IDamageable>() is IDamageable playerTarget)
+                playerTarget.TakeDamage(1);
 
             Destroy(gameObject);
         }
@@ -121,12 +140,18 @@ public class EnemyBullet : Bullet
                     textSC.Setup(blueBulletScore);
 
                 SoundManager.instance.BlueBulletSound();
-
                 ScoreManager.instance.ScorePlus(blueBulletScore);
 
                 Destroy(gameObject);
                 return;
             }
         }
+
+        if (collision.CompareTag("Boundary"))
+        {
+            //PoolManager.Instance.Return(poolName, gameObject);
+            Destroy(gameObject);
+        }
+
     }
 }
