@@ -25472,7 +25472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ad44c2aa559b64fba4afc510d3cfb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 1
+  power: 44
   maxPower: 40
   mainFireTime: 0
   subFireTime: 0
