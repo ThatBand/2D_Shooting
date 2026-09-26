@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class PoolInfo
+{
+    public string key;
+    public GameObject prefab;
+    public int initCount;
+}
+
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance;
 
-    [System.Serializable]
-    public class PoolInfo
-    {
-        public string key;
-        public GameObject prefab;
-        public int initCount;
-    }
-
-    [SerializeField] List<PoolInfo> poolInfos;
+    public List<PoolInfo> poolInfos;
 
     private Dictionary<string, Queue<GameObject>> pools = new();
 
